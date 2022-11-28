@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DataProcessor from "./Components/DataProcessor";
 import DataFormatter from "./Components/DataFormatter";
+import Barometre from './Components/Barometre'
 
 function App() {
   const [diades, setDiades] = useState({});
@@ -13,10 +14,18 @@ function App() {
     'setPuntuacions': setPuntuacions,
   };
 
+  useEffect(() => {
+    console.log(puntuacions)
+  }, [puntuacions])
+
+  useEffect(() => {
+    console.log(diades)
+  }, [diades])
+
   return (
     <>
       <DataProcessor {...exports} />
-      <DataFormatter {...exports} />
+      <Barometre {...exports} />
     </>
   );
 }
