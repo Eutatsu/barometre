@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Papa } from 'papaparse';
+import * as Papa from 'papaparse';
 
 function DataProcessor(props) {
     const link_dades = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=0&single=true&output=csv";
