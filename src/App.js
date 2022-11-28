@@ -4,16 +4,19 @@ import DataFormatter from "./Components/DataFormatter";
 
 function App() {
   const [diades, setDiades] = useState({});
+  const [puntuacions, setPuntuacions] = useState({});
 
   const exports = {
     'diades': diades,
     'setDiades': setDiades,
+    'puntuacions': puntuacions,
+    'setPuntuacions': setPuntuacions,
   };
 
   return (
     <>
-      <DataProcessor setDiades={setDiades} />
-      <DataFormatter diades={diades} />
+      <DataProcessor {...exports} />
+      <DataFormatter {...exports} />
     </>
   );
 }

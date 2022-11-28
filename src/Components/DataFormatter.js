@@ -1,7 +1,7 @@
 import "./DataFormatter.css";
 
 function DataFormatter(props) {
-    const { diades } = props;
+    const { diades, puntuacions } = props;
 
     return (
         [...Object.values(diades)].map(diada => {
@@ -22,6 +22,7 @@ function DataFormatter(props) {
                                                     <div className="ronda">{castell["Ronda"]}</div>
                                                     <div className="castell">{castell["Castell"]}</div>
                                                     <div className="resultat">{castell["Resultat"]}</div>
+                                                    <div className="puntuacions">{ castell["Castell"] in puntuacions && (castell["Resultat"] === "d" || castell["Resultat"] === "c") ? puntuacions[castell["Castell"]][castell["Resultat"]] : 0 }</div>
                                                 </div>
                                             )
                                         })}
