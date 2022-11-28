@@ -6,7 +6,7 @@ function init() {
     header: true,
     complete: function(results) {
       var data = results.data
-      console.log(data)
+      console.log(aggregate(data))
     }
   });
 }
