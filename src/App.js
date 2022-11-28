@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import DataProcessor from "./Components/DataProcessor";
-import DataFormatter from "./Components/DataFormatter";
 import Barometre from './Components/Barometre'
 
 function App() {
