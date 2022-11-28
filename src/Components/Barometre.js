@@ -38,6 +38,7 @@ function Barometre(props) {
     
     return (
         <>
+            <h1>Temporada 2022-23</h1>
             {sorted_top3.map((colla, i) => {
                 return (
                     <>
