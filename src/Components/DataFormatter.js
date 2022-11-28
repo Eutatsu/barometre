@@ -1,3 +1,4 @@
+import React from "react";
 import "./DataFormatter.css";
 
 function DataFormatter(props) {
