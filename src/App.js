@@ -1,8 +1,20 @@
+import { useState } from "react";
 import DataProcessor from "./Components/DataProcessor";
+import DataFormatter from "./Components/DataFormatter";
 
 function App() {
+  const [diades, setDiades] = useState({});
+
+  const exports = {
+    'diades': diades,
+    'setDiades': setDiades,
+  };
+
   return (
-    <DataProcessor />
+    <>
+      <DataProcessor setDiades={setDiades} />
+      <DataFormatter diades={diades} />
+    </>
   );
 }
 
