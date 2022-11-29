@@ -2,6 +2,7 @@ function Barometre(props) {
     const { diades, puntuacions } = props;
 
     let castells_puntuats = {};
+    let pilars_puntuats = {};
 
     const llista_diades = [...Object.values(diades)];
     llista_diades.map(diada => {
@@ -10,8 +11,14 @@ function Barometre(props) {
             diada["colles"][colla].map(castell => {
                 if (castell["CASTELL"] in puntuacions && (castell["RESULTAT"] === "Descarregat" || castell["RESULTAT"] === "Carregat")) {
                     const punts = puntuacions[castell["CASTELL"]][castell["RESULTAT"]];
-                    if (!(colla in castells_puntuats)) castells_puntuats[colla] = {};
-                    castells_puntuats[colla][castell["CASTELL"]] = punts;
+
+                    if (castell["CASTELL"].toLowerCase().startsWith("p") || castell["CASTELL"].toLowerCase().startsWith("v")) {
+                        if (!(colla in pilars_puntuats)) pilars_puntuats[colla] = {};
+                        pilars_puntuats[colla][castell["CASTELL"]] = punts;
+                    } else {
+                        if (!(colla in castells_puntuats)) castells_puntuats[colla] = {};
+                        castells_puntuats[colla][castell["CASTELL"]] = punts;
+                    }
                 }
             })
         })
@@ -26,11 +33,16 @@ function Barometre(props) {
                 .slice(0,3) // return only the first 3 elements of the intermediate result
                 .map(([a,b]) => b)
                 .reduce((acc, curr) => acc + parseInt(curr), 0),
-            "top3": Object
+            "top3": colla in castells_puntuats ? Object
                 .entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
                 .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
                 .slice(0,3) // return only the first 3 elements of the intermediate result
-                .map(([n])=> n) // and map that to an array with only the name
+                .map(([n])=> n) : ["-", "-", "-"], // and map that to an array with only the name
+            "topPilar": colla in pilars_puntuats ? Object
+                .entries(pilars_puntuats[colla]) // create Array of Arrays with [key, value]
+                .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
+                .slice(0,1) // return only the first 3 elements of the intermediate result
+                .map(([n])=> n) : "-" // and map that to an array with only the name
         };
     });
 
@@ -41,14 +53,15 @@ function Barometre(props) {
             <h1>Temporada 2022-23</h1>
             {sorted_top3.map((colla, i) => {
                 return (
-                    <>
+                    <div className="colla" key={colla}>
                         <h2 style={{ textAlign: "center" }}>#{i+1} - {colla.colla}</h2>
                         <div style={{ display: "flex", justifyContent: "space-around" }}>
                             {colla.top3.map(castell => {
                                 return <div>{castell}</div>;
                             })}
+                            <div>{colla.topPilar}</div>
                         </div>
-                    </>
+                    </div>
                 )
             })}
         </>
