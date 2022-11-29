@@ -24,7 +24,8 @@ function Barometre(props) {
         return "";
     }
 
-    const lastWeek = date => {
+    // TODO: check if first castell was done the past week
+    const donePastWeek = date => {
         return "";
         return "new";
     }
@@ -116,12 +117,12 @@ function Barometre(props) {
                             {colla.top3.map((castell, i) => {
 								return (
                                     <>
-                                        <td className={lastWeek('')}></td>
+                                        <td className={donePastWeek('')}></td>
                                         <td key={castell} className={"castell " + parseProfile(colla.puntuacions[i]) + isCarregat(castell)}>{castell}</td>
                                     </>
                                 );
 							})}
-                            <td className={lastWeek('')}></td>
+                            <td className={donePastWeek('')}></td>
                             <td className={"castell " + parseProfile(colla.topPilarPuntuacio) + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
                         </tr>
                     );
