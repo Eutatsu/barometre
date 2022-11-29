@@ -1,0 +1,45 @@
+.castells {
+    display: flex;
+    justify-content: space-around;
+}
+
+.castell {
+    padding: 20px;
+}
+
+.castell.grup0 {
+    background-color: white;
+}
+
+.castell.grup1 {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.castell.grup2 {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+.castell.grup3 {
+    background-color: rgba(200, 0, 0, 1);
+    color: white;
+}
+
+.castell.grup4 {
+    background-color: rgba(127, 0, 0, 1);
+    color: white;
+}
+
+.castell.grup5 {
+    background-color: rgba(60, 0, 0, 1);
+    color: white;
+}
+
+.castell.grup6 {
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+}
+
+.castell.grup7 {
+    background-color: rgb(229, 255, 0);
+    color: white;
+}

@@ -1,8 +1,23 @@
+import "./Barometre.css"
+
 function Barometre(props) {
     const { diades, puntuacions } = props;
 
     let castells_puntuats = {};
     let pilars_puntuats = {};
+
+    const parseProfile = points => {
+        if (points < 300) return "grup0";
+        else if (points < 500) return "grup1";
+        else if (points < 750) return "grup2";
+        else if (points < 1200) return "grup3";
+        else if (points < 1600) return "grup4";
+        else if (points < 2500) return "grup5";
+        else if (points < 3500) return "grup6";
+        else if (3500 <= points) return "grup7";
+
+        return "";
+    };
 
     const llista_diades = [...Object.values(diades)];
     llista_diades.map(diada => {
@@ -31,8 +46,13 @@ function Barometre(props) {
                 .entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
                 .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
                 .slice(0,3) // return only the first 3 elements of the intermediate result
-                .map(([a,b]) => b)
-                .reduce((acc, curr) => acc + parseInt(curr), 0),
+                .map(([a,b]) => parseInt(b))
+                .reduce((acc, curr) => acc + curr, 0),
+            "puntuacions": Object
+                .entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
+                .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
+                .slice(0,3) // return only the first 3 elements of the intermediate result
+                .map(([a,b]) => parseInt(b)),
             "top3": colla in castells_puntuats ? Object
                 .entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
                 .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
@@ -42,7 +62,12 @@ function Barometre(props) {
                 .entries(pilars_puntuats[colla]) // create Array of Arrays with [key, value]
                 .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
                 .slice(0,1) // return only the first 3 elements of the intermediate result
-                .map(([n])=> n) : "-" // and map that to an array with only the name
+                .map(([n])=> n) : "-", // and map that to an array with only the name
+            "topPilarPuntuacio": colla in pilars_puntuats ? Object
+                .entries(pilars_puntuats[colla]) // create Array of Arrays with [key, value]
+                .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
+                .slice(0,1) // return only the first 3 elements of the intermediate result
+                .map(([, n])=> parseInt(n)) : "0" // and map that to an array with only the name
         };
     });
 
@@ -53,13 +78,13 @@ function Barometre(props) {
             <h1>Temporada 2022-23</h1>
             {sorted_top3.map((colla, i) => {
                 return (
-                    <div className="colla" key={colla}>
-                        <h2 style={{ textAlign: "center" }}>#{i+1} - {colla.colla}</h2>
-                        <div style={{ display: "flex", justifyContent: "space-around" }}>
-                            {colla.top3.map(castell => {
-                                return <div>{castell}</div>;
+                    <div className="colla" key={colla.colla}>
+                        <h2>#{i+1} - {colla.colla}</h2>
+                        <div className="castells">
+                            {colla.top3.map((castell, i) => {
+                                return <div key={castell} className={"castell " + parseProfile(colla.puntuacions[i])}>{castell}</div>;
                             })}
-                            <div>{colla.topPilar}</div>
+                            <div className={"castell " + parseProfile(colla.topPilarPuntuacio)}>{colla.topPilar}</div>
                         </div>
                     </div>
                 )
