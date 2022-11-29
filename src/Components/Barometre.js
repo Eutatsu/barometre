@@ -70,25 +70,27 @@ function Barometre(props) {
                 .map(([, n])=> parseInt(n)) : "0" // and map that to an array with only the name
         };
     });
-
-    const sorted_top3 = top3.sort((a,b) => a.puntuacio_total < b.puntuacio_total);
     
     return (
         <>
             <h1>Temporada 2022-23</h1>
-            {sorted_top3.map((colla, i) => {
-                return (
-                    <div className="colla" key={colla.colla}>
-                        <h2>#{i+1} - {colla.colla} ({colla.puntuacio_total}pts)</h2>
-                        <div className="castells">
-                            {colla.top3.map((castell, i) => {
-                                return <div key={castell} className={"castell " + parseProfile(colla.puntuacions[i])}>{castell}</div>;
-                            })}
-                            <div className={"castell " + parseProfile(colla.topPilarPuntuacio)}>{colla.topPilar}</div>
+            {
+                top3
+                .sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
+                .map((colla, i) => {
+                    return (
+                        <div className="colla" key={colla.colla}>
+                            <h2>#{i+1} - {colla.colla}</h2>
+                            <div className="castells">
+                                {colla.top3.map((castell, i) => {
+                                    return <div key={castell} className={"castell " + parseProfile(colla.puntuacions[i])}>{castell}</div>;
+                                })}
+                                <div className={"castell " + parseProfile(colla.topPilarPuntuacio)}>{colla.topPilar}</div>
+                            </div>
                         </div>
-                    </div>
-                )
-            })}
+                    );
+                })
+            }
         </>
     );
 }
