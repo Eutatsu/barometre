@@ -56,10 +56,7 @@ table th {
 
 table th, td {
 	padding: 3px 5px;
-}/*
-table td {
-	border: 1px solid #ffffff;
-}*/
+}
 
 table tr td:nth-child(1) {
 	width: 20px;
@@ -159,6 +156,6 @@ table td.new::after {
     color: #ffffff;
 }
 .castell.carregat {
-    background-color: var(--cc);
-    color: #000000;
+    background-color: var(--cc) !important;
+    color: #000000 !important;
 }

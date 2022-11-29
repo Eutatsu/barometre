@@ -14,11 +14,11 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(puntuacions)
+    //console.log(puntuacions)
   }, [puntuacions])
 
   useEffect(() => {
-    console.log(diades)
+    //console.log(diades)
   }, [diades])
 
   return (

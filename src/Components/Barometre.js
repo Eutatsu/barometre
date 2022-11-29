@@ -19,6 +19,16 @@ function Barometre(props) {
         return "";
     };
 
+    const isCarregat = castell => {
+        if (castell.slice(-1) == "C") return " carregat";
+        return "";
+    }
+
+    const lastWeek = date => {
+        return "";
+        return "new";
+    }
+
     const llista_diades = [...Object.values(diades)];
     llista_diades.map(diada => {
         const colles = Object.keys(diada["colles"]);
@@ -27,12 +37,16 @@ function Barometre(props) {
                 if (castell["CASTELL"] in puntuacions && (castell["RESULTAT"] === "Descarregat" || castell["RESULTAT"] === "Carregat")) {
                     const punts = puntuacions[castell["CASTELL"]][castell["RESULTAT"]];
 
+                    let res = "";
+                    if (castell["RESULTAT"] === "Carregat")
+                        res = "C";
+                    
                     if (castell["CASTELL"].toLowerCase().startsWith("p") || castell["CASTELL"].toLowerCase().startsWith("v")) {
                         if (!(colla in pilars_puntuats)) pilars_puntuats[colla] = {};
-                        pilars_puntuats[colla][castell["CASTELL"]] = punts;
+                        pilars_puntuats[colla][castell["CASTELL"]+res] = punts;
                     } else {
                         if (!(colla in castells_puntuats)) castells_puntuats[colla] = {};
-                        castells_puntuats[colla][castell["CASTELL"]] = punts;
+                        castells_puntuats[colla][castell["CASTELL"]+res] = punts;
                     }
                 }
             })
@@ -102,13 +116,13 @@ function Barometre(props) {
                             {colla.top3.map((castell, i) => {
 								return (
                                     <>
-                                        <td /*class="new"*/></td>
-                                        <td key={castell} className={"castell " + parseProfile(colla.puntuacions[i])}>{castell}</td>
+                                        <td className={lastWeek('')}></td>
+                                        <td key={castell} className={"castell " + parseProfile(colla.puntuacions[i]) + isCarregat(castell)}>{castell}</td>
                                     </>
                                 );
 							})}
-                            <td></td>
-                            <td className={"castell " + parseProfile(colla.topPilarPuntuacio)}>{colla.topPilar}</td>
+                            <td className={lastWeek('')}></td>
+                            <td className={"castell " + parseProfile(colla.topPilarPuntuacio) + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
                         </tr>
                     );
                 })
