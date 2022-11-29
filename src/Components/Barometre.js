@@ -30,8 +30,22 @@ function Barometre(props) {
         return "new";
     }
 
+    const fromEuropean = (dateString) => {
+        const [day, month, year] = dateString.split("/");
+        return new Date(`${month}/${day}/${year}`);
+    };
+
+    const getLastSeptember = (today) => {
+        if (today.getMonth() >= 9-1) {
+            return new Date(`09/01/${today.getFullYear()}`);
+        } else {
+            return new Date(`09/01/${today.getFullYear()-1}`);
+        }
+    };
+
     const llista_diades = [...Object.values(diades)];
-    llista_diades.map(diada => {
+    const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()))
+    aquesta_temporada.map(diada => {
         const colles = Object.keys(diada["colles"]);
         colles.map(colla => {
             diada["colles"][colla].map(castell => {
