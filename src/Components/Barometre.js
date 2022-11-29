@@ -79,7 +79,7 @@ function Barometre(props) {
             {sorted_top3.map((colla, i) => {
                 return (
                     <div className="colla" key={colla.colla}>
-                        <h2>#{i+1} - {colla.colla}</h2>
+                        <h2>#{i+1} - {colla.colla} ({colla.puntuacio_total}pts)</h2>
                         <div className="castells">
                             {colla.top3.map((castell, i) => {
                                 return <div key={castell} className={"castell " + parseProfile(colla.puntuacions[i])}>{castell}</div>;
