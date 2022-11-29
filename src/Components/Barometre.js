@@ -73,24 +73,48 @@ function Barometre(props) {
     
     return (
         <>
-            <h1>Temporada 2022-23</h1>
+            <h1>Baròmetre Universitari: Temporada 2022-23</h1>
+            <h2>(Actualitzat a 24 novembre 2022)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Colla</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
             {
                 top3
                 .sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
                 .map((colla, i) => {
                     return (
-                        <div className="colla" key={colla.colla}>
-                            <h2>#{i+1} - {colla.colla}</h2>
-                            <div className="castells">
-                                {colla.top3.map((castell, i) => {
-                                    return <div key={castell} className={"castell " + parseProfile(colla.puntuacions[i])}>{castell}</div>;
-                                })}
-                                <div className={"castell " + parseProfile(colla.topPilarPuntuacio)}>{colla.topPilar}</div>
-                            </div>
-                        </div>
+                        <tr className="colla" key={colla.colla}>
+                            <td>{i+1}</td>
+                            <td className={colla.colla.toLowerCase()}>{colla.colla}</td>
+                            {colla.top3.map((castell, i) => {
+								return (
+                                    <>
+                                        <td /*class="new"*/></td>
+                                        <td key={castell} className={"castell " + parseProfile(colla.puntuacions[i])}>{castell}</td>
+                                    </>
+                                );
+							})}
+                            <td></td>
+                            <td className={"castell " + parseProfile(colla.topPilarPuntuacio)}>{colla.topPilar}</td>
+                        </tr>
                     );
                 })
             }
+                </tbody>
+            </table>
         </>
     );
 }

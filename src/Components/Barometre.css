@@ -1,45 +1,164 @@
-.castells {
-    display: flex;
-    justify-content: space-around;
+:root {
+    --theme: #e43800;
+	--gray: #b7b7b7;
+
+	--s0: #ffffff;
+	--s1: #f4cccc;
+	--s2: #e06666;
+	--s3: #cc0000;
+	--s4: #990000;
+	--s5: #660000;
+	--s6: #000000;
+	--s7: #000000;
+	--cc: #ffe599;
+
+	--arreplegats: #15a884;
+	--pataquers: #f26e00;
+	--passerells: #d79ad3;
+    --ganapies: #5d7dfb;
+    --marracos: #a4a4a4;
+    --trempats: #8b6038;
+    --xoriguers: #69badc;
+    --emboirats: #ec3030;
+    --bergants: #6fe242;
+    --engrescats: #f4e731;
+    --penjats: #df2b2b;
+    --grillats: #923865;
+    --llunatics: #415cbd;
 }
 
-.castell {
-    padding: 20px;
+html, body {
+	margin: 0;
+	font-family: 'Arial';
+}
+
+#root {
+    margin: 25px 2% 100px 5%;
+}
+
+h1, h2 {
+	color: var(--theme);
+	margin: 0;
+}
+h2 {
+	margin-bottom: 20px;
+	font-size: 15px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table th {
+	text-align: center;
+	background-color: var(--theme);
+}
+
+table th, td {
+	padding: 3px 5px;
+}/*
+table td {
+	border: 1px solid #ffffff;
+}*/
+
+table tr td:nth-child(1) {
+	width: 20px;
+	background-color: var(--gray);
+	text-align: right;
+}
+
+.arreplegats {
+    background-color: var(--arreplegats);
+}
+.pataquers {
+    background-color: var(--pataquers);
+}
+.passerells {
+    background-color: var(--passerells);
+}
+.ganàpies {
+    background-color: var(--ganapies);
+}
+.marracos {
+    background-color: var(--marracos);
+}
+.trempats {
+    background-color: var(--trempats);
+}
+.xoriguers {
+    background-color: var(--xoriguers);
+}
+.emboirats {
+    background-color: var(--emboirats);
+}
+.bergants {
+    background-color: var(--bergants);
+}
+.engrescats {
+    background-color: var(--engrescats);
+}
+.penjats {
+    background-color: var(--penjats);
+}
+.grillats {
+    background-color: var(--grillats);
+}
+.llunàtics {
+    background-color: var(--llunatics);
+}
+
+table tr td:nth-child(2) {
+	padding-right: 50px;
+}
+table tr td:nth-child(2n+3) {
+	width: 24px;
+	padding: 0 0 3px;
+	text-align: center;
+}
+table tr td:nth-child(2n+4) {
+	width: 45px;
+}
+
+table td.new {
+	background-color: var(--theme);
+}
+table td.new::after {
+	content: '⭐';
 }
 
 .castell.grup0 {
-    background-color: white;
+    background-color: var(--s0);
+    color: #000000;
 }
-
 .castell.grup1 {
-    background-color: rgba(255, 0, 0, 0.2);
+    background-color: var(--s1);
+    color: #000000;
 }
-
 .castell.grup2 {
-    background-color: rgba(255, 0, 0, 0.6);
+    background-color: var(--s2);
+    color: #000000;
 }
-
 .castell.grup3 {
-    background-color: rgba(200, 0, 0, 1);
-    color: white;
+    background-color: var(--s3);
+    color: #ffffff;
 }
-
 .castell.grup4 {
-    background-color: rgba(127, 0, 0, 1);
-    color: white;
+    background-color: var(--s4);
+    color: #ffffff;
 }
-
 .castell.grup5 {
-    background-color: rgba(60, 0, 0, 1);
-    color: white;
+    background-color: var(--s5);
+    color: #ffffff;
 }
-
 .castell.grup6 {
-    background-color: rgba(0, 0, 0, 1);
-    color: white;
+    background-color: var(--s6);
+    color: #ffffff;
 }
-
 .castell.grup7 {
-    background-color: rgb(229, 255, 0);
-    color: white;
+    background-color: var(--s7);
+    color: #ffffff;
+}
+.castell.carregat {
+    background-color: var(--cc);
+    color: #000000;
 }
