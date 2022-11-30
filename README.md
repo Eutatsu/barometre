@@ -1,6 +1,6 @@
 # Baròmetre Universitari
 ## On són les dades?
-La base de dades és un Google Spreadsheet: https://docs.google.com/spreadsheets/d/105YLYfRNPUvhx6G8QUkZykGPHPTpzCk6WO5zBGV2LcA/edit#gid=0. Si hi voleu col·laborar o coneixeu d'algú que hi vulgui ajudar, intenteu contactar amb mi.
+La base de dades és un Google Spreadsheet: https://docs.google.com/spreadsheets/d/105YLYfRNPUvhx6G8QUkZykGPHPTpzCk6WO5zBGV2LcA/. Si hi voleu col·laborar o coneixeu d'algú que hi vulgui ajudar, intenteu contactar amb nosaltres.
 
 ## Com funciona?
 És una App feta en React, per tant, haurem de tenir el `npm` instal·lat.
