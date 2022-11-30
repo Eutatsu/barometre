@@ -1,39 +1,5 @@
-:root {
-    --theme: #e43800;
-	--gray: #b7b7b7;
-
-	--s0: #ffffff;
-	--s1: #f4cccc;
-	--s2: #e06666;
-	--s3: #cc0000;
-	--s4: #990000;
-	--s5: #660000;
-	--s6: #000000;
-	--s7: #000000;
-	--cc: #ffe599;
-
-	--arreplegats: #15a884;
-	--pataquers: #f26e00;
-	--passerells: #d79ad3;
-    --ganapies: #5d7dfb;
-    --marracos: #a4a4a4;
-    --trempats: #8b6038;
-    --xoriguers: #69badc;
-    --emboirats: #ec3030;
-    --bergants: #6fe242;
-    --engrescats: #f4e731;
-    --penjats: #df2b2b;
-    --grillats: #923865;
-    --llunatics: #415cbd;
-}
-
-#root {
-    margin: 25px 2% 0;
-}
-
 h2 {
 	margin-bottom: 20px !important;
-	font-size: 15px;
 }
 
 th, td {
@@ -59,10 +25,6 @@ table tr td:nth-child(2n+4) {
 }
 
 @media (max-width: 500px) {
-    #root {
-        margin: 2%;
-    }
-    
     table {
         font-size: 12px;
     }
@@ -80,65 +42,6 @@ table tr td:nth-child(2n+4) {
     table tr td:nth-child(2n+4) {
         width: 35px;
     }
-}
-
-html, body {
-	margin: 0;
-	font-family: 'Arial';
-}
-
-h1, h2 {
-	color: var(--theme);
-	margin: 0;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-th {
-	text-align: center;
-	background-color: var(--theme);
-}
-
-.arreplegats {
-    background-color: var(--arreplegats);
-}
-.pataquers {
-    background-color: var(--pataquers);
-}
-.passerells {
-    background-color: var(--passerells);
-}
-.ganàpies {
-    background-color: var(--ganapies);
-}
-.marracos {
-    background-color: var(--marracos);
-}
-.trempats {
-    background-color: var(--trempats);
-}
-.xoriguers {
-    background-color: var(--xoriguers);
-}
-.emboirats {
-    background-color: var(--emboirats);
-}
-.bergants {
-    background-color: var(--bergants);
-}
-.engrescats {
-    background-color: var(--engrescats);
-}
-.penjats {
-    background-color: var(--penjats);
-}
-.grillats {
-    background-color: var(--grillats);
-}
-.llunàtics {
-    background-color: var(--llunatics);
 }
 
 .new {
@@ -183,9 +86,4 @@ th {
 .castell.carregat {
     background-color: var(--cc) !important;
     color: #000000 !important;
-}
-
-.credits {
-    margin-top: 30px;
-    font-size: 12px;
 }

@@ -1,0 +1,109 @@
+:root {
+    --theme: #e43800;
+	--gray: #b7b7b7;
+	--lightGray: #eaeaea;
+
+	--s0: #ffffff;
+	--s1: #f4cccc;
+	--s2: #e06666;
+	--s3: #cc0000;
+	--s4: #990000;
+	--s5: #660000;
+	--s6: #000000;
+	--s7: #000000;
+	--cc: #ffe599;
+
+	--arreplegats: #15a884;
+	--pataquers: #f26e00;
+	--passerells: #d79ad3;
+    --ganapies: #5d7dfb;
+    --marracos: #a4a4a4;
+    --trempats: #8b6038;
+    --xoriguers: #69badc;
+    --emboirats: #ec3030;
+    --bergants: #6fe242;
+    --engrescats: #f4e731;
+    --penjats: #df2b2b;
+    --grillats: #923865;
+    --llunatics: #415cbd;
+}
+
+html, body {
+	margin: 0;
+	font-family: 'Arial';
+}
+
+#root {
+    margin: 25px 2% 0;
+}
+
+h1, h2, h3 {
+	color: var(--theme);
+	margin: 0;
+}
+h2 {
+	font-size: 15px;
+}
+h3 {
+	font-size: 12px;
+}
+
+.credits {
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+@media (max-width: 500px) {
+    #root {
+        margin: 2%;
+    }
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th {
+	text-align: center;
+	background-color: var(--theme);
+}
+
+.arreplegats {
+    background-color: var(--arreplegats);
+}
+.pataquers {
+    background-color: var(--pataquers);
+}
+.passerells {
+    background-color: var(--passerells);
+}
+.ganàpies {
+    background-color: var(--ganapies);
+}
+.marracos {
+    background-color: var(--marracos);
+}
+.trempats {
+    background-color: var(--trempats);
+}
+.xoriguers {
+    background-color: var(--xoriguers);
+}
+.emboirats {
+    background-color: var(--emboirats);
+}
+.bergants {
+    background-color: var(--bergants);
+}
+.engrescats {
+    background-color: var(--engrescats);
+}
+.penjats {
+    background-color: var(--penjats);
+}
+.grillats {
+    background-color: var(--grillats);
+}
+.llunàtics {
+    background-color: var(--llunatics);
+}

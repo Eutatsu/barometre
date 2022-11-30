@@ -171,7 +171,6 @@ function Barometre(props) {
             }
                 </tbody>
             </table>
-            <p className="credits">per Andreu Huguet i Oriol Segura</p>
         </>
     );
 }
