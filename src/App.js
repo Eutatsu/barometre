@@ -32,8 +32,8 @@ function App() {
       <LlistaDiades {...exports} />
 
       <p className="credits">
-        per Andreu Huguet i Oriol Segura<br/>
-        <a href="https://github.com/Huguet57/barometre" target="_blank">GitHub</a>
+        per Andreu Huguet i Oriol Segura.<br/>
+        Codi obert al <a href="https://github.com/Huguet57/barometre" target="_blank">GitHub</a>, col·labora-hi tu també!
       </p>
     </>
   );
