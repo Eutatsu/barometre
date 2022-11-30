@@ -46,7 +46,8 @@ function Barometre(props) {
     };
 
     const llista_diades = [...Object.values(diades)];
-    const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()))
+    const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()));
+    aquesta_temporada.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
     aquesta_temporada.map(diada => {
         const colles = Object.keys(diada["colles"]);
         const date = diada["info"]["DATA"];
