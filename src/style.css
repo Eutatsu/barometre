@@ -3,15 +3,15 @@
 	--gray: #b7b7b7;
 	--lightGray: #eaeaea;
 
-	--ss: #ffffff;
-	--s0: #f6e4e4;
-	--s1: #f4cccc;
-	--s2: #e06666;
-	--s3: #cc0000;
-	--s4: #990000;
-	--s5: #660000;
-	--s6: #330000;
-	--s7: #000000;
+	--s0: #ffffff;
+	--s1: #f6e4e4;
+	--s2: #f4cccc;
+	--s3: #e06666;
+	--s4: #cc0000;
+	--s5: #990000;
+	--s6: #660000;
+	--s7: #330000;
+	--s8: #000000;
 	--cc: #ffe599;
 
 	--arreplegats: #15a884;
@@ -109,10 +109,6 @@ th {
     background-color: var(--llunatics) !important;
 }
 
-.grup-1 {
-    background-color: var(--ss);
-    color: #000000;
-}
 .grup0 {
     background-color: var(--s0);
     color: #000000;
@@ -127,7 +123,7 @@ th {
 }
 .grup3 {
     background-color: var(--s3);
-    color: #ffffff;
+    color: #000000;
 }
 .grup4 {
     background-color: var(--s4);
@@ -143,6 +139,10 @@ th {
 }
 .grup7 {
     background-color: var(--s7);
+    color: #ffffff;
+}
+.grup8 {
+    background-color: var(--s8);
     color: #ffffff;
 }
 
