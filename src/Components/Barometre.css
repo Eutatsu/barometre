@@ -27,34 +27,16 @@
     --llunatics: #415cbd;
 }
 
-html, body {
-	margin: 0;
-	font-family: 'Arial';
-}
-
 #root {
-    margin: 25px 2% 100px 2%;
+    margin: 25px 2% 0;
 }
 
-h1, h2 {
-	color: var(--theme);
-	margin: 0;
-}
 h2 {
-	margin-bottom: 20px;
+	margin-bottom: 20px !important;
 	font-size: 15px;
 }
 
-table {
-	border-collapse: collapse;
-}
-
-table th {
-	text-align: center;
-	background-color: var(--theme);
-}
-
-table th, td {
+th, td {
 	padding: 3px 5px;
 }
 
@@ -62,6 +44,61 @@ table tr td:nth-child(1) {
 	width: 20px;
 	background-color: var(--gray);
 	text-align: right;
+}
+
+table tr td:nth-child(2) {
+	padding-right: 20px;
+}
+table tr td:nth-child(2n+3) {
+	width: 24px;
+	padding: 0 0 3px;
+	text-align: center;
+}
+table tr td:nth-child(2n+4) {
+	width: 45px;
+}
+
+@media (max-width: 500px) {
+    #root {
+        margin: 2%;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    th, td {
+        padding: 1px 3px;
+    }
+
+
+    table tr td:nth-child(2n+3) {
+        width: 20px;
+        padding: 0 0 3px;
+        text-align: center;
+    }
+
+    table tr td:nth-child(2n+4) {
+        width: 35px;
+    }
+}
+
+html, body {
+	margin: 0;
+	font-family: 'Arial';
+}
+
+h1, h2 {
+	color: var(--theme);
+	margin: 0;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th {
+	text-align: center;
+	background-color: var(--theme);
 }
 
 .arreplegats {
@@ -104,22 +141,10 @@ table tr td:nth-child(1) {
     background-color: var(--llunatics);
 }
 
-table tr td:nth-child(2) {
-	padding-right: 20px;
-}
-table tr td:nth-child(2n+3) {
-	width: 24px;
-	padding: 0 0 3px;
-	text-align: center;
-}
-table tr td:nth-child(2n+4) {
-	width: 45px;
-}
-
-table td.new {
+.new {
 	background-color: var(--theme);
 }
-table td.new::after {
+.new::after {
 	content: '⭐';
 }
 
@@ -160,7 +185,7 @@ table td.new::after {
     color: #000000 !important;
 }
 
-p.credits {
+.credits {
     margin-top: 30px;
     font-size: 12px;
 }
