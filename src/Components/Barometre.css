@@ -159,3 +159,8 @@ table td.new::after {
     background-color: var(--cc) !important;
     color: #000000 !important;
 }
+
+p.credits {
+    margin-top: 30px;
+    font-size: 12px;
+}
