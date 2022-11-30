@@ -26,7 +26,6 @@ function Barometre(props) {
         return "";
     }
 
-    // TODO: check if first castell was done the past week
     const donePastWeek = date => {
         if (Math.floor((new Date() - fromEuropean(date)) / (1000*60*60*24)) < 8) return "new";
         return "";
