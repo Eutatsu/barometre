@@ -37,6 +37,7 @@ function LlistaDiades(props) {
 
 	return (
         <>
+			<div id="diades">
             <h1>Llista de Diades Universitàries</h1>
 			{
 				llista_diades.map((diada, i) => {
@@ -44,7 +45,7 @@ function LlistaDiades(props) {
 						<>
 							<h2>{diada["info"]["DIADA"]}</h2>
 							<h3>{diada["info"]["DATA"] + " - " + diada["info"]["LLOC"]}</h3>
-							<table>
+							<div className="table_wrap"><table>
 								<thead>
 									<tr>
 										<th>Colla</th>
@@ -79,11 +80,12 @@ function LlistaDiades(props) {
 										})
 									}
 								</tbody>
-							</table>
+							</table></div>
 						</>
 					);
 				})
 			}
+			</div>
         </>
     );
 }

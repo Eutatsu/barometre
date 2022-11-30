@@ -1,89 +1,91 @@
-h2 {
+#barometre h2 {
 	margin-bottom: 20px !important;
 }
 
-th, td {
+#barometre th,
+#barometre td {
 	padding: 3px 5px;
 }
 
-table tr td:nth-child(1) {
+#barometre table tr td:nth-child(1) {
 	width: 20px;
 	background-color: var(--gray);
 	text-align: right;
 }
 
-table tr td:nth-child(2) {
+#barometre table tr td:nth-child(2) {
 	padding-right: 20px;
 }
-table tr td:nth-child(2n+3) {
+#barometre table tr td:nth-child(2n+3) {
 	width: 24px;
 	padding: 0 0 3px;
 	text-align: center;
 }
-table tr td:nth-child(2n+4) {
+#barometre table tr td:nth-child(2n+4) {
 	width: 45px;
 }
 
 @media (max-width: 500px) {
-    table {
+    #barometre table {
         font-size: 12px;
     }
-    th, td {
+    #barometre th,
+    #barometre  td {
         padding: 1px 3px;
     }
 
 
-    table tr td:nth-child(2n+3) {
+    #barometre table tr td:nth-child(2n+3) {
         width: 20px;
         padding: 0 0 3px;
         text-align: center;
     }
 
-    table tr td:nth-child(2n+4) {
+    #barometre table tr td:nth-child(2n+4) {
         width: 35px;
     }
 }
 
-.new {
+#barometre .new {
 	background-color: var(--theme);
 }
-.new::after {
+#barometre .new::after {
 	content: '⭐';
 }
 
-.castell.grup0 {
+#barometre .grup0 {
     background-color: var(--s0);
     color: #000000;
 }
-.castell.grup1 {
+#barometre .grup1 {
     background-color: var(--s1);
     color: #000000;
 }
-.castell.grup2 {
+#barometre .grup2 {
     background-color: var(--s2);
     color: #000000;
 }
-.castell.grup3 {
+#barometre .grup3 {
     background-color: var(--s3);
     color: #ffffff;
 }
-.castell.grup4 {
+#barometre .grup4 {
     background-color: var(--s4);
     color: #ffffff;
 }
-.castell.grup5 {
+#barometre .grup5 {
     background-color: var(--s5);
     color: #ffffff;
 }
-.castell.grup6 {
+#barometre .grup6 {
     background-color: var(--s6);
     color: #ffffff;
 }
-.castell.grup7 {
+#barometre .grup7 {
     background-color: var(--s7);
     color: #ffffff;
 }
-.castell.carregat {
+#barometre .carregat {
     background-color: var(--cc) !important;
     color: #000000 !important;
 }

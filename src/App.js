@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DataProcessor from "./Components/DataProcessor";
 import Barometre from './Components/Barometre'
-//import LlistaDiades from './Components/LlistaDiades'
+import LlistaDiades from './Components/LlistaDiades'
 import './style.css'
 
 function App() {
@@ -26,8 +26,15 @@ function App() {
   return (
     <>
       <DataProcessor {...exports} />
+      
       <Barometre {...exports} />
-      <p className="credits">per Andreu Huguet i Oriol Segura</p>
+      <div className="space_between"></div>
+      <LlistaDiades {...exports} />
+
+      <p className="credits">
+        per Andreu Huguet i Oriol Segura<br/>
+        <a href="https://github.com/Huguet57/barometre" target="_blank">GitHub</a>
+      </p>
     </>
   );
 }

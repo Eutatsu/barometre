@@ -31,10 +31,11 @@
 html, body {
 	margin: 0;
 	font-family: 'Arial';
+    overflow-x: hidden;
 }
 
 #root {
-    margin: 25px 2% 0;
+    margin: 25px 2% 20px;
 }
 
 h1, h2, h3 {
@@ -46,11 +47,6 @@ h2 {
 }
 h3 {
 	font-size: 12px;
-}
-
-.credits {
-    margin-top: 30px;
-    font-size: 12px;
 }
 
 @media (max-width: 500px) {
@@ -69,41 +65,50 @@ th {
 }
 
 .arreplegats {
-    background-color: var(--arreplegats);
+    background-color: var(--arreplegats) !important;
 }
 .pataquers {
-    background-color: var(--pataquers);
+    background-color: var(--pataquers) !important;
 }
 .passerells {
-    background-color: var(--passerells);
+    background-color: var(--passerells) !important;
 }
 .ganàpies {
-    background-color: var(--ganapies);
+    background-color: var(--ganapies) !important;
 }
 .marracos {
-    background-color: var(--marracos);
+    background-color: var(--marracos) !important;
 }
 .trempats {
-    background-color: var(--trempats);
+    background-color: var(--trempats) !important;
 }
 .xoriguers {
-    background-color: var(--xoriguers);
+    background-color: var(--xoriguers) !important;
 }
 .emboirats {
-    background-color: var(--emboirats);
+    background-color: var(--emboirats) !important;
 }
 .bergants {
-    background-color: var(--bergants);
+    background-color: var(--bergants) !important;
 }
 .engrescats {
-    background-color: var(--engrescats);
+    background-color: var(--engrescats) !important;
 }
 .penjats {
-    background-color: var(--penjats);
+    background-color: var(--penjats) !important;
 }
 .grillats {
-    background-color: var(--grillats);
+    background-color: var(--grillats) !important;
 }
 .llunàtics {
-    background-color: var(--llunatics);
+    background-color: var(--llunatics) !important;
+}
+
+.space_between {
+    height: 100px;
+}
+
+.credits {
+    margin-top: 100px;
+    font-size: 12px;
 }
