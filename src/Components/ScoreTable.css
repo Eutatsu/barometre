@@ -1,0 +1,20 @@
+#score th,
+#score td {
+	padding: 2px 10px;
+}
+
+@media (max-width: 500px) {
+	#score th,
+	#score td {
+		padding: 2px 5px;
+	}
+}
+
+#score h1 {
+	margin-bottom: 20px !important;
+}
+
+#score table tr th,
+#score table tr td {
+	border: 1px solid black;
+}

@@ -49,42 +49,6 @@
 	content: '⭐';
 }
 
-#barometre .grup-1 {
-    background-color: var(--ss);
-    color: #000000;
-}
-#barometre .grup0 {
-    background-color: var(--s0);
-    color: #000000;
-}
-#barometre .grup1 {
-    background-color: var(--s1);
-    color: #000000;
-}
-#barometre .grup2 {
-    background-color: var(--s2);
-    color: #000000;
-}
-#barometre .grup3 {
-    background-color: var(--s3);
-    color: #ffffff;
-}
-#barometre .grup4 {
-    background-color: var(--s4);
-    color: #ffffff;
-}
-#barometre .grup5 {
-    background-color: var(--s5);
-    color: #ffffff;
-}
-#barometre .grup6 {
-    background-color: var(--s6);
-    color: #ffffff;
-}
-#barometre .grup7 {
-    background-color: var(--s7);
-    color: #ffffff;
-}
 #barometre .carregat {
     background-color: var(--cc) !important;
     color: #000000 !important;

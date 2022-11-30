@@ -10,7 +10,7 @@
 	--s3: #cc0000;
 	--s4: #990000;
 	--s5: #660000;
-	--s6: #000000;
+	--s6: #330000;
 	--s7: #000000;
 	--cc: #ffe599;
 
@@ -107,6 +107,43 @@ th {
 }
 .llunàtics {
     background-color: var(--llunatics) !important;
+}
+
+.grup-1 {
+    background-color: var(--ss);
+    color: #000000;
+}
+.grup0 {
+    background-color: var(--s0);
+    color: #000000;
+}
+.grup1 {
+    background-color: var(--s1);
+    color: #000000;
+}
+.grup2 {
+    background-color: var(--s2);
+    color: #000000;
+}
+.grup3 {
+    background-color: var(--s3);
+    color: #ffffff;
+}
+.grup4 {
+    background-color: var(--s4);
+    color: #ffffff;
+}
+.grup5 {
+    background-color: var(--s5);
+    color: #ffffff;
+}
+.grup6 {
+    background-color: var(--s6);
+    color: #ffffff;
+}
+.grup7 {
+    background-color: var(--s7);
+    color: #ffffff;
 }
 
 .space_between {

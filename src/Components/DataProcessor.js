@@ -40,6 +40,7 @@ function DataProcessor(props) {
         data.forEach(castell => {
             puntuacions_dict[castell.castell] = {};
             puntuacions_dict[castell.castell]["Grup"] = castell["Grup"];
+            puntuacions_dict[castell.castell]["Subgrup"] = castell["Subgrup"];
             puntuacions_dict[castell.castell]["Carregat"] = castell["Carregat"];
             puntuacions_dict[castell.castell]["Descarregat"] = castell["Descarregat"];
         });

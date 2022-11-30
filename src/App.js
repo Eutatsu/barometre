@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DataProcessor from "./Components/DataProcessor";
 import Barometre from './Components/Barometre'
 import LlistaDiades from './Components/LlistaDiades'
+import ScoreTable from './Components/ScoreTable'
 import './style.css'
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
       <DataProcessor {...exports} />
       
       <Barometre {...exports} />
+      <div className="space_between"></div>
+      <ScoreTable {...exports} />
       <div className="space_between"></div>
       <LlistaDiades {...exports} />
 
