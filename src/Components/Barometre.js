@@ -160,12 +160,12 @@ function Barometre(props) {
 								return (
                                     <>
                                         <td className={donePastWeek(colla.data3[i])}></td>
-                                        <td key={castell} className={"castell " + parseProfile(colla.puntuacions[i]) + isCarregat(castell)}>{castell}</td>
+                                        <td key={castell} className={"castell grup" + puntuacions[castell]["Grup"] + isCarregat(castell)}>{castell}</td>
                                     </>
                                 );
 							})}
                             <td className={donePastWeek(colla.dataPilar[0])}></td>
-                            <td className={"castell " + parseProfile(colla.topPilarPuntuacio) + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+                            <td className={"castell grup" + puntuacions[colla.topPilar[0]]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
                         </tr>
                     );
                 })

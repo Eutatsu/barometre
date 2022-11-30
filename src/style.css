@@ -3,7 +3,8 @@
 	--gray: #b7b7b7;
 	--lightGray: #eaeaea;
 
-	--s0: #ffffff;
+	--ss: #ffffff;
+	--s0: #f6e4e4;
 	--s1: #f4cccc;
 	--s2: #e06666;
 	--s3: #cc0000;
@@ -52,6 +53,10 @@ h3 {
 @media (max-width: 500px) {
     #root {
         margin: 2%;
+    }
+
+    table {
+        font-size: 12px;
     }
 }
 

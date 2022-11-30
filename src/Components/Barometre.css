@@ -26,14 +26,10 @@
 }
 
 @media (max-width: 500px) {
-    #barometre table {
-        font-size: 12px;
-    }
     #barometre th,
-    #barometre  td {
+    #barometre td {
         padding: 1px 3px;
     }
-
 
     #barometre table tr td:nth-child(2n+3) {
         width: 20px;
@@ -53,6 +49,10 @@
 	content: '⭐';
 }
 
+#barometre .grup-1 {
+    background-color: var(--ss);
+    color: #000000;
+}
 #barometre .grup0 {
     background-color: var(--s0);
     color: #000000;

@@ -5,22 +5,31 @@
 	margin: 5px 0 !important;
 }
 
-@media (max-width: 500px) {
-}
-
-#diades .table_wrap {
-	overflow-x: scroll !important;
-}
-
 #diades th,
 #diades td {
 	padding: 2px 10px;
 	border: 3px solid #ffffff;
 }
+#diades th:nth-child(1),
+#diades td:nth-child(1) {
+	padding: 2px 10px;
+	border-left: none;
+}
 
 #diades table tr td:nth-child(1) {
 	text-align: right;
 	padding-right: 5px;
+}
+
+@media (max-width: 500px) {
+	#diades th,
+	#diades td {
+		padding: 2px 5px;
+	}
+}
+
+#diades .table_wrap {
+	overflow-x: scroll !important;
 }
 
 #diades td {
