@@ -8,6 +8,13 @@ function LlistaDiades(props) {
         return new Date(`${month}/${day}/${year}`);
     };
 
+	const areThereCastellsInRonda = (diada_colles, ronda) => {
+		const castells = [...Object.values(diada_colles)][0];
+		const castellsInRonda = getCastellsRonda(castells, ronda);
+		const areInRonda = castellsInRonda.map(arr => arr !== []).reduce((prev, curr) => prev || curr, false);
+		return areInRonda;
+	};
+
 	const getCastellsRonda = function (castells, ronda) {
 		let castells_of_round = [];
 		for (const castell of castells)
@@ -49,14 +56,14 @@ function LlistaDiades(props) {
 								<thead>
 									<tr>
 										<th>Colla</th>
-										<th>Entrada</th>
-										<th>Ronda #1</th>
-										<th>Ronda #2</th>
-										<th>Ronda #3</th>
-										<th>Ronda #4</th>
-										<th>Ronda #5</th>
-										<th>Pilar</th>
-										<th>Sortida</th>
+										{ areThereCastellsInRonda(diada["colles"], "Entrada") && <th>Entrada</th> }
+										{ areThereCastellsInRonda(diada["colles"], "1") && <th>Ronda #1</th> }
+										{ areThereCastellsInRonda(diada["colles"], "2") && <th>Ronda #2</th> }
+										{ areThereCastellsInRonda(diada["colles"], "3") && <th>Ronda #3</th> }
+										{ areThereCastellsInRonda(diada["colles"], "4") && <th>Ronda #4</th> }
+										{ areThereCastellsInRonda(diada["colles"], "5") && <th>Ronda #5</th> }
+										{ areThereCastellsInRonda(diada["colles"], "Pilar") && <th>Pilar</th> }
+										{ areThereCastellsInRonda(diada["colles"], "Sortida") && <th>Sortida</th> }
 									</tr>
 								</thead>
 								<tbody>
@@ -66,14 +73,14 @@ function LlistaDiades(props) {
 												<>
 													<tr>
 														<td className={Object.keys(diada["colles"])[i].toLowerCase()}>{Object.keys(diada["colles"])[i]}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "Entrada"))}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "1"))}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "2"))}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "3"))}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "4"))}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "5"))}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "Pilar"))}</td>
-														<td>{formatRonda(getCastellsRonda(castells, "Sortida"))}</td>
+														{ areThereCastellsInRonda(diada["colles"], "Entrada") && <td>{formatRonda(getCastellsRonda(castells, "Entrada"))}</td> }
+														{ areThereCastellsInRonda(diada["colles"], "1") && <td>{formatRonda(getCastellsRonda(castells, "1"))}</td> }
+														{ areThereCastellsInRonda(diada["colles"], "2") && <td>{formatRonda(getCastellsRonda(castells, "2"))}</td> }
+														{ areThereCastellsInRonda(diada["colles"], "3") && <td>{formatRonda(getCastellsRonda(castells, "3"))}</td> }
+														{ areThereCastellsInRonda(diada["colles"], "4") && <td>{formatRonda(getCastellsRonda(castells, "4"))}</td> }
+														{ areThereCastellsInRonda(diada["colles"], "5") && <td>{formatRonda(getCastellsRonda(castells, "5"))}</td> }
+														{ areThereCastellsInRonda(diada["colles"], "Pilar") && <td>{formatRonda(getCastellsRonda(castells, "Pilar"))}</td> }
+														{ areThereCastellsInRonda(diada["colles"], "Sortida") && <td>{formatRonda(getCastellsRonda(castells, "Sortida"))}</td> }
 													</tr>
 												</>
 											);
