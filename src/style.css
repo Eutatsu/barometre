@@ -51,6 +51,11 @@ h3 {
 }
 
 @media (max-width: 500px) {
+    div.justify_center {
+        display: flex;
+        justify-content: center;
+    }
+
     #root {
         margin: 2%;
     }

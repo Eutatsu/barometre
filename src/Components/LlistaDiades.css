@@ -33,7 +33,7 @@
 }
 #diades .table_wrap::-webkit-scrollbar {
 	display: none;
-  }
+}
 
 #diades td {
 	background-color: var(--lightGray);
