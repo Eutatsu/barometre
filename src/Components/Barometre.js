@@ -130,48 +130,50 @@ function Barometre(props) {
             <div id="barometre">
             <h1>Baròmetre Universitari: Temporada 2022-23</h1>
             <h2>(Actualitzat a 24 novembre 2022)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Colla</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-            {
-                top3
-                .sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
-                .map((colla, i) => {
-                    let pos = lastPoints === colla.puntuacio_total ? i : i+1;
-                    lastPoints = colla.puntuacio_total;
-                    return (
-                        <tr className="colla" key={colla.colla}>
-                            <td>{pos}</td>
-                            <td className={colla.colla.toLowerCase()}>{colla.colla}</td>
-                            {colla.top3.map((castell, i) => {
-								return (
-                                    <>
-                                        <td className={donePastWeek(colla.data3[i])}></td>
-                                        <td key={castell} className={"castell grup" + puntuacions[castell]["Grup"] + isCarregat(castell)}>{castell}</td>
-                                    </>
-                                );
-							})}
-                            <td className={donePastWeek(colla.dataPilar[0])}></td>
-                            <td className={"castell grup" + puntuacions[colla.topPilar[0]]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+            <div className="justifyCenter">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Colla</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
-                    );
-                })
-            }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                {
+                    top3
+                    .sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
+                    .map((colla, i) => {
+                        let pos = lastPoints === colla.puntuacio_total ? i : i+1;
+                        lastPoints = colla.puntuacio_total;
+                        return (
+                            <tr className="colla" key={colla.colla}>
+                                <td>{pos}</td>
+                                <td className={colla.colla.toLowerCase()}>{colla.colla}</td>
+                                {colla.top3.map((castell, i) => {
+                                    return (
+                                        <>
+                                            <td className={donePastWeek(colla.data3[i])}></td>
+                                            <td key={castell} className={"castell grup" + puntuacions[castell]["Grup"] + isCarregat(castell)}>{castell}</td>
+                                        </>
+                                    );
+                                })}
+                                <td className={donePastWeek(colla.dataPilar[0])}></td>
+                                <td className={"castell grup" + puntuacions[colla.topPilar[0]]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+                            </tr>
+                        );
+                    })
+                }
+                    </tbody>
+                </table>
+            </div>
             </div>
         </>
     );

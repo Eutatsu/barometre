@@ -27,6 +27,7 @@ function ScoreTable(props) {
         <>
 			<div id="score">
             <h1>Taula de puntuacions</h1>
+			<div className="justifyCenter">
 			<table>
 				<thead>
 					<tr>
@@ -59,6 +60,7 @@ function ScoreTable(props) {
 			}
 				</tbody>
 			</table>
+			</div>
 			</div>
         </>
     );
