@@ -27,6 +27,7 @@ function ScoreTable(props) {
         <>
 			<div id="score">
             <h1>Taula de puntuacions</h1>
+			<h2>Aquesta taula serà actualitzada contínuament per tal de garantir el major consens possible.<br/>Per col·laborar-hi afegeix un comentari en aquest <a href="https://docs.google.com/spreadsheets/d/105YLYfRNPUvhx6G8QUkZykGPHPTpzCk6WO5zBGV2LcA#gid=1401475200" target="_blank">Excel</a></h2>
 			<div className="justify_center">
 			<table>
 				<thead>
