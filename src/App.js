@@ -33,12 +33,6 @@ function App() {
       <ScoreTable {...exports} />
       <div className="space_between"></div>
       <LlistaDiades {...exports} />
-
-      <p className="credits">
-        per <a href="https://twitter.com/HuguetAndreu" target="_blank">Andreu Huguet</a> i <a href="https://twitter.com/uriiisegura" target="_blank">Oriol Segura</a>.<br/>
-        Especials gràcies a <a href="https://twitter.com/ndreu99" target="_blank">Andreu Roig</a> i a tothom involucrat per la seva col·laboració i professionalitat.<br/>
-        Codi obert al <a href="https://github.com/Huguet57/barometre" target="_blank">GitHub</a>, col·labora-hi tu també!
-      </p>
     </>
   );
 }

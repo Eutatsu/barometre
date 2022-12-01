@@ -1,7 +1,3 @@
-#barometre h2 {
-	margin-bottom: 20px !important;
-}
-
 #barometre th,
 #barometre td {
 	padding: 3px 5px;
@@ -40,6 +36,10 @@
     #barometre table tr td:nth-child(2n+4) {
         width: 35px;
     }
+}
+
+#barometre h2 {
+	margin-bottom: 20px !important;
 }
 
 #barometre .new {
