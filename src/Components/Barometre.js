@@ -165,4 +165,3 @@ function Barometre(props) {
 }
 
 export default Barometre;
-// <td key={castell} className={"castell grup" + puntuacions[castell]["Grup"] + isCarregat(castell)}>{castell}</td>
