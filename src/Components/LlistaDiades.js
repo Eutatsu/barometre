@@ -1,7 +1,7 @@
 import "./LlistaDiades.css"
 
 function LlistaDiades(props) {
-    const { diades, puntuacions } = props;
+    const { diades } = props;
 
 	const fromEuropean = (dateString) => {
         const [day, month, year] = dateString.split("/");
@@ -51,7 +51,7 @@ function LlistaDiades(props) {
 
 	const formatRonda = (castellsDict) => {
 		const special = specialRounds(castellsDict);
-		if (special != false)
+		if (special !== false)
 			return special;
 		let res = "";
 		for (const [castell, amount] of Object.entries(castellsDict))
@@ -65,8 +65,8 @@ function LlistaDiades(props) {
 
 	const specialRounds = (castellsDict) => {
 		if (count(castellsDict) === 2 &&
-			"Pd4" in castellsDict && castellsDict["Pd4"] == 2 &&
-			"Pd5" in castellsDict && castellsDict["Pd5"] == 1)
+			"Pd4" in castellsDict && castellsDict["Pd4"] === 2 &&
+			"Pd5" in castellsDict && castellsDict["Pd5"] === 1)
 			return "Vd5";
 		return false;
 	}
