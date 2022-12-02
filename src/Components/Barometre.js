@@ -31,6 +31,12 @@ function Barometre(props) {
         }
     };
 
+    const formatDate = (date) => {
+        const months = ["de gener","de febrer","de març","d'abril","de maig","de juny","de juliol","d'agost","de setembre","d'octubre","de novembre","de desembre"];
+        const [day, month, year] = date.split("/");
+        return parseInt(day) + " " + months[parseInt(month)-1] + " " + year;
+    }
+
     const llista_diades = [...Object.values(diades)];
     const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()));
     aquesta_temporada.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
@@ -65,6 +71,10 @@ function Barometre(props) {
             })
         })
     });
+    let date = "";
+    try {
+        date = formatDate(aquesta_temporada[0]["info"]["DATA"]);
+    } catch (e) {}
 
     const top3 = Object.keys(castells_puntuats).map(colla => {
         return {
@@ -114,7 +124,7 @@ function Barometre(props) {
         <>
             <div id="barometre">
             <h1>Baròmetre Universitari: Temporada 2022-23</h1>
-            <h2>(Actualitzat a 1 de desembre 2022)</h2>
+            <h2>(Actualitzat a {date})</h2>
             <div className="justify_center">
                 <table>
                     <thead>
