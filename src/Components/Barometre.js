@@ -8,6 +8,9 @@ function Barometre(props) {
     let data_pilars = {};
     let data_castells = {};
 
+    let castells_puntuats_lastWeek = {};
+    let pilars_puntuats_lastWeek = {};
+
     const isCarregat = castell => {
         if (castell.slice(-1) === "C") return " carregat";
         return "";
@@ -24,11 +27,10 @@ function Barometre(props) {
     };
 
     const getLastSeptember = (today) => {
-        if (today.getMonth() >= 9-1) {
+        if (today.getMonth() >= 9-1)
             return new Date(`09/01/${today.getFullYear()}`);
-        } else {
+        else
             return new Date(`09/01/${today.getFullYear()-1}`);
-        }
     };
 
     const formatDate = (date) => {
@@ -119,7 +121,64 @@ function Barometre(props) {
     });
     top3.forEach(colla => colla.puntuacio_total += colla.topPilarPuntuacio[0]);
 
+    const lastWeek = new Date();
+    lastWeek.setDate(lastWeek.getDate() - 7);
+    const ultima_setmana = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) < lastWeek);
+    ultima_setmana.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
+    ultima_setmana.forEach(diada => {
+        const colles = Object.keys(diada["colles"]);
+        colles.forEach(colla => {
+            diada["colles"][colla].forEach(castell => {
+                if (castell["CASTELL"] in puntuacions && (castell["RESULTAT"] === "Descarregat" || castell["RESULTAT"] === "Carregat")) {
+                    const punts = puntuacions[castell["CASTELL"]][castell["RESULTAT"]];
+
+                    let res = "";
+                    if (castell["RESULTAT"] === "Carregat")
+                        res = "C";
+                    
+                    if (castell["CASTELL"].toLowerCase().startsWith("p") || castell["CASTELL"].toLowerCase().startsWith("v")) {
+                        if (!(colla in pilars_puntuats_lastWeek))
+                            pilars_puntuats_lastWeek[colla] = {};
+                        pilars_puntuats_lastWeek[colla][castell["CASTELL"]+res] = punts;
+                    } else {
+                        if (!(colla in castells_puntuats_lastWeek))
+                            castells_puntuats_lastWeek[colla] = {};
+                        castells_puntuats_lastWeek[colla][castell["CASTELL"]+res] = punts;
+                    }
+                }
+            })
+        })
+    });
+
+    const top3_lastWeek = Object.keys(castells_puntuats_lastWeek).map(colla => {
+        return {
+            "colla": colla,
+            "puntuacio_total": Object
+                .entries(castells_puntuats_lastWeek[colla]) // create Array of Arrays with [key, value]
+                .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
+                .slice(0,3) // return only the first 3 elements of the intermediate result
+                .map(([a,b]) => parseInt(b))
+                .reduce((acc, curr) => acc + curr, 0),
+            "topPilarPuntuacio": colla in pilars_puntuats_lastWeek ? Object
+                .entries(pilars_puntuats_lastWeek[colla]) // create Array of Arrays with [key, value]
+                .sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
+                .slice(0,1) // return only the first 3 elements of the intermediate result
+                .map(([, n])=> parseInt(n)) : "0" // and map that to an array with only the name
+        };
+    });
+    top3_lastWeek.forEach(colla => colla.puntuacio_total += colla.topPilarPuntuacio[0]);
+
     let lastPoints = 0;
+    top3_lastWeek.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1).forEach((colla, i) => {
+        top3_lastWeek[i]["pos"] = lastPoints === colla.puntuacio_total ? i : i+1;
+        lastPoints = colla.puntuacio_total;
+    });
+    const lastWeek_pos = {};
+    top3_lastWeek.forEach((colla) => {
+        const collaName = colla["colla"];
+        lastWeek_pos[collaName] = colla["pos"];
+    })
+
     return (
         <>
             <div id="barometre">
@@ -129,6 +188,7 @@ function Barometre(props) {
                 <table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>#</th>
                             <th>Colla</th>
                             <th></th>
@@ -147,9 +207,11 @@ function Barometre(props) {
                     .sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
                     .map((colla, i) => {
                         let pos = lastPoints === colla.puntuacio_total ? i : i+1;
+                        const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : "down";
                         lastPoints = colla.puntuacio_total;
                         return (
                             <tr className="colla" key={colla.colla}>
+                                <td className={difference}></td>
                                 <td>{pos}</td>
                                 <td className={colla.colla.toLowerCase()}>{colla.colla}</td>
                                 {colla.top3.map((castell, i) => {
