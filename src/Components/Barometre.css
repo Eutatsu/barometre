@@ -31,6 +31,10 @@
         padding: 1px 3px;
     }
 
+    #barometre table tr td:nth-child(2) {
+        width: auto;
+    }
+
     #barometre table tr td:nth-child(2n+4) {
         width: 20px;
         padding: 0 0 3px;
