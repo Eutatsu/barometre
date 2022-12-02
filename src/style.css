@@ -18,16 +18,16 @@
 	--arreplegats: #15a884;
 	--pataquers: #f26e00;
 	--passerells: #d79ad3;
-    --ganapies: #5d7dfb;
+    --ganapies: #4c6ef5;
     --marracos: #a4a4a4;
-    --trempats: #8b6038;
-    --xoriguers: #69badc;
+    --trempats: #88694c;
+    --xoriguers: #50c3ed;
     --emboirats: #ec3030;
     --bergants: #6fe242;
     --engrescats: #f4e731;
     --penjats: #df2b2b;
-    --grillats: #923865;
-    --llunatics: #415cbd;
+    --grillats: #a7356e;
+    --llunatics: #223578;
 }
 
 html, body {
@@ -114,6 +114,7 @@ th {
 }
 .llunàtics {
     background-color: var(--llunatics) !important;
+    color: #ffffff !important;
 }
 
 .grup0 {
