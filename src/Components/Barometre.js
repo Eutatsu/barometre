@@ -8,21 +8,8 @@ function Barometre(props) {
     let data_pilars = {};
     let data_castells = {};
 
-    const parseProfile = points => {
-        if (points < 300) return "grup0";
-        else if (points < 500) return "grup1";
-        else if (points < 750) return "grup2";
-        else if (points < 1200) return "grup3";
-        else if (points < 1600) return "grup4";
-        else if (points < 2500) return "grup5";
-        else if (points < 3500) return "grup6";
-        else if (3500 <= points) return "grup7";
-
-        return "";
-    };
-
     const isCarregat = castell => {
-        if (castell.slice(-1) == "C") return " carregat";
+        if (castell.slice(-1) === "C") return " carregat";
         return "";
     }
 
@@ -47,11 +34,11 @@ function Barometre(props) {
     const llista_diades = [...Object.values(diades)];
     const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()));
     aquesta_temporada.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
-    aquesta_temporada.map(diada => {
+    aquesta_temporada.forEach(diada => {
         const colles = Object.keys(diada["colles"]);
         const date = diada["info"]["DATA"];
-        colles.map(colla => {
-            diada["colles"][colla].map(castell => {
+        colles.forEach(colla => {
+            diada["colles"][colla].forEach(castell => {
                 if (castell["CASTELL"] in puntuacions && (castell["RESULTAT"] === "Descarregat" || castell["RESULTAT"] === "Carregat")) {
                     const punts = puntuacions[castell["CASTELL"]][castell["RESULTAT"]];
 
@@ -120,9 +107,7 @@ function Barometre(props) {
                 .map(([n])=> data_pilars[colla][n]) : "-", // and map that to an array with only the name
         };
     });
-    top3.map((colla, i) => {
-        colla.puntuacio_total += colla.topPilarPuntuacio[0];
-    })
+    top3.forEach(colla => colla.puntuacio_total += colla.topPilarPuntuacio[0]);
 
     let lastPoints = 0;
     return (
@@ -161,12 +146,12 @@ function Barometre(props) {
                                     return (
                                         <>
                                             <td className={donePastWeek(colla.data3[i])}></td>
-                                            <td key={castell} className={"castell" + isCarregat(castell)}>{castell}</td>
+                                            <td key={castell} className={"castell grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
                                         </>
                                     );
                                 })}
                                 <td className={donePastWeek(colla.dataPilar[0])}></td>
-                                <td className={"castell" + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+                                <td className={"castell grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
                             </tr>
                         );
                     })
@@ -181,4 +166,3 @@ function Barometre(props) {
 
 export default Barometre;
 // <td key={castell} className={"castell grup" + puntuacions[castell]["Grup"] + isCarregat(castell)}>{castell}</td>
-// <td className={"castell grup" + puntuacions[colla.topPilar[0]]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
