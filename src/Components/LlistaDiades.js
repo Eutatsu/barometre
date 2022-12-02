@@ -26,6 +26,7 @@ function LlistaDiades(props) {
 		return castells_of_round;
 	}
 
+	// TODO: Good format (Pd4+Pd4 => 2Pd4, Pd4+Pd5+Pd4 => Vd5, etc.)
 	const formatRonda = (castells) => {
 		let res = "";
 		for (const castell of castells) {
