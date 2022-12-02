@@ -26,21 +26,49 @@ function LlistaDiades(props) {
 		return castells_of_round;
 	}
 
-	// TODO: Good format (Pd4+Pd4 => 2Pd4, Pd4+Pd5+Pd4 => Vd5, etc.)
-	const formatRonda = (castells) => {
-		let res = "";
+	const count = (obj) => {
+		return Object.keys(obj).length;
+	}
+
+	const perseCastells = (castells) => {
+		let res = {};
 		for (const castell of castells) {
-			if (castell["RESULTAT"] === "Descarregat")
-				res += castell["CASTELL"]
-			else if (castell["RESULTAT"] === "Carregat")
-				res += castell["CASTELL"]+"C"
+			let name = castell["CASTELL"];
+			if (castell["RESULTAT"] === "Carregat")
+				name += "C"
 			else if (castell["RESULTAT"] === "Intent desmuntat")
-				res += "id"+castell["CASTELL"]
+				name = "id" + name;
+			else if (castell["RESULTAT"] === "Intent")
+				name = "i" + name;
+
+			if (name in res)
+				res[name] += 1;
 			else
-				res += "i"+castell["CASTELL"]
-			res += "+"
+				res[name] = 1;
 		}
+		return formatRonda(res);
+	}
+
+	const formatRonda = (castellsDict) => {
+		const special = specialRounds(castellsDict);
+		if (special != false)
+			return special;
+		let res = "";
+		for (const [castell, amount] of Object.entries(castellsDict))
+			res += formatCastell(amount, castell) + "+";
 		return res.slice(0,-1);
+	}
+
+	const formatCastell = (amount, castell) => {
+		return (amount === 1 ? "" :amount) + castell;
+	}
+
+	const specialRounds = (castellsDict) => {
+		if (count(castellsDict) === 2 &&
+			"Pd4" in castellsDict && castellsDict["Pd4"] == 2 &&
+			"Pd5" in castellsDict && castellsDict["Pd5"] == 1)
+			return "Vd5";
+		return false;
 	}
 
     const llista_diades = [...Object.values(diades)];
@@ -85,14 +113,14 @@ function LlistaDiades(props) {
 												<>
 													<tr>
 														<td className={Object.keys(diada["colles"])[i].toLowerCase()}>{Object.keys(diada["colles"])[i]}</td>
-														{ areEntrada && <td>{formatRonda(getCastellsRonda(castells, "Entrada"))}</td> }
-														{ are1 && <td>{formatRonda(getCastellsRonda(castells, "1"))}</td> }
-														{ are2 && <td>{formatRonda(getCastellsRonda(castells, "2"))}</td> }
-														{ are3 && <td>{formatRonda(getCastellsRonda(castells, "3"))}</td> }
-														{ are4 && <td>{formatRonda(getCastellsRonda(castells, "4"))}</td> }
-														{ are5 && <td>{formatRonda(getCastellsRonda(castells, "5"))}</td> }
-														{ arePilar && <td>{formatRonda(getCastellsRonda(castells, "Pilar"))}</td> }
-														{ areSortida && <td>{formatRonda(getCastellsRonda(castells, "Sortida"))}</td> }
+														{ areEntrada && <td>{perseCastells(getCastellsRonda(castells, "Entrada"))}</td> }
+														{ are1 && <td>{perseCastells(getCastellsRonda(castells, "1"))}</td> }
+														{ are2 && <td>{perseCastells(getCastellsRonda(castells, "2"))}</td> }
+														{ are3 && <td>{perseCastells(getCastellsRonda(castells, "3"))}</td> }
+														{ are4 && <td>{perseCastells(getCastellsRonda(castells, "4"))}</td> }
+														{ are5 && <td>{perseCastells(getCastellsRonda(castells, "5"))}</td> }
+														{ arePilar && <td>{perseCastells(getCastellsRonda(castells, "Pilar"))}</td> }
+														{ areSortida && <td>{perseCastells(getCastellsRonda(castells, "Sortida"))}</td> }
 													</tr>
 												</>
 											);
