@@ -52,7 +52,6 @@ function LlistaDiades(props) {
             <h1>Llista de Diades Universitàries</h1>
 			{
 				llista_diades.map((diada, i) => {
-					if (i==1) return;
 					const areEntrada = areThereCastellsInRonda(diada["colles"], "Entrada");
 					const are1 = areThereCastellsInRonda(diada["colles"], "1");
 					const are2 = areThereCastellsInRonda(diada["colles"], "2");
