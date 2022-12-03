@@ -54,6 +54,12 @@ h3 {
 	font-size: 12px;
 }
 
+#barometre,
+#score,
+#diades {
+    scroll-margin-top: 10px;
+}
+
 @media (max-width: 500px) {
     div.justify_center {
         display: flex;
