@@ -1,5 +1,6 @@
 :root {
     --theme: #e43800;
+    --darkTheme: rgb(182, 51, 7);
 	--darkGray: #484848;
 	--gray: #b7b7b7;
 	--lightGray: #eaeaea;
@@ -39,7 +40,7 @@ html, body {
 }
 
 #root {
-    margin: 25px 2% 20px;
+    margin: 80px 2% 20px;
 }
 
 h1, h2, h3,
@@ -57,17 +58,13 @@ h3 {
 #barometre,
 #score,
 #diades {
-    scroll-margin-top: 10px;
+    scroll-margin-top: 80px;
 }
 
 @media (max-width: 500px) {
     div.justify_center {
         display: flex;
         justify-content: center;
-    }
-
-    #root {
-        margin: 2%;
     }
 
     table {
