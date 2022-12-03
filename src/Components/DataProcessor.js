@@ -50,13 +50,12 @@ function DataProcessor(props) {
 
     useEffect(() => {
         get_data(link_dades, (results) => {
-            var data = results.data
-            setDiades(aggregate(data))
+            setDiades(aggregate(results.data));
         });
 
         get_data(link_puntuacions, (results) => {
             setPuntuacions(process_puntuacions(results.data));
-        })
+        });
     }, []);
 }
 

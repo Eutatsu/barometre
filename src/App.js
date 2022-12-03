@@ -18,11 +18,11 @@ function App() {
 
   useEffect(() => {
     //console.log(puntuacions)
-  }, [puntuacions])
+  }, [puntuacions]);
 
   useEffect(() => {
     //console.log(diades)
-  }, [diades])
+  }, [diades]);
 
   return (
     <>
