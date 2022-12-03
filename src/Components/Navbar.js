@@ -23,14 +23,18 @@ function Navbar() {
           			/>
         		</svg>
 			</button>
-			<div className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"}>
+			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"}>
         		<ul>
-          			<li><a href="#score">Taula de puntuacions</a></li>
-          			<li><a href="#diades">Llista de diades</a></li>
+          			<li><a href="#score" onClick={() => { hideNavMenu() }}>Taula de puntuacions</a></li>
+          			<li><a href="#diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>
         		</ul>
     		</div>
 		</nav>
 	);
+}
+
+function hideNavMenu () {
+	document.getElementById('navMenu').className = 'navigation-menu';
 }
 
 export default Navbar;
