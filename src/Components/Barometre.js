@@ -228,22 +228,24 @@ function Barometre(props) {
                                     return (
                                         <>
                                             <td className={donePastWeek(colla.data3[i])}></td>
-                                            <td key={castell} className={"castell grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
+                                            <td key={castell} className={"grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
                                         </>
                                     );
                                 })}
                                 <td className={donePastWeek(colla.dataPilar[0])}></td>
-                                <td className={"castell grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+                                <td className={"grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
                                 <td><Bars castells={colla.puntuacions} pilars={colla.topPilarPuntuacio} topall={maxPuntuacio} /></td>
                             </tr>
                         );
                     })
                 }
+                        <tr className="barometre-footer">
+                            <td colSpan={12}>barometreuniversitari.cat</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
             </div>
-            <h5 className="barometre-footer">barometreuniversitari.cat</h5>
         </>
     );
 }

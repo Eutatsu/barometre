@@ -61,14 +61,14 @@ h3 {
     scroll-margin-top: 80px;
 }
 
-div.justify_center {
-    display: flex;
-    justify-content: center;
-}
-
 @media (max-width: 500px) {
     table {
         font-size: 12px;
+    }
+
+    div.justify_center {
+        display: flex;
+        justify-content: center;
     }
 }
 
