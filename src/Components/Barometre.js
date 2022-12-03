@@ -1,4 +1,5 @@
 import "./Barometre.css"
+import Bars from "./Bars";
 
 function Barometre(props) {
     const { diades, puntuacions } = props;
@@ -39,6 +40,9 @@ function Barometre(props) {
         return parseInt(day) + " " + months[parseInt(month)-1] + " " + year;
     }
 
+    let maxPuntuacio = -1;
+    let maxCastell = "";
+
     const llista_diades = [...Object.values(diades)];
     const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()));
     aquesta_temporada.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
@@ -49,6 +53,11 @@ function Barometre(props) {
             diada["colles"][colla].forEach(castell => {
                 if (castell["CASTELL"] in puntuacions && (castell["RESULTAT"] === "Descarregat" || castell["RESULTAT"] === "Carregat")) {
                     const punts = puntuacions[castell["CASTELL"]][castell["RESULTAT"]];
+
+                    if (parseInt(punts) >= maxPuntuacio) {
+                        maxPuntuacio = Math.max(parseInt(punts), maxPuntuacio);
+                        maxCastell = castell["CASTELL"];
+                    }
 
                     let res = "";
                     if (castell["RESULTAT"] === "Carregat")
@@ -199,7 +208,7 @@ function Barometre(props) {
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
+                            <th>📊 {maxCastell}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -225,7 +234,7 @@ function Barometre(props) {
                                 })}
                                 <td className={donePastWeek(colla.dataPilar[0])}></td>
                                 <td className={"castell grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
-                                <td>{lastPoints}</td>
+                                <td><Bars castells={colla.puntuacions} pilars={colla.topPilarPuntuacio} topall={maxPuntuacio} /></td>
                             </tr>
                         );
                     })
@@ -234,6 +243,7 @@ function Barometre(props) {
                 </table>
             </div>
             </div>
+            <h5 className="barometre-footer">barometreuniversitari.cat</h5>
         </>
     );
 }

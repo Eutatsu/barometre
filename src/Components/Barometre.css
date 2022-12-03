@@ -3,6 +3,10 @@
 	padding: 3px 5px;
 }
 
+#barometre th {
+    color: white;
+}
+
 #barometre table tr td:nth-child(1) {
 	text-align: center;
     padding: 0 3px;
@@ -98,4 +102,10 @@
 #barometre .carregat {
     background-color: var(--cc) !important;
     color: #000000 !important;
+}
+
+.barometre-footer {
+    text-align: center;
+    color: var(--darkTheme);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

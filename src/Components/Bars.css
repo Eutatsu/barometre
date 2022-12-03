@@ -1,0 +1,20 @@
+.bars-container {
+    height: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.bar {
+    width: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    align-self: flex-end;
+}
+
+.bar.castell {
+    background-color: white;
+}
+
+.bar.pilar {
+    background-color: black;
+}

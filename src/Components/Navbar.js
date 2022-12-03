@@ -25,7 +25,7 @@ function Navbar() {
 			</button>
 			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"}>
         		<ul>
-          			<li><a href="#" onClick={() => { hideNavMenu() }}> Baròmetre</a></li>
+          			<li><a href="#" onClick={() => { hideNavMenu() }}>Baròmetre</a></li>
           			<li><a href="#score" onClick={() => { hideNavMenu() }}>Taula de puntuacions</a></li>
           			<li><a href="#diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>
         		</ul>
