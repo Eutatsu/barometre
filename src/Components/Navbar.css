@@ -66,6 +66,9 @@
 		width: 100%;
 		padding: 1.5rem 0;
 	}
+	#navigation .navigation-menu li:nth-child(odd) {
+		background-color: rgba(255, 0, 0, 0.2);
+	}
 	#navigation .navigation-menu li:hover {
 		background-color: #eee;
 	}
