@@ -199,6 +199,7 @@ function Barometre(props) {
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -224,6 +225,7 @@ function Barometre(props) {
                                 })}
                                 <td className={donePastWeek(colla.dataPilar[0])}></td>
                                 <td className={"castell grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+                                <td>{lastPoints}</td>
                             </tr>
                         );
                     })

@@ -25,6 +25,12 @@
 	width: 45px;
 }
 
+#barometre table tr td:nth-child(12) {
+    padding: 0 5px 0 8px;
+    background-color: var(--theme);
+    text-align: right;
+}
+
 @media (max-width: 500px) {
     #barometre th,
     #barometre td {
@@ -43,6 +49,11 @@
 
     #barometre table tr td:nth-child(2n+5) {
         width: 35px;
+    }
+
+    #barometre table tr th:nth-child(12),
+    #barometre table tr td:nth-child(12) {
+        display: none;
     }
 
     #barometre .new::after {
