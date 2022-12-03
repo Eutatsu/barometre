@@ -2,7 +2,7 @@ import "./Footer.css"
 
 function Footer() {
 	return (
-		<div class="footer">
+		<div id="footer">
 			<p>
 			Per <a href="https://twitter.com/HuguetAndreu" rel="noreferrer" target="_blank">Andreu Huguet</a> i <a href="https://twitter.com/uriiisegura" rel="noreferrer" target="_blank">Oriol Segura</a>.
 			</p>
