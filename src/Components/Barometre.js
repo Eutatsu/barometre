@@ -191,7 +191,7 @@ function Barometre(props) {
     return (
         <>
             <div id="barometre">
-            <h1>Baròmetre Universitari: Temporada 2022-23</h1>
+            <h1>Temporada 2022-23</h1>
             <h2>(Actualitzat a {date})</h2>
             <div className="justify_center">
                 <table>
