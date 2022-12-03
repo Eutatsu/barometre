@@ -5,6 +5,10 @@
 	margin: 5px 0 !important;
 }
 
+#diades th {
+	color: #ffffff;
+}
+
 #diades th,
 #diades td {
 	padding: 2px 10px;
