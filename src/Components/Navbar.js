@@ -7,7 +7,7 @@ function Navbar() {
 	return (
 		<nav id="navigation">
 			<a href="#barometre" className="title">
-				Baròmetre Universitàri
+				Baròmetre Universitari
 			</a>
 			<button className="hamburger" onClick={() => { setIsNavExpanded(!isNavExpanded); }}>
 				<svg
