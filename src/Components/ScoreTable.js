@@ -53,9 +53,9 @@ function ScoreTable(props) {
 								{sub}
 								{
 									<>
-										<td style={{ opacity: !castell["Mai carregat"] ? 0.6 : 1 }}>{Object.keys(puntuacions)[i]}</td>
-										<td style={{ opacity: !castell["Mai carregat"] ? 0.6 : 1 }}>{castell["Carregat"]}</td>
-										<td style={{ opacity: !castell["Mai descarregat"] ? 0.6 : 1 }}>{castell["Descarregat"]}</td>							
+										<td className={ !castell["Mai carregat"] && 'inedit' }>{Object.keys(puntuacions)[i]}</td>
+										<td className={ !castell["Mai carregat"] && 'inedit' }>{castell["Carregat"]}</td>
+										<td className={ !castell["Mai descarregat"] && 'inedit' }>{castell["Descarregat"]}</td>							
 									</>
 								}
 							</tr>
