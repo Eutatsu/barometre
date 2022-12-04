@@ -51,9 +51,13 @@ function ScoreTable(props) {
 							<tr className={"grup"+lastGroup}>
 								{group}
 								{sub}
-								<td>{Object.keys(puntuacions)[i]}</td>
-								<td>{castell["Carregat"]}</td>
-								<td>{castell["Descarregat"]}</td>
+								{
+									<>
+										<td style={{ opacity: !castell["Mai carregat"] ? 0.6 : 1 }}>{Object.keys(puntuacions)[i]}</td>
+										<td style={{ opacity: !castell["Mai carregat"] ? 0.6 : 1 }}>{castell["Carregat"]}</td>
+										<td style={{ opacity: !castell["Mai descarregat"] ? 0.6 : 1 }}>{castell["Descarregat"]}</td>							
+									</>
+								}
 							</tr>
 						</>
 					);

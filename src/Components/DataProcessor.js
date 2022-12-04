@@ -43,6 +43,8 @@ function DataProcessor(props) {
             puntuacions_dict[castell.castell]["Subgrup"] = castell["Subgrup"];
             puntuacions_dict[castell.castell]["Carregat"] = castell["Carregat"];
             puntuacions_dict[castell.castell]["Descarregat"] = castell["Descarregat"];
+            puntuacions_dict[castell.castell]["Mai carregat"] = castell["Mai carregat"] === 'Sí';
+            puntuacions_dict[castell.castell]["Mai descarregat"] = castell["Mai descarregat"] === 'Sí';
         });
 
         return puntuacions_dict;
