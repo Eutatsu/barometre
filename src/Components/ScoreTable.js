@@ -3,6 +3,20 @@ import "./ScoreTable.css"
 function ScoreTable(props) {
     const { puntuacions } = props;
 
+	const groupInedit = group => {
+		return !taula_puntuacions
+			.filter(castell => castell["Grup"] === group)
+			.map(castell => castell["Mai carregat"])
+			.reduce((prev, curr) => prev || curr, false);
+	};
+
+	const subGroupInedit = (group, subgroup) => {
+		return !taula_puntuacions
+			.filter(castell => castell["Grup"] === group && castell["Subgrup"] === subgroup)
+			.map(castell => castell["Mai carregat"])
+			.reduce((prev, curr) => prev || curr, false);
+	};
+
 	const groupLength = (group) => {
 		let length = 0;
 		taula_puntuacions.forEach((castell, i) => {
@@ -42,8 +56,8 @@ function ScoreTable(props) {
 				<tbody>
 			{
 				taula_puntuacions.map((castell, i) => {
-					const group = lastGroup === castell["Grup"] ? <></> : <td rowSpan={groupLength(castell["Grup"])}>Grup {castell["Grup"]}</td>;
-					const sub = lastSub === castell["Subgrup"] && lastGroup === castell["Grup"] ? <></> : <td rowSpan={subGroupLength(castell["Grup"], castell["Subgrup"])}>sub {castell["Subgrup"]}</td>;
+					const group = lastGroup === castell["Grup"] ? <></> : <td className={groupInedit(castell["Grup"]) && "inedit"} rowSpan={groupLength(castell["Grup"])}>Grup {castell["Grup"]}</td>;
+					const sub = lastSub === castell["Subgrup"] && lastGroup === castell["Grup"] ? <></> : <td className={subGroupInedit(castell["Grup"], castell["Subgrup"]) && "inedit"} rowSpan={subGroupLength(castell["Grup"], castell["Subgrup"])}>sub {castell["Subgrup"]}</td>;
 					lastGroup = castell["Grup"];
 					lastSub = castell["Subgrup"];
 					return (

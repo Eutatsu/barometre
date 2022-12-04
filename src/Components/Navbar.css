@@ -8,6 +8,7 @@
 	background-color: var(--theme);
 	color: black;
 	box-shadow: 0 2px 2px #0909093b;
+	z-index: 99;
 }
 
 #navigation .title {
