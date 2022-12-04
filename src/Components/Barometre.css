@@ -28,6 +28,9 @@
 #barometre table tr td:nth-child(2n+5) {
 	width: 45px;
 }
+#barometre table tr th:nth-child(12) {
+    font-weight: lighter;
+}
 
 #barometre table tr td:nth-child(12) {
     padding: 0 5px 0 8px;

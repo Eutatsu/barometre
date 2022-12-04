@@ -27,8 +27,8 @@ function DataProcessor(props) {
             const by_colles = [...new Set(by_diada.map(row => row["COLLA"]))];
             by_colles.forEach(colla => {
                 const only_colla = rows.filter(row => get_diada_hash(row) === diada_hash && row["COLLA"] === colla);
-                const castells_colla = only_colla.map(castell => (({ RONDA, CASTELL, RESULTAT }) => ({ RONDA, CASTELL, RESULTAT }))(castell));
-                diades_dict[diada_hash]["colles"][colla] = castells_colla;
+                diades_dict[diada_hash]["colles"][colla] = only_colla.map(castell => (({ RONDA, CASTELL, RESULTAT }) => ({ RONDA, CASTELL, RESULTAT }))(castell));
+                diades_dict[diada_hash]["colles"][colla]["ordre"] = parseInt(only_colla[0]["ORDRE"]);
             });
         });
 

@@ -88,6 +88,14 @@ function LlistaDiades(props) {
 					const are5 = areThereCastellsInRonda(diada["colles"], "5");
 					const arePilar = areThereCastellsInRonda(diada["colles"], "Pilar");
 					const areSortida = areThereCastellsInRonda(diada["colles"], "Sortida");
+					const colles = Object.keys(diada["colles"]).map(function(key) {
+						return [key, diada["colles"][key]];
+					});
+					colles.sort((a, b) => {
+						const ordreA = a[1]["ordre"];
+						const ordreB = b[1]["ordre"];
+						return ordreA - ordreB;
+					});
 					return (
 						<>
 							<h2>{diada["info"]["DIADA"]}</h2>
@@ -108,11 +116,12 @@ function LlistaDiades(props) {
 								</thead>
 								<tbody>
 									{
-										[...Object.values(diada["colles"])].map((castells, i) => {
+										colles.map((colla, i) => {
+											const castells = colla[1];
 											return (
 												<>
 													<tr>
-														<td className={Object.keys(diada["colles"])[i].toLowerCase()}>{Object.keys(diada["colles"])[i]}</td>
+														<td className={colla[0].toLowerCase()}>{colla[0]}</td>
 														{ areEntrada && <td>{perseCastells(getCastellsRonda(castells, "Entrada"))}</td> }
 														{ are1 && <td>{perseCastells(getCastellsRonda(castells, "1"))}</td> }
 														{ are2 && <td>{perseCastells(getCastellsRonda(castells, "2"))}</td> }
