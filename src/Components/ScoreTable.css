@@ -22,3 +22,7 @@
 #score table tr td {
 	border: 1px solid black;
 }
+
+#score td.inedit {
+	opacity: 0.6;
+}
