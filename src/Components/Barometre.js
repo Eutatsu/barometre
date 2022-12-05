@@ -3,6 +3,7 @@ import Bars from "./Bars";
 
 function Barometre(props) {
     const { diades, puntuacions } = props;
+    const isWindows = window.navigator["platform"].includes("Win");
 
     let castells_puntuats = {};
     let pilars_puntuats = {};
@@ -227,12 +228,12 @@ function Barometre(props) {
                                 {colla.top3.map((castell, i) => {
                                     return (
                                         <>
-                                            <td className={donePastWeek(colla.data3[i])}></td>
+                                            <td className={donePastWeek(colla.data3[i]) + (isWindows ? " windowsOS" : "")}></td>
                                             <td key={castell} className={"grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
                                         </>
                                     );
                                 })}
-                                <td className={donePastWeek(colla.dataPilar[0])}></td>
+                                <td className={donePastWeek(colla.dataPilar[0]) + (isWindows ? " windowsOS" : "")}></td>
                                 <td className={"grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
                                 <td><Bars castells={colla.puntuacions} pilars={colla.topPilarPuntuacio} topall={maxPuntuacio} /></td>
                             </tr>

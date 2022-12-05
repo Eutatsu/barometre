@@ -106,6 +106,9 @@
     top: 5%;
     left: 17%;
 }
+#barometre .new.windowsOS::after {
+    top: -11%;
+}
 
 #barometre .carregat {
     background-color: var(--cc) !important;
