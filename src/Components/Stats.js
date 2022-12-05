@@ -1,6 +1,8 @@
 import "./Stats.css"
 
 function Stats(props) {
+    const { diades, puntuacions } = props;
+
 	return (
 		<>
 			<div id="stats">
