@@ -12,7 +12,6 @@
     padding: 0 3px;
 }
 #barometre table tr td:nth-child(2) {
-	width: 20px;
 	background-color: var(--gray);
 	text-align: right;
 }
