@@ -33,13 +33,6 @@
 	}
 }
 
-#diades .table_wrap {
-	overflow-x: scroll !important;
-}
-#diades .table_wrap::-webkit-scrollbar {
-	display: none;
-}
-
 #diades td {
 	background-color: var(--lightGray);
 }

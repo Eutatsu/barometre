@@ -17,6 +17,7 @@
 	--s7: #440000;
 	--s8: #000000;
 	--cc: #ffe599;
+	--cd: #c7d9c6;
 
 	--arreplegats: #15a884;
 	--pataquers: #f26e00;
@@ -167,6 +168,13 @@ th {
 .grup8 {
     background-color: var(--s8);
     color: #ffffff;
+}
+
+.table_wrap {
+	overflow-x: scroll !important;
+}
+.table_wrap::-webkit-scrollbar {
+	display: none;
 }
 
 

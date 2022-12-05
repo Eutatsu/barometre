@@ -1,0 +1,25 @@
+#stats table {
+	margin: 20px 0 0 0;
+}
+
+#stats th,
+#stats td {
+	padding: 2px 10px;
+	border: 1px solid black;
+}
+
+@media (max-width: 500px) {
+	#stats th,
+	#stats td {
+		padding: 2px 5px;
+	}
+}
+
+#stats .descarregats {
+	background-color: var(--cd);
+	text-align: center;
+}
+#stats .carregats {
+	background-color: var(--cc);
+	text-align: center;
+}
