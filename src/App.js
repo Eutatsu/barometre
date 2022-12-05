@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import Navbar from "./Components/Navbar";
 import DataProcessor from "./Components/DataProcessor";
 import Barometre from './Components/Barometre'
-import LlistaDiades from './Components/LlistaDiades'
 import ScoreTable from './Components/ScoreTable'
+import Stats from './Components/Stats'
+import LlistaDiades from './Components/LlistaDiades'
 import Footer from './Components/Footer'
 import './style.css'
 
@@ -35,6 +36,8 @@ function App() {
         <Barometre {...exports} />
         <div className="space_between"></div>
         <ScoreTable {...exports} />
+        <div className="space_between"></div>
+        <Stats {...exports} />
         <div className="space_between"></div>
         <LlistaDiades {...exports} />
       </div>

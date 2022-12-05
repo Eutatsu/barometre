@@ -27,6 +27,7 @@ function Navbar() {
         		<ul>
           			<li><a href="#" onClick={() => { hideNavMenu() }}>Baròmetre</a></li>
           			<li><a href="#score" onClick={() => { hideNavMenu() }}>Taula de puntuacions</a></li>
+          			<li><a href="#stats" onClick={() => { hideNavMenu() }}>Estadístiques</a></li>
           			<li><a href="#diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>
         		</ul>
     		</div>
