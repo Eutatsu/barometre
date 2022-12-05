@@ -1,7 +1,7 @@
 {
   "name": "barometre",
   "version": "0.1.0",
-  "homepage": "https://huguet57.github.io/barometre/",
+  "homepage": "https://www.barometreuniversitari.cat",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
