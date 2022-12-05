@@ -45,9 +45,9 @@ function Stats(props) {
 	let castells_rows, castells_rows_names, desCar_rows, colles_rows, colles_rows_names, colles_rows_names_two, table_length;
 	let reset_rows = true;
 	return (
-		<>
-			<div id="stats">
+		<div id="stats-container">
             <h1>Estadístiques</h1>
+			<div id="stats">
 			{
 				castells_arrays.map((castell, i) => {
 					const name = castell[0];
@@ -124,7 +124,7 @@ function Stats(props) {
 				})
 			}
 			</div>
-		</>
+		</div>
 	);
 }
 

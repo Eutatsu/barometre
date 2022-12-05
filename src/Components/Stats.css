@@ -9,6 +9,12 @@
 }
 
 @media (max-width: 500px) {
+	#stats {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 	#stats th,
 	#stats td {
 		padding: 2px 5px;
