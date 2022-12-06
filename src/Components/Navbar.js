@@ -7,6 +7,7 @@ function Navbar() {
 	return (
 		<nav id="navigation">
 			<a href="#barometre" className="title">
+				<img src="/favicon.ico"/>
 				BaròmetreUniversitari.cat
 			</a>
 			<button className="hamburger" onClick={() => { setIsNavExpanded(!isNavExpanded); }}>

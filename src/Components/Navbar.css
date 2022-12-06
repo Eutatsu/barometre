@@ -18,6 +18,13 @@
 	font-size: 1.3rem;
 	margin-left: 1rem;
 }
+
+#navigation img {
+	width: 25px;
+	float: left;
+	margin-right: 10px;
+}
+
 #navigation .navigation-menu {
 	margin-left: auto;
 }
@@ -38,6 +45,10 @@
 }
 
 @media (max-width: 1000px) {
+	#navigation img {
+		width: 30px;
+	}
+
 	#navigation .hamburger {
 	  display: block !important;
 	}
