@@ -44,6 +44,15 @@
 	color: #ffffff;
 }
 
+@media (max-width: 500px) {
+	#navigation .title {
+		line-height: 30px;
+	}
+	#navigation img {
+		margin-top: 1px;
+	}
+}
+
 @media (max-width: 1000px) {
 	#navigation img {
 		width: 30px;
