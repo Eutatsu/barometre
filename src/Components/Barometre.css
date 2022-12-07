@@ -73,7 +73,7 @@
 }
 
 #barometre .same {
-	background-color: var(--orange);
+	background-color: var(--gray);
 }
 #barometre .same::after {
     vertical-align: bottom;
@@ -87,7 +87,7 @@
 	content: '▲';
 }
 #barometre .down {
-	background-color: var(--gray);
+	background-color: var(--orange);
 }
 #barometre .down::after {
     vertical-align: bottom;
