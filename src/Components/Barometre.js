@@ -132,7 +132,7 @@ function Barometre(props) {
     top3.forEach(colla => colla.puntuacio_total += colla.topPilarPuntuacio[0]);
 
     const lastWeek = new Date();
-    lastWeek.setDate(lastWeek.getDate() - 7);
+    lastWeek.setDate(lastWeek.getDate() - 8);
     const ultima_setmana = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) < lastWeek);
     ultima_setmana.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
     ultima_setmana.forEach(diada => {
