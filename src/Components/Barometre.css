@@ -108,6 +108,7 @@
 }
 #barometre .new.windowsOS::after {
     top: -11%;
+    left: 19%;
 }
 
 #barometre .carregat {
