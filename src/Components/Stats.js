@@ -40,7 +40,6 @@ function Stats(props) {
 			return 0;
 		}
 	});
-	console.log(castells_arrays);
 
 	let castells_rows, castells_rows_names, desCar_rows, colles_rows, colles_rows_names, colles_rows_names_two, table_length;
 	let reset_rows = true;

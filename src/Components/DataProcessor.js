@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import * as Papa from 'papaparse';
 
 function DataProcessor(props) {
-    const { setDiades, setPuntuacions } = props;
+    const { setDiades, setFutures, setPuntuacions } = props;
     const link_dades = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=0&single=true&output=csv";
+    const link_futures = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=577649250&single=true&output=csv";
     const link_puntuacions = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=1401475200&single=true&output=csv";
 
     const get_data = (link, callback) => Papa.parse(link, {
@@ -35,6 +36,22 @@ function DataProcessor(props) {
         return diades_dict;
     };
 
+    const read_futures = (data) => {
+        let futures_dict = {};
+        data.forEach(futura => {
+            futures_dict[futura["DIADA"]] = {};
+            futures_dict[futura["DIADA"]]["data"] = futura["DATA"];
+            futures_dict[futura["DIADA"]]["lloc"] = futura["LLOC"];
+            futures_dict[futura["DIADA"]]["colles"] = [];
+            const colles = futura["COLLES"].split(',');
+            colles.forEach(colla => {
+                futures_dict[futura["DIADA"]]["colles"].push(colla.trim());
+            })
+        });
+
+        return futures_dict;
+    }
+
     const process_puntuacions = (data) => {
         let puntuacions_dict = {};
         data.forEach(castell => {
@@ -53,6 +70,10 @@ function DataProcessor(props) {
     useEffect(() => {
         get_data(link_dades, (results) => {
             setDiades(aggregate(results.data));
+        });
+
+        get_data(link_futures, (results) => {
+            setFutures(read_futures(results.data));
         });
 
         get_data(link_puntuacions, (results) => {
