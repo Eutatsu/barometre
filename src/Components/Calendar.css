@@ -1,5 +1,8 @@
-#calendar h1 {
+/*#calendar h1 {
 	margin-bottom: 10px;
+}*/
+#calendar h2 {
+	margin-bottom: 20px;
 }
 
 #calendar .react-calendar {
