@@ -11,14 +11,14 @@ import './style.css'
 
 function App() {
   const [diades, setDiades] = useState({});
-  const [futures, setFutures] = useState({});
+  const [calendari, setCalendari] = useState({});
   const [puntuacions, setPuntuacions] = useState({});
 
   const exports = {
     'diades': diades,
     'setDiades': setDiades,
-    'futures': futures,
-    'setFutures': setFutures,
+    'calendari': calendari,
+    'setCalendari': setCalendari,
     'puntuacions': puntuacions,
     'setPuntuacions': setPuntuacions,
   };
@@ -28,8 +28,8 @@ function App() {
   }, [puntuacions]);
 
   useEffect(() => {
-    //console.log(futures)
-  }, [futures]);
+    //console.log(calendari)
+  }, [calendari]);
 
   useEffect(() => {
     //console.log(diades)
