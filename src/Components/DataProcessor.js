@@ -79,6 +79,7 @@ function DataProcessor(props) {
         get_data(link_puntuacions, (results) => {
             setPuntuacions(process_puntuacions(results.data));
         });
+    // eslint-disable-next-line
     }, []);
 }
 

@@ -1,6 +1,6 @@
 #barometre th,
 #barometre td {
-	padding: 3px 5px;
+    padding: 3px 5px;
 }
 
 #barometre th {
@@ -8,24 +8,24 @@
 }
 
 #barometre table tr td:nth-child(1) {
-	text-align: center;
+    text-align: center;
     padding: 0 3px;
 }
 #barometre table tr td:nth-child(2) {
-	background-color: var(--gray);
-	text-align: right;
+    background-color: var(--gray);
+    text-align: right;
 }
 
 #barometre table tr td:nth-child(3) {
-	padding-right: 20px;
+    padding-right: 20px;
 }
 #barometre table tr td:nth-child(2n+4) {
-	width: 24px;
-	padding: 0 0 3px;
-	text-align: center;
+    width: 24px;
+    padding: 0 0 3px;
+    text-align: center;
 }
 #barometre table tr td:nth-child(2n+5) {
-	width: 45px;
+    width: 45px;
 }
 #barometre table tr th:nth-child(12) {
     font-weight: lighter;
@@ -69,29 +69,29 @@
 }
 
 #barometre h2 {
-	margin-bottom: 20px !important;
+    margin-bottom: 20px !important;
 }
 
 #barometre .same {
-	background-color: var(--gray);
+    background-color: var(--gray);
 }
 #barometre .same::after {
     vertical-align: bottom;
-	content: '=';
+    content: '=';
 }
 #barometre .up {
-	background-color: var(--green);
+    background-color: var(--green);
 }
 #barometre .up::after {
     vertical-align: bottom;
-	content: '▲';
+    content: '▲';
 }
 #barometre .down {
-	background-color: var(--orange);
+    background-color: var(--orange);
 }
 #barometre .down::after {
     vertical-align: bottom;
-	content: '▼';
+    content: '▼';
 }
 
 #barometre .new {
@@ -99,7 +99,7 @@
 }
 #barometre .new::after {
     vertical-align: bottom;
-	content: '✦';
+    content: '✦';
     font-size: 1.2em;
     color: var(--theme);
     position: absolute;
