@@ -76,6 +76,10 @@ function Barometre(props) {
                             castells_puntuats[colla] = {};
                             data_castells[colla] = {};
                         }
+                        if (res === "C" && castell["CASTELL"] in castells_puntuats[colla])
+                            return;
+                        if (res === "" && castell["CASTELL"]+"C" in castells_puntuats[colla])
+                            delete castells_puntuats[colla][castell["CASTELL"]+"C"];
                         castells_puntuats[colla][castell["CASTELL"]+res] = punts;
                         data_castells[colla][castell["CASTELL"]+res] = date;
                     }
