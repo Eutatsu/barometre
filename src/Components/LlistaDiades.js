@@ -68,6 +68,10 @@ function LlistaDiades(props) {
 			"Pd4" in castellsDict && castellsDict["Pd4"] === 2 &&
 			"Pd5" in castellsDict && castellsDict["Pd5"] === 1)
 			return "Vd5";
+		if (count(castellsDict) === 2 &&
+			"Pd3" in castellsDict && castellsDict["Pd3"] === 2 &&
+			"Pd4" in castellsDict && castellsDict["Pd4"] === 1)
+			return "Vd4";
 		return false;
 	}
 
