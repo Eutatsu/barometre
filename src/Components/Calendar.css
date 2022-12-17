@@ -69,10 +69,13 @@
 
 @media (max-width: 820px) {
     #calendar .calendar {
-        width: 98%;
+        width: calc(100% - 5px);
     }
     #calendar th {
         padding-bottom: 5px;
+    }
+    #calendar td {
+        height: 80px;
     }
     #calendar .day,
     #calendar .diada {
@@ -81,8 +84,8 @@
     #calendar .diada {
         top: 15px;
     }
-
     #calendar .diada div {
+        padding: 0 1px;
         font-size: 10px;
     }
 }
@@ -149,7 +152,6 @@
     overflow: hidden;
     text-align: left;
     user-select: none;
-    padding: 0 1px;
 }
 #calendar .diada div:hover {
     opacity: 0.8;
