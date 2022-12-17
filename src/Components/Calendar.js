@@ -2,6 +2,7 @@ import "./Calendar.css"
 
 function CalendarFun(props) {
 	const { calendari } = props;
+	const CREDENTIALS = require('./google-calendar.json');
 
 	const diades = [];
 	const entries = Object.entries(calendari);
