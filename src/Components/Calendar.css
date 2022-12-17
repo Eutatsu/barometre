@@ -50,6 +50,7 @@
 #calendar .diada-info {
     padding: 5px;
     padding-right: 50px;
+    max-width: 450px;
 }
 #calendar .diada-info h2 {
     font-size: 20px;
