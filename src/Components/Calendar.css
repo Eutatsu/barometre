@@ -68,7 +68,7 @@
 
 @media (max-width: 820px) {
     #calendar .calendar {
-        width: 600px;
+        width: 98%;
     }
     #calendar th {
         padding-bottom: 5px;
@@ -142,9 +142,10 @@
 }
 #calendar .diada div {
     overflow: hidden;
-    text-overflow: ellipsis;
     text-align: left;
     user-select: none;
+    padding: 0 1px;
+    font-size: 10px;
 }
 #calendar .diada div:hover {
     opacity: 0.8;
