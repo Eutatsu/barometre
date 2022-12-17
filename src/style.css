@@ -171,10 +171,10 @@ th {
     color: #ffffff;
 }
 
-.table_wrap {
+.table-wrap {
 	overflow-x: scroll !important;
 }
-.table_wrap::-webkit-scrollbar {
+.table-wrap::-webkit-scrollbar {
 	display: none;
 }
 

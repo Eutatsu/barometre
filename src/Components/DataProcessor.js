@@ -38,10 +38,14 @@ function DataProcessor(props) {
 
     const read_calendari = (data) => {
         let calendar_dict = {};
+        let id = 0;
         data.forEach(diada => {
             calendar_dict[diada["NOM CURT"]] = {};
             calendar_dict[diada["NOM CURT"]]["nom"] = diada["NOM CURT"];
+            calendar_dict[diada["NOM CURT"]]["diada"] = diada["DIADA"];
             calendar_dict[diada["NOM CURT"]]["data"] = diada["DATA"];
+            calendar_dict[diada["NOM CURT"]]["hora"] = diada["HORA"];
+            calendar_dict[diada["NOM CURT"]]["lloc"] = diada["LLOC"];
             calendar_dict[diada["NOM CURT"]]["amfitriona"] = diada["COLLA AMFITRIONA"]
             calendar_dict[diada["NOM CURT"]]["colles"] = [];
             if (diada["ALTRES COLLES"].includes(',')) {
@@ -50,6 +54,7 @@ function DataProcessor(props) {
                     calendar_dict[diada["NOM CURT"]]["colles"].push(colla.trim());
                 });
             }
+            calendar_dict[diada["NOM CURT"]]["id"] = id++;
         });
 
         return calendar_dict;

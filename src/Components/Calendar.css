@@ -2,24 +2,94 @@
     margin-bottom: 10px;
 }
 
-@media (max-width: 820px) {
-    #calendar .calendar {
-        width: 600px !important;
-    }
-    #calendar .diada {
-        top: 15px !important;
-    }
-}
-
 #calendar .calendar {
     width: 800px;
+}
+
+#calendar .header {
+    margin-bottom: 20px;
+}
+#calendar .header h3 {
+    padding: 10px 0;
+}
+#calendar .header button {
+    padding: 10px 15px;
+}
+
+#calendar th {
+    padding-bottom: 10px;
+}
+
+#calendar td {
+    height: 110px;
+}
+
+#calendar .day {
+    padding: 1px 3px;
+}
+
+#calendar .diada {
+    top: 20px;
+    width: calc(100% - 4px);
+    padding: 0 2px;
+}
+#calendar .diada div {
+    padding-left: 5px;
+    border-radius: 3px;
+    margin-bottom: 2px;
+}
+
+#calendar .jump-today {
+    margin-top: 20px;
+}
+#calendar .jump-today button {
+    font-size: 16px;
+    padding: 8px 10px;
+}
+
+#calendar .diada-info {
+    padding: 5px;
+    padding-right: 50px;
+}
+#calendar .diada-info h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+#calendar .countdown {
+    margin: 25px auto 10px;
+    padding: 5px 10px;
+}
+#calendar .close::after {
+    width: 16px;
+    height: 16px;
+    top: 5px;
+    right: 5px;
+}
+
+@media (max-width: 820px) {
+    #calendar .calendar {
+        width: 600px;
+    }
+    #calendar th {
+        padding-bottom: 5px;
+    }
+    #calendar .day,
+    #calendar .diada {
+        font-size: 12px;
+    }
+    #calendar .diada {
+        top: 15px;
+    }
+    /* TODO: fix "NaNd NaNh NaNm NaNs" on iOS */
+    #calendar .countdown {
+        display: none !important;
+    }
 }
 
 #calendar .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 20px;
 }
 #calendar .header * {
     color: gray;
@@ -27,13 +97,11 @@
 }
 #calendar .header h3 {
     font-weight: normal;
-    padding: 10px 0;
 }
 #calendar .header button {
     background-color: #ffffff;
     border: none;
     cursor: pointer;
-    padding: 10px 15px;
 }
 #calendar .header button:hover {
     background-color: var(--lightGray);
@@ -46,12 +114,10 @@
 
 #calendar th {
     background-color: #ffffff;
-    padding-bottom: 10px;
 }
 
 #calendar td {
     position: relative;
-    height: 110px;
 }
 #calendar td:not(.blank) {
     border: 1px solid var(--gray);
@@ -60,7 +126,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 1px 3px;
 }
 #calendar .weekend {
     color: var(--theme);
@@ -73,38 +138,63 @@
 #calendar .diada {
     position: absolute;
     left: 0;
-    top: 20px;
     white-space: nowrap;
-    width: calc(100% - 4px);
-    padding: 0 2px;
 }
 #calendar .diada div {
-    padding-left: 5px;
-    border-radius: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
-    margin-bottom: 2px;
     user-select: none;
 }
 #calendar .diada div:hover {
-    opacity: 0.8;/*
-    cursor: pointer;*/
+    opacity: 0.8;
+    cursor: pointer;
 }
 
-#calendar .jump-today {
-    margin-top: 20px;
-}
 #calendar .jump-today button {
     border: none;
     cursor: pointer;
     background-color: var(--theme);
     color: #ffffff;
-    font-size: 16px;
-    padding: 8px 10px;
     border: 2px solid var(--theme);
 }
 #calendar .jump-today button:hover {
     background-color: #ffffff;
     color: var(--theme);
+}
+
+#calendar .diada-info {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    border: 2px solid var(--theme);
+    background-color: #ffffff;
+}
+#calendar .diada-info p {
+    margin: 0;
+}
+#calendar .countdown {
+    width: fit-content;
+    text-align: center;
+    background-color: var(--theme);
+    color: #ffffff;
+}
+#calendar .close::after {
+    content: '×';
+    border: 2px solid var(--theme);
+    background-color: var(--theme);
+    color: #ffffff;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#calendar .close:hover::after {
+    background-color: #ffffff;
+    color: var(--theme);
+}
+#calendar .table-wrap {
+    position: relative;
 }

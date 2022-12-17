@@ -108,7 +108,7 @@ function Stats(props) {
 					});
 					return (
 						<>
-							<div className="table_wrap"><table>
+							<div className="table-wrap"><table>
 								<thead>
 									<tr><th className={"grup"+grup} colSpan={table_length}>Castells del grup {grup}</th></tr>
 									<tr><th className={"grup"+grup} rowSpan="2">Colles</th>{castells_rows}</tr>

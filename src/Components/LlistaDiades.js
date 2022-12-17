@@ -104,7 +104,7 @@ function LlistaDiades(props) {
 						<>
 							<h2>{diada["info"]["DIADA"]}</h2>
 							<h3>{diada["info"]["DATA"] + " - " + diada["info"]["LLOC"]}</h3>
-							<div className="table_wrap"><table>
+							<div className="table-wrap"><table>
 								<thead>
 									<tr>
 										<th>Colla</th>
