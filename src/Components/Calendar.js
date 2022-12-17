@@ -2,7 +2,6 @@ import "./Calendar.css"
 
 function CalendarFun(props) {
 	const { calendari } = props;
-	const CREDENTIALS = require('../client_secret.json');
 
 	const diades = [];
 	const entries = Object.entries(calendari);
