@@ -172,25 +172,13 @@ th {
 }
 
 .table-wrap {
+    position: relative;
 	overflow-x: scroll !important;
+    scrollbar-width: none;
 }
 .table-wrap::-webkit-scrollbar {
 	display: none;
 }
-
-
-
-
-
 .space_between {
     height: 100px;
-}
-
-div.en-construccio {
-    margin-top: 15px;
-    font-size: 1.2em;
-    color: var(--theme);
-}
-div.en-construccio::after {
-    content: 'Secció en construcció...';
 }

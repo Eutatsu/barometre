@@ -118,10 +118,14 @@
 #calendar td:not(.blank) {
     border: 1px solid var(--gray);
 }
+#calendar td:hover .day {
+    text-decoration: underline;
+}
 #calendar .day {
     position: absolute;
     top: 0;
     right: 0;
+    user-select: none;
 }
 #calendar .weekend {
     color: var(--theme);
@@ -163,8 +167,9 @@
     position: absolute;
     top: 20%;
     left: 5%;
-    border: 2px solid var(--theme);
     background-color: #ffffff;
+    border: 2px solid var(--theme);
+    box-shadow: 0 0 10px 0 var(--darkGray);
 }
 #calendar .diada-info p {
     margin: 0;
@@ -177,9 +182,9 @@
 }
 #calendar .close::after {
     content: '×';
-    border: 2px solid var(--theme);
-    background-color: var(--theme);
     color: #ffffff;
+    background-color: var(--theme);
+    border: 2px solid var(--theme);
     overflow: hidden;
     position: absolute;
     display: flex;
@@ -188,9 +193,6 @@
     cursor: pointer;
 }
 #calendar .close:hover::after {
-    background-color: #ffffff;
     color: var(--theme);
-}
-#calendar .table-wrap {
-    position: relative;
+    background-color: #ffffff;
 }
