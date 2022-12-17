@@ -2,6 +2,10 @@
     margin-bottom: 10px;
 }
 
+/*
+    OLD
+*/
+
 #calendar .container {
     position: relative;
     overflow: hidden;
@@ -32,4 +36,85 @@
         top: -12.5%;
         left: -12.5%;
     }
+}
+
+/*
+    NEW
+*/
+
+#calendar .calendar {
+    width: 800px;
+    display: none;
+}
+
+#calendar .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#calendar .header * {
+    color: gray;
+    font-size: 14px;
+}
+#calendar .header h3 {
+    font-weight: normal;
+    padding: 10px 0;
+}
+#calendar .header button {
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+#calendar .header button:hover {
+    background-color: var(--lightGray);
+}
+
+#calendar table {
+    width: 100%;
+    text-align: center;
+}
+
+#calendar th {
+    background-color: #ffffff;
+    padding-bottom: 10px;
+}
+
+#calendar td {
+    position: relative;
+    height: 110px;
+}
+#calendar td:not(.blank) {
+    border: 1px solid var(--gray);
+}
+#calendar .day {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px;
+}
+#calendar .weekend {
+    color: var(--theme);
+}
+#calendar .today {
+    background-color: var(--theme);
+    color: #ffffff;
+}
+
+#calendar .jump-today {
+    margin-top: 20px;
+}
+#calendar .jump-today button {
+    border: none;
+    cursor: pointer;
+    background-color: var(--theme);
+    color: #ffffff;
+    font-size: 16px;
+    padding: 8px 10px;
+    border: 2px solid var(--theme);
+}
+#calendar .jump-today button:hover {
+    background-color: #ffffff;
+    color: var(--theme);
 }
