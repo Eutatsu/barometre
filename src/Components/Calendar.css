@@ -80,10 +80,6 @@
     #calendar .diada {
         top: 15px;
     }
-    /* TODO: fix "NaNd NaNh NaNm NaNs" on iOS */
-    #calendar .countdown {
-        display: none !important;
-    }
 }
 
 #calendar .header {

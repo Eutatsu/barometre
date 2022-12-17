@@ -109,7 +109,7 @@ function CalendarFun(props) {
 			colles.innerHTML += ", " + colles_list;
 		panel.style.display = "block";
 
-		const countdown = Date.parse(toAmerican(diada["data"]) + " " + diada["hora"]);
+		const countdown =  new Date(toAmerican(diada["data"])+"T"+diada["hora"]+":00").getTime();
 		document.getElementById("diada-countdown").style.display = "block";
 		clearInterval(countdown_interval);
 		doCountdown(countdown);
@@ -148,7 +148,7 @@ function CalendarFun(props) {
 
 	const toAmerican = (european) => {
 		const [d,m,y] = european.split('/');
-		return m+"-"+d+"-"+y;
+		return y+"-"+m+"-"+d;
 	}
 
 	return (
