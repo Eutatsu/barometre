@@ -81,6 +81,10 @@
     #calendar .diada {
         top: 15px;
     }
+
+    #calendar .diada div {
+        font-size: 10px;
+    }
 }
 
 #calendar .header {
@@ -146,7 +150,6 @@
     text-align: left;
     user-select: none;
     padding: 0 1px;
-    font-size: 10px;
 }
 #calendar .diada div:hover {
     opacity: 0.8;
