@@ -17,6 +17,7 @@ function CalendarFun(props) {
 		const tbl = document.getElementById("calendar-body");
 		if (tbl === null || monthAndYear === null) return;
 
+		hideDiadaInfo();
 		let firstDay = (new Date(year, month)).getDay();
 		firstDay = firstDay === 0 ? 6 : firstDay - 1;
 		const daysInMonth = 32 - new Date(year, month, 32).getDate();
@@ -109,7 +110,7 @@ function CalendarFun(props) {
 			colles.innerHTML += ", " + colles_list;
 		panel.style.display = "block";
 
-		const countdown =  new Date(toAmerican(diada["data"])+"T"+diada["hora"]+":00").getTime();
+		const countdown = new Date(toAmerican(diada["data"])+"T"+pad(diada["hora"] || "00:00", 5)+":00").getTime();
 		document.getElementById("diada-countdown").style.display = "block";
 		clearInterval(countdown_interval);
 		doCountdown(countdown);
@@ -149,6 +150,12 @@ function CalendarFun(props) {
 	const toAmerican = (european) => {
 		const [d,m,y] = european.split('/');
 		return y+"-"+m+"-"+d;
+	}
+
+	const pad = (n, width, z) => {
+		z = z || '0';
+		n = n + '';
+		return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 	}
 
 	return (
