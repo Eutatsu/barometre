@@ -81,7 +81,7 @@ function LlistaDiades(props) {
 	return (
         <>
 			<div id="diades">
-            <h1>Llista de Diades Universitàries</h1>
+            <h1>Llista de diades universitàries</h1>
 			{
 				llista_diades.map((diada, i) => {
 					const areEntrada = areThereCastellsInRonda(diada["colles"], "Entrada");

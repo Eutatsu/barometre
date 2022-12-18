@@ -46,7 +46,7 @@ function Stats(props) {
 	return (
 		<>
 			<div id="stats">
-            <h1>Estadístiques</h1>
+            <h1>Estadístiques de la temporada actual</h1>
 			{
 				castells_arrays.map((castell, i) => {
 					const name = castell[0];

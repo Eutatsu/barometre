@@ -160,7 +160,7 @@ function CalendarFun(props) {
 
 	return (
 		<div id="calendar">
-            <h1>Calendari</h1>
+            <h1>Calendari de diades</h1>
 			<div className="table-wrap">
 				<div className="calendar">
 					<div className="header">
