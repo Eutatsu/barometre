@@ -30,7 +30,7 @@ function LlistaDiades(props) {
 		return Object.keys(obj).length;
 	}
 
-	const perseCastells = (castells) => {
+	const parseCastells = (castells) => {
 		let res = {};
 		for (const castell of castells) {
 			let name = castell["CASTELL"];
@@ -122,18 +122,26 @@ function LlistaDiades(props) {
 									{
 										colles.map((colla, i) => {
 											const castells = colla[1];
+											const entrada = parseCastells(getCastellsRonda(castells, "Entrada"));
+											const round1 = parseCastells(getCastellsRonda(castells, "1"));
+											const round2 = parseCastells(getCastellsRonda(castells, "2"));
+											const round3 = parseCastells(getCastellsRonda(castells, "3"));
+											const round4 = parseCastells(getCastellsRonda(castells, "4"));
+											const round5 = parseCastells(getCastellsRonda(castells, "5"));
+											const pilar = parseCastells(getCastellsRonda(castells, "Pilar"));
+											const sortida = parseCastells(getCastellsRonda(castells, "Sortida"));
 											return (
 												<>
 													<tr>
 														<td className={colla[0].toLowerCase()}>{colla[0]}</td>
-														{ areEntrada && <td>{perseCastells(getCastellsRonda(castells, "Entrada"))}</td> }
-														{ are1 && <td>{perseCastells(getCastellsRonda(castells, "1"))}</td> }
-														{ are2 && <td>{perseCastells(getCastellsRonda(castells, "2"))}</td> }
-														{ are3 && <td>{perseCastells(getCastellsRonda(castells, "3"))}</td> }
-														{ are4 && <td>{perseCastells(getCastellsRonda(castells, "4"))}</td> }
-														{ are5 && <td>{perseCastells(getCastellsRonda(castells, "5"))}</td> }
-														{ arePilar && <td>{perseCastells(getCastellsRonda(castells, "Pilar"))}</td> }
-														{ areSortida && <td>{perseCastells(getCastellsRonda(castells, "Sortida"))}</td> }
+														{ areEntrada && <td className={entrada.includes("(actx)") ? "acotxaneta" : ""}>{entrada}</td> }
+														{ are1 && <td className={round1.includes("(actx)") ? "acotxaneta" : ""}>{round1}</td> }
+														{ are2 && <td className={round2.includes("(actx)") ? "acotxaneta" : ""}>{round2}</td> }
+														{ are3 && <td className={round3.includes("(actx)") ? "acotxaneta" : ""}>{round3}</td> }
+														{ are4 && <td className={round4.includes("(actx)") ? "acotxaneta" : ""}>{round4}</td> }
+														{ are5 && <td className={round5.includes("(actx)") ? "acotxaneta" : ""}>{round5}</td> }
+														{ arePilar && <td className={pilar.includes("(actx)") ? "acotxaneta" : ""}>{pilar}</td> }
+														{ areSortida && <td className={sortida.includes("(actx)") ? "acotxaneta" : ""}>{sortida}</td> }
 													</tr>
 												</>
 											);

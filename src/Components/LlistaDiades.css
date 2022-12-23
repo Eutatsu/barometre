@@ -36,3 +36,7 @@
 #diades td {
 	background-color: var(--lightGray);
 }
+
+#diades .acotxaneta {
+	color: var(--darkGray);
+}
