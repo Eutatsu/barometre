@@ -157,6 +157,10 @@ function Barometre(props) {
                     } else {
                         if (!(colla in castells_puntuats_lastWeek))
                             castells_puntuats_lastWeek[colla] = {};
+                        if (res === "C" && castell["CASTELL"] in castells_puntuats_lastWeek[colla])
+                            return;
+                        if (res === "" && castell["CASTELL"]+"C" in castells_puntuats_lastWeek[colla])
+                            delete castells_puntuats_lastWeek[colla][castell["CASTELL"]+"C"];
                         castells_puntuats_lastWeek[colla][castell["CASTELL"]+res] = punts;
                     }
                 }
@@ -191,7 +195,7 @@ function Barometre(props) {
     top3_lastWeek.forEach((colla) => {
         const collaName = colla["colla"];
         lastWeek_pos[collaName] = colla["pos"];
-    })
+    });
 
     return (
         <>
