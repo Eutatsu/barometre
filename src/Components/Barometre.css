@@ -29,6 +29,7 @@
 }
 #barometre table tr th:nth-child(12) {
     font-weight: lighter;
+    white-space: nowrap;
 }
 
 #barometre table tr td:nth-child(12) {
