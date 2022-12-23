@@ -184,7 +184,7 @@
     left: 5%;
     background-color: #ffffff;
     border: 2px solid var(--theme);
-    box-shadow: 0 0 10px 0 var(--darkGray);
+    box-shadow: 0 0 10px 0 var(--darkerGray);
 }
 #calendar .diada-info p {
     margin: 0;

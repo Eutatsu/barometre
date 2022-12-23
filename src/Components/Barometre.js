@@ -209,14 +209,7 @@ function Barometre(props) {
                             <th></th>
                             <th>#</th>
                             <th>Colla</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th colSpan="8">www.barometreuniversitari.cat</th>
                             <th>📊 {maxCastell}</th>
                         </tr>
                     </thead>
@@ -248,9 +241,6 @@ function Barometre(props) {
                         );
                     })
                 }
-                        <tr className="barometre-footer">
-                            <td colSpan={12}>barometreuniversitari.cat</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
