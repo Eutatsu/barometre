@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Navbar from "./Components/Navbar";
-import DataProcessor from "./Components/DataProcessor";
-import Barometre from './Components/Barometre'
-import ScoreTable from './Components/ScoreTable'
-import Stats from './Components/Stats'
-import Calendar from './Components/Calendar'
-import LlistaDiades from './Components/LlistaDiades'
-import Footer from './Components/Footer'
+import Navbar from "./components/Navbar";
+import DataProcessor from "./components/DataProcessor";
+import Barometre from './components/Barometre'
+import ScoreTable from './components/ScoreTable'
+import Stats from './components/Stats'
+import Calendar from './components/Calendar'
+import LlistaDiades from './components/LlistaDiades'
+import Footer from './components/Footer'
 import './style.css'
 
 function App() {
