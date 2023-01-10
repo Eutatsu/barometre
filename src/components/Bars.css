@@ -1,0 +1,20 @@
+#barometre .bars-container {
+    height: 20px;
+    min-width: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#barometre .bar {
+    width: 10px;
+    margin: 0 auto;
+    align-self: flex-end;
+}
+
+#barometre .bar.castell {
+    background-color: white;
+}
+
+#barometre .bar.pilar {
+    background-color: black;
+}

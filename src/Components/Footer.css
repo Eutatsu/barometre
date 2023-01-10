@@ -1,0 +1,16 @@
+#footer {
+    margin-top: 50px;
+    background-color: var(--darkTheme);
+    padding: 15px 0 20px 10px;
+}
+
+#footer p {
+    margin: 0 0 15px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+#footer a {
+    color: #ffffff;
+    font-weight: bold;
+}
