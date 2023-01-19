@@ -6,14 +6,10 @@ function Navbar() {
 
 	return (
 		<nav id="navigation">
-			{/*<a href="#barometre" className="title">
+			<span onClick={() => { showSection('barometre') }} className="title">
 				<img alt="" src="/favicon.ico"/>
 				Baròmetre Universitari
-			</a>*/}
-			<a href="/" className="title">
-				<img alt="" src="/favicon.ico"/>
-				Baròmetre Universitari
-			</a>
+			</span>
 			<button className="hamburger" onClick={() => { setIsNavExpanded(!isNavExpanded); }}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -30,24 +26,37 @@ function Navbar() {
 			</button>
 			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"}>
         		<ul>
-					{/*<li><a href="#barometre" onClick={() => { hideNavMenu() }}>Baròmetre</a></li>
-          			<li><a href="#score" onClick={() => { hideNavMenu() }}>Taula de puntuacions</a></li>
-          			<li><a href="#stats" onClick={() => { hideNavMenu() }}>Estadístiques</a></li>
-          			<li><a href="#calendar" onClick={() => { hideNavMenu() }}>Calendari</a></li>
-          			<li><a href="#diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>*/}	
-          			<li><a href="/" onClick={() => { hideNavMenu() }}>Baròmetre</a></li>
-          			<li><a href="/score" onClick={() => { hideNavMenu() }}>Taula de puntuacions</a></li>
-          			<li><a href="/stats" onClick={() => { hideNavMenu() }}>Estadístiques</a></li>
-          			<li><a href="/calendar" onClick={() => { hideNavMenu() }}>Calendari</a></li>
-          			<li><a href="/diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>
+					<li><span onClick={() => { hideNavMenu('barometre') }}>Baròmetre</span></li>
+          			<li><span onClick={() => { hideNavMenu('score') }}>Taula de puntuacions</span></li>
+          			<li><span onClick={() => { hideNavMenu('stats') }}>Estadístiques</span></li>
+          			<li><span onClick={() => { hideNavMenu('calendar') }}>Calendari</span></li>
+          			<li><span onClick={() => { hideNavMenu('diades') }}>Llista de diades</span></li>
         		</ul>
     		</div>
 		</nav>
 	);
 }
 
-function hideNavMenu () {
+function hideNavMenu (showId) {
+	showSection(showId);
 	document.getElementById('navMenu').className = 'navigation-menu';
+}
+
+function showSection(showId) {
+	hideAll();
+	const e = document.getElementById(showId);
+	if (e !== null)
+		e.style.display = 'block';
+	window.scrollTo(0,0);
+}
+
+function hideAll() {
+	const sections = ['barometre', 'score', 'stats', 'calendar', 'diades'];
+	for (const sec of sections) {
+		const e = document.getElementById(sec);
+		if (e !== null)
+			e.style.display = 'none';
+	}
 }
 
 export default Navbar;

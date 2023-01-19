@@ -19,6 +19,7 @@
 	font-size: 1.25rem;
 	margin-left: 1rem;
 	line-height: 30px;
+	cursor: pointer;
 }
 
 #navigation img {
@@ -39,11 +40,11 @@
 	list-style-type: none;
 	margin: 0 1.2rem;
 }
-#navigation .navigation-menu li a {
-	text-decoration: none;
+#navigation .navigation-menu li span {
 	display: block;
 	width: 100%;
 	color: #ffffff;
+	cursor: pointer;
 }
 
 @media (max-width: 1100px) {
@@ -75,7 +76,7 @@
 		text-align: center;
 		margin: 0;
 	}
-	#navigation .navigation-menu li a {
+	#navigation .navigation-menu li span {
 		color: #000000 !important;
 		width: 100%;
 		padding: 1.5rem 0;

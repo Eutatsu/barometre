@@ -200,50 +200,50 @@ function Barometre(props) {
     return (
         <>
             <div id="barometre">
-            <h1>Temporada 2022-23</h1>
-            <h2>(Actualitzat a {date})</h2>
-            <div className="justify_center">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>#</th>
-                            <th>Colla</th>
-                            <th colSpan="8">www.barometreuniversitari.cat</th>
-                            <th>📊 {maxCastell}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                {
-                    top3
-                    .sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
-                    .map((colla, i) => {
-                        let pos = lastPoints === colla.puntuacio_total ? i : i+1;
-                        const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : "down";
-                        lastPoints = colla.puntuacio_total;
-                        return (
-                            <tr className="colla" key={colla.colla}>
-                                <td className={difference}></td>
-                                <td>{pos}</td>
-                                <td className={colla.colla.toLowerCase()}>{colla.colla}</td>
-                                {colla.top3.map((castell, i) => {
-                                    return (
-                                        <>
-                                            <td className={donePastWeek(colla.data3[i]) + (isWindows ? " windowsOS" : "")}></td>
-                                            <td key={castell} className={"grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
-                                        </>
-                                    );
-                                })}
-                                <td className={donePastWeek(colla.dataPilar[0]) + (isWindows ? " windowsOS" : "")}></td>
-                                <td className={"grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
-                                <td><Bars castells={colla.puntuacions} pilars={colla.topPilarPuntuacio} topall={maxPuntuacio} /></td>
+                <h1>Temporada 2022-23</h1>
+                <h2>(Actualitzat a {date})</h2>
+                <div className="justify_center">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>#</th>
+                                <th>Colla</th>
+                                <th colSpan="8">www.barometreuniversitari.cat</th>
+                                <th>📊 {maxCastell}</th>
                             </tr>
-                        );
-                    })
-                }
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                    {
+                        top3
+                        .sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
+                        .map((colla, i) => {
+                            let pos = lastPoints === colla.puntuacio_total ? i : i+1;
+                            const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : "down";
+                            lastPoints = colla.puntuacio_total;
+                            return (
+                                <tr className="colla" key={colla.colla}>
+                                    <td className={difference}></td>
+                                    <td>{pos}</td>
+                                    <td className={colla.colla.toLowerCase()}>{colla.colla}</td>
+                                    {colla.top3.map((castell, i) => {
+                                        return (
+                                            <>
+                                                <td className={donePastWeek(colla.data3[i]) + (isWindows ? " windowsOS" : "")}></td>
+                                                <td key={castell} className={"grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
+                                            </>
+                                        );
+                                    })}
+                                    <td className={donePastWeek(colla.dataPilar[0]) + (isWindows ? " windowsOS" : "")}></td>
+                                    <td className={"grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+                                    <td><Bars castells={colla.puntuacions} pilars={colla.topPilarPuntuacio} topall={maxPuntuacio} /></td>
+                                </tr>
+                            );
+                        })
+                    }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
     );

@@ -47,83 +47,83 @@ function Stats(props) {
 	let reset_rows = true;
 	return (
 		<>
-			<div id="stats">
-            <h1>Estadístiques de la temporada actual</h1>
-			{
-				castells_arrays.map((castell, i) => {
-					const name = castell[0];
-					let grup;
-					try {
-						grup = parseInt(puntuacions[name]["Grup"]);
-					} catch {}
-
-					if (reset_rows) {
-						castells_rows = [];
-						castells_rows_names = [];
-						desCar_rows = []
-						colles_rows = [];
-						colles_rows_names = [];
-						colles_rows_names_two = [];
-						table_length = 1;
-						reset_rows = false;
-					}
-					castells_rows.push(<th className={"grup"+grup} colSpan="2">{name}</th>);
-					castells_rows_names.push(name);
-					desCar_rows.push(<><th className={"grup"+grup}>D</th><th className={"grup"+grup}>C</th></>);
-					table_length += 2;
-
-					[...Object.values(castell[1])].forEach((colla, j) => {
-						const colla_name = Object.keys(castell[1])[j];
-						if (!colles_rows_names.includes(colla_name))
-							colles_rows_names.push(colla_name);
-					});
-
-					if (i+1 < castells_arrays.length) {
-						let nextGroup;
+			<div id="stats" style={{display: 'none'}}>
+				<h1>Estadístiques de la temporada actual</h1>
+				{
+					castells_arrays.map((castell, i) => {
+						const name = castell[0];
+						let grup;
 						try {
-							nextGroup = parseInt(puntuacions[castells_arrays[i+1][0]]["Grup"]);
+							grup = parseInt(puntuacions[name]["Grup"]);
 						} catch {}
-						if (nextGroup === grup) return <></>;
-						reset_rows = true;
-					}
 
-					colles_rows_names.forEach(colla => {
-						const colla_res = [];
-						castells_rows_names.forEach(castell => {
-							try {
-								const descarregats = castells[castell][colla][0];
-								const carregats = castells[castell][colla][1];
-								if (descarregats === 0)
-									colla_res.push(<><td></td><td className="carregats">{carregats > 0 ? carregats : ""}</td></>);
-								else if (carregats === 0)
-									colla_res.push(<><td className="descarregats">{descarregats > 0 ? descarregats : ""}</td><td></td></>);
-								else
-									colla_res.push(<><td className="descarregats">{descarregats > 0 ? descarregats : ""}</td><td className="carregats">{carregats > 0 ? carregats : ""}</td></>);
-							} catch {
-								colla_res.push(<><td></td><td></td></>);
-							}
-						})
-						if (!colles_rows_names_two.includes(colla)) {
-							colles_rows.push(<tr><td className={colla.toLowerCase()}>{colla}</td>{colla_res}</tr>);
-							colles_rows_names_two.push(colla);
+						if (reset_rows) {
+							castells_rows = [];
+							castells_rows_names = [];
+							desCar_rows = []
+							colles_rows = [];
+							colles_rows_names = [];
+							colles_rows_names_two = [];
+							table_length = 1;
+							reset_rows = false;
 						}
-					});
-					return (
-						<>
-							<div className="table-wrap"><table>
-								<thead>
-									<tr><th className={"grup"+grup} colSpan={table_length}>Castells del grup {grup}</th></tr>
-									<tr><th className={"grup"+grup} rowSpan="2">Colles</th>{castells_rows}</tr>
-									<tr>{desCar_rows}</tr>
-								</thead>
-								<tbody>
-									{colles_rows}
-								</tbody>
-							</table></div>
-						</>
-					);
-				})
-			}
+						castells_rows.push(<th className={"grup"+grup} colSpan="2">{name}</th>);
+						castells_rows_names.push(name);
+						desCar_rows.push(<><th className={"grup"+grup}>D</th><th className={"grup"+grup}>C</th></>);
+						table_length += 2;
+
+						[...Object.values(castell[1])].forEach((colla, j) => {
+							const colla_name = Object.keys(castell[1])[j];
+							if (!colles_rows_names.includes(colla_name))
+								colles_rows_names.push(colla_name);
+						});
+
+						if (i+1 < castells_arrays.length) {
+							let nextGroup;
+							try {
+								nextGroup = parseInt(puntuacions[castells_arrays[i+1][0]]["Grup"]);
+							} catch {}
+							if (nextGroup === grup) return <></>;
+							reset_rows = true;
+						}
+
+						colles_rows_names.forEach(colla => {
+							const colla_res = [];
+							castells_rows_names.forEach(castell => {
+								try {
+									const descarregats = castells[castell][colla][0];
+									const carregats = castells[castell][colla][1];
+									if (descarregats === 0)
+										colla_res.push(<><td></td><td className="carregats">{carregats > 0 ? carregats : ""}</td></>);
+									else if (carregats === 0)
+										colla_res.push(<><td className="descarregats">{descarregats > 0 ? descarregats : ""}</td><td></td></>);
+									else
+										colla_res.push(<><td className="descarregats">{descarregats > 0 ? descarregats : ""}</td><td className="carregats">{carregats > 0 ? carregats : ""}</td></>);
+								} catch {
+									colla_res.push(<><td></td><td></td></>);
+								}
+							})
+							if (!colles_rows_names_two.includes(colla)) {
+								colles_rows.push(<tr><td className={colla.toLowerCase()}>{colla}</td>{colla_res}</tr>);
+								colles_rows_names_two.push(colla);
+							}
+						});
+						return (
+							<>
+								<div className="table-wrap"><table>
+									<thead>
+										<tr><th className={"grup"+grup} colSpan={table_length}>Castells del grup {grup}</th></tr>
+										<tr><th className={"grup"+grup} rowSpan="2">Colles</th>{castells_rows}</tr>
+										<tr>{desCar_rows}</tr>
+									</thead>
+									<tbody>
+										{colles_rows}
+									</tbody>
+								</table></div>
+							</>
+						);
+					})
+				}
 			</div>
 		</>
 	);
