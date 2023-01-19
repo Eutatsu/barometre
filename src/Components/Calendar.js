@@ -92,6 +92,7 @@ function CalendarFun(props) {
 	}
 
 	const showDiadaInfo = (e) => {
+		hideDiadaInfo();
 		const diada_id = parseInt(e.target.id.split('-')[1]);
 		const diada = getDiadaById(diada_id);
 		const colles_list = diada["colles"].join(', ');
@@ -103,7 +104,7 @@ function CalendarFun(props) {
 		const panel = document.getElementById('info-panel');
 
 		title.innerHTML = diada["diada"];
-		place.innerHTML = "📍 " + diada["lloc"];
+		place.innerHTML = "📍 " + (diada["lloc"] || "NS/NC");
 		time.innerHTML = "🕒 " + (diada["hora"] || "NS/NC");
 		colles.innerHTML = "👥 <b>" + diada["amfitriona"] + "</b>";
 		if (colles_list.length > 0)
@@ -112,7 +113,6 @@ function CalendarFun(props) {
 
 		const countdown = new Date(toAmerican(diada["data"])+"T"+pad(diada["hora"] || "00:00", 5)+":00").getTime();
 		document.getElementById("diada-countdown").style.display = "block";
-		clearInterval(countdown_interval);
 		doCountdown(countdown);
 		countdown_interval = setInterval(function() {
 			doCountdown(countdown);
@@ -122,6 +122,7 @@ function CalendarFun(props) {
 	const hideDiadaInfo = () => {
 		const panel = document.getElementById('info-panel');
 		panel.style.display = "none";
+		clearInterval(countdown_interval);
 	}
 
 	const doCountdown = (target_date) => {
