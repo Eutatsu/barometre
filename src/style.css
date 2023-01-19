@@ -71,7 +71,8 @@ h3 {
 #score,
 #stats,
 #calendar,
-#diades {
+#diades,
+#notfound {
     scroll-margin-top: 80px;
 }
 

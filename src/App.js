@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import NotFound from "./Components/404";
 import Navbar from "./Components/Navbar";
 import DataProcessor from "./Components/DataProcessor";
 import Barometre from './Components/Barometre'
@@ -40,7 +42,7 @@ function App() {
       <DataProcessor {...exports} />
 
       <Navbar />
-      <div id="root">
+      {/*<div id="root">
         <Barometre {...exports} />
         <div className="space_between"></div>
         <ScoreTable {...exports} />
@@ -50,7 +52,17 @@ function App() {
         <Calendar {...exports} />
         <div className="space_between"></div>
         <LlistaDiades {...exports} />
-      </div>
+      </div>*/}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<div id="root"><Barometre {...exports} /></div>}/>
+          <Route path="/score" element={<div id="root"><ScoreTable {...exports} /></div>}/>
+          <Route path="/stats" element={<div id="root"><Stats {...exports} /></div>}/>
+          <Route path="/calendar" element={<div id="root"><Calendar {...exports} /></div>}/>
+          <Route path="/diades" element={<div id="root"><LlistaDiades {...exports} /></div>}/>
+          <Route path='*' element={<div id="root"><NotFound /></div>}/>
+        </Routes>
+      </BrowserRouter>
 
       <Footer />
     </>

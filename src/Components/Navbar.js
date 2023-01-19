@@ -6,7 +6,11 @@ function Navbar() {
 
 	return (
 		<nav id="navigation">
-			<a href="#barometre" className="title">
+			{/*<a href="#barometre" className="title">
+				<img alt="" src="/favicon.ico"/>
+				Baròmetre Universitari
+			</a>*/}
+			<a href="/" className="title">
 				<img alt="" src="/favicon.ico"/>
 				Baròmetre Universitari
 			</a>
@@ -26,11 +30,16 @@ function Navbar() {
 			</button>
 			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"}>
         		<ul>
-          			<li><a href="#barometre" onClick={() => { hideNavMenu() }}>Baròmetre</a></li>
+					{/*<li><a href="#barometre" onClick={() => { hideNavMenu() }}>Baròmetre</a></li>
           			<li><a href="#score" onClick={() => { hideNavMenu() }}>Taula de puntuacions</a></li>
           			<li><a href="#stats" onClick={() => { hideNavMenu() }}>Estadístiques</a></li>
           			<li><a href="#calendar" onClick={() => { hideNavMenu() }}>Calendari</a></li>
-          			<li><a href="#diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>
+          			<li><a href="#diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>*/}	
+          			<li><a href="/" onClick={() => { hideNavMenu() }}>Baròmetre</a></li>
+          			<li><a href="/score" onClick={() => { hideNavMenu() }}>Taula de puntuacions</a></li>
+          			<li><a href="/stats" onClick={() => { hideNavMenu() }}>Estadístiques</a></li>
+          			<li><a href="/calendar" onClick={() => { hideNavMenu() }}>Calendari</a></li>
+          			<li><a href="/diades" onClick={() => { hideNavMenu() }}>Llista de diades</a></li>
         		</ul>
     		</div>
 		</nav>
