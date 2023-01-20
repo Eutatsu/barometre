@@ -6,6 +6,7 @@ import ScoreTable from './Components/ScoreTable'
 import Stats from './Components/Stats'
 import Calendar from './Components/Calendar'
 import LlistaDiades from './Components/LlistaDiades'
+import Collaborate from './Components/Collaborate'
 import Footer from './Components/Footer'
 import './style.css'
 
@@ -46,6 +47,7 @@ function App() {
         <Stats {...exports} />
         <Calendar {...exports} />
         <LlistaDiades {...exports} />
+        <Collaborate {...exports} />
       </div>
 
       <Footer />

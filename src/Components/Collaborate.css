@@ -1,0 +1,10 @@
+#collaborate .image {
+	margin: 50px auto;
+	text-align: center;
+}
+
+#collaborate img {
+	width: 95%;
+	max-width: 300px;
+	border-radius: 50%;
+}

@@ -31,6 +31,7 @@ function Navbar() {
           			<li><span onClick={() => { hideNavMenu('stats') }}>Estadístiques</span></li>
           			<li><span onClick={() => { hideNavMenu('calendar') }}>Calendari</span></li>
           			<li><span onClick={() => { hideNavMenu('diades') }}>Llista de diades</span></li>
+          			<li><span onClick={() => { hideNavMenu('collaborate') }}>Collabora-hi</span></li>
         		</ul>
     		</div>
 		</nav>
@@ -51,7 +52,7 @@ function showSection(showId) {
 }
 
 function hideAll() {
-	const sections = ['barometre', 'score', 'stats', 'calendar', 'diades'];
+	const sections = ['barometre', 'score', 'stats', 'calendar', 'diades', 'collaborate'];
 	for (const sec of sections) {
 		const e = document.getElementById(sec);
 		if (e !== null)
