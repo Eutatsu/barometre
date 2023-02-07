@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import DataProcessor from "./Components/DataProcessor";
 import Barometre from './Components/Barometre'
