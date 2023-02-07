@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import DataProcessor from "./Components/DataProcessor";
 import Barometre from './Components/Barometre'
@@ -40,15 +41,17 @@ function App() {
     <>
       <DataProcessor {...exports} />
 
-      <Navbar />
-      <div id="root">
-        <Barometre {...exports} />
-        <ScoreTable {...exports} />
-        <Stats {...exports} />
-        <Calendar {...exports} />
-        <LlistaDiades {...exports} />
-        <Collaborate {...exports} />
-      </div>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<div id="root"><Barometre {...exports}/></div>}/>
+          <Route path="/score" element={<div id="root"><ScoreTable {...exports}/></div>}/>
+          <Route path="/stats" element={<div id="root"><Stats {...exports}/></div>}/>
+          <Route path="/calendar" element={<div id="root"><Calendar {...exports}/></div>}/>
+          <Route path="/diades" element={<div id="root"><LlistaDiades {...exports}/></div>}/>
+          <Route path="/collaborate" element={<div id="root"><Collaborate {...exports}/></div>}/>
+        </Routes>
+      </Router>
 
       <Footer />
     </>

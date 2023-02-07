@@ -80,7 +80,7 @@ function LlistaDiades(props) {
 
 	return (
         <>
-			<div id="diades" style={{display: 'none'}}>
+			<div id="diades">
 				<h1>Llista de diades universitàries</h1>
 				{
 					llista_diades.map((diada, i) => {

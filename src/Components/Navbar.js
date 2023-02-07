@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 import "./Navbar.css"
 
 function Navbar() {
@@ -6,9 +7,11 @@ function Navbar() {
 
 	return (
 		<nav id="navigation">
-			<span onClick={() => { showSection('barometre') }} className="title">
-				<img alt="" src="/favicon.ico"/>
-				Baròmetre Universitari
+			<span className="title">
+				<Link to="/">
+					<img alt="" src="/favicon.ico"/>
+					Baròmetre Universitari
+				</Link>
 			</span>
 			<button className="hamburger" onClick={() => { setIsNavExpanded(!isNavExpanded); }}>
 				<svg
@@ -26,38 +29,16 @@ function Navbar() {
 			</button>
 			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"}>
         		<ul>
-					<li><span onClick={() => { hideNavMenu('barometre') }}>Baròmetre</span></li>
-          			<li><span onClick={() => { hideNavMenu('score') }}>Taula de puntuacions</span></li>
-          			<li><span onClick={() => { hideNavMenu('stats') }}>Estadístiques</span></li>
-          			<li><span onClick={() => { hideNavMenu('calendar') }}>Calendari</span></li>
-          			<li><span onClick={() => { hideNavMenu('diades') }}>Llista de diades</span></li>
-          			<li><span onClick={() => { hideNavMenu('collaborate') }}>Collabora-hi</span></li>
+					<li><Link to="/">Baròmetre</Link></li>
+					<li><Link to="/score">Taula de puntuacions</Link></li>
+					<li><Link to="/stats">Estadístiques</Link></li>
+					<li><Link to="/calendar">Calendari</Link></li>
+					<li><Link to="/diades">Llista de diades</Link></li>
+					<li><Link to="/collaborate">Col·labora-hi</Link></li>
         		</ul>
     		</div>
 		</nav>
 	);
-}
-
-function hideNavMenu (showId) {
-	showSection(showId);
-	document.getElementById('navMenu').className = 'navigation-menu';
-}
-
-function showSection(showId) {
-	hideAll();
-	const e = document.getElementById(showId);
-	if (e !== null)
-		e.style.display = 'block';
-	window.scrollTo(0,0);
-}
-
-function hideAll() {
-	const sections = ['barometre', 'score', 'stats', 'calendar', 'diades', 'collaborate'];
-	for (const sec of sections) {
-		const e = document.getElementById(sec);
-		if (e !== null)
-			e.style.display = 'none';
-	}
 }
 
 export default Navbar;

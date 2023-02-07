@@ -47,7 +47,7 @@ function Stats(props) {
 	let reset_rows = true;
 	return (
 		<>
-			<div id="stats" style={{display: 'none'}}>
+			<div id="stats">
 				<h1>Estadístiques de la temporada actual</h1>
 				{
 					castells_arrays.map((castell, i) => {

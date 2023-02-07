@@ -13,13 +13,16 @@
 }
 
 #navigation .title {
-	text-decoration: none;
-	font-weight: bold;
-	color: #ffffff;
 	font-size: 1.25rem;
 	margin-left: 1rem;
 	line-height: 30px;
 	cursor: pointer;
+}
+
+#navigation .title a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #ffffff;
 }
 
 #navigation img {
@@ -40,10 +43,11 @@
 	list-style-type: none;
 	margin: 0 1.2rem;
 }
-#navigation .navigation-menu li span {
+#navigation .navigation-menu li a {
 	display: block;
 	width: 100%;
 	color: #ffffff;
+	text-decoration: none;
 	cursor: pointer;
 }
 
@@ -76,7 +80,7 @@
 		text-align: center;
 		margin: 0;
 	}
-	#navigation .navigation-menu li span {
+	#navigation .navigation-menu li a {
 		color: #000000 !important;
 		width: 100%;
 		padding: 1.5rem 0;

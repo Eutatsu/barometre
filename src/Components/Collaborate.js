@@ -3,7 +3,7 @@ import "./Collaborate.css"
 function Collaborate() {
 	return (
 		<>
-			<div id="collaborate" style={{display: 'none'}}>
+			<div id="collaborate">
 				<h1>Collabora-hi!</h1>
 				<p>
 					Un dels objectius del Baròmetre Universitari és recollir totes les actuacions universitàries de la història. Estem contactant amb gent de totes les colles per tal de recollir tots els castells, colla per colla.
