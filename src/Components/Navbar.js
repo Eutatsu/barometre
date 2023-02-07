@@ -27,7 +27,7 @@ function Navbar() {
           			/>
         		</svg>
 			</button>
-			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"}>
+			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"} onClick={() => { setIsNavExpanded(!isNavExpanded); }}>
         		<ul>
 					<li><Link to="/">Baròmetre</Link></li>
 					<li><Link to="/score">Taula de puntuacions</Link></li>
