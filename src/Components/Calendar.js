@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Calendar.css"
 
 function CalendarFun(props) {
@@ -5,7 +6,7 @@ function CalendarFun(props) {
 	const diades = Object.values(calendari);
 
 	const months = ["gener","febrer","març","abril","maig","juny","juliol","agost","setembre","octubre","novembre","desembre"];
-	const monthAndYear = document.getElementById("monthAndYear");
+	let monthAndYear;
 
 	const today = new Date();
 	let currentMonth = today.getMonth();
@@ -159,9 +160,15 @@ function CalendarFun(props) {
 		return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 	}
 
+	useEffect(() => {
+		// eslint-disable-next-line
+		monthAndYear = document.getElementById("monthAndYear");
+		showCalendar(currentMonth, currentYear)
+	}, []);
+
 	return (
 		<div id="calendar">
-            <h1>Calendari de diades</h1>
+			<h1>Calendari de diades</h1>
 			<div className="table-wrap">
 				<div className="calendar">
 					<div className="header">
@@ -198,7 +205,6 @@ function CalendarFun(props) {
 					<div id="diada-countdown" className="countdown"></div>
 					<div className="close" onClick={hideDiadaInfo}></div>
 				</div>
-				{showCalendar(currentMonth, currentYear)}
 			</div>
 		</div>
 	);
