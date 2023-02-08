@@ -1,7 +1,9 @@
 import "./ScoreTable.css"
 
 function ScoreTable(props) {
-    const { puntuacions } = props;
+	window.scrollTo(0, 0);
+
+	const { puntuacions } = props;
 
 	const groupInedit = group => {
 		return !taula_puntuacions

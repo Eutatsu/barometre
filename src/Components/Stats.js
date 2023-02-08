@@ -1,7 +1,9 @@
 import "./Stats.css"
 
 function Stats(props) {
-    const { diades, puntuacions } = props;
+	window.scrollTo(0, 0);
+
+	const { diades, puntuacions } = props;
 
 	const castells = {};
 

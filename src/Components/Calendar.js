@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import "./Calendar.css"
 
 function CalendarFun(props) {
+	window.scrollTo(0, 0);
+
 	const { calendari } = props;
 	const diades = Object.values(calendari);
 

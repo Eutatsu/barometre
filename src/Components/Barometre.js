@@ -2,6 +2,8 @@ import "./Barometre.css"
 import Bars from "./Bars";
 
 function Barometre(props) {
+    window.scrollTo(0, 0);
+
     const { diades, puntuacions } = props;
     const isWindows = window.navigator["platform"].includes("Win");
 

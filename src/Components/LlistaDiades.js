@@ -1,12 +1,14 @@
 import "./LlistaDiades.css"
 
 function LlistaDiades(props) {
-    const { diades } = props;
+	window.scrollTo(0, 0);
+
+	const { diades } = props;
 
 	const fromEuropean = (dateString) => {
-        const [day, month, year] = dateString.split("/");
-        return new Date(`${month}/${day}/${year}`);
-    };
+		const [day, month, year] = dateString.split("/");
+		return new Date(`${month}/${day}/${year}`);
+	};
 
 	const areThereCastellsInRonda = (diada_colles, ronda) => {
 		const castells = [...Object.values(diada_colles)];
