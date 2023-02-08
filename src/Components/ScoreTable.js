@@ -56,8 +56,8 @@ function ScoreTable(props) {
 						<tbody>
 					{
 						taula_puntuacions.map((castell, i) => {
-							const group = lastGroup === castell["Grup"] ? <></> : <td className={groupInedit(castell["Grup"]) && "inedit"} rowSpan={groupLength(castell["Grup"])}>Grup {castell["Grup"]}</td>;
-							const sub = lastSub === castell["Subgrup"] && lastGroup === castell["Grup"] ? <></> : <td className={subGroupInedit(castell["Grup"], castell["Subgrup"]) && "inedit"} rowSpan={subGroupLength(castell["Grup"], castell["Subgrup"])}>sub {castell["Subgrup"]}</td>;
+							const group = lastGroup === castell["Grup"] ? <></> : <td className={groupInedit(castell["Grup"]) ? 'inedit' : ''} rowSpan={groupLength(castell["Grup"])}>Grup {castell["Grup"]}</td>;
+							const sub = lastSub === castell["Subgrup"] && lastGroup === castell["Grup"] ? <></> : <td className={subGroupInedit(castell["Grup"], castell["Subgrup"]) ? 'inedit' : ''} rowSpan={subGroupLength(castell["Grup"], castell["Subgrup"])}>sub {castell["Subgrup"]}</td>;
 							lastGroup = castell["Grup"];
 							lastSub = castell["Subgrup"];
 							return (
@@ -67,9 +67,9 @@ function ScoreTable(props) {
 										{sub}
 										{
 											<>
-												<td className={!castell["Mai carregat"] && 'inedit'}>{Object.keys(puntuacions)[i]}</td>
-												<td className={!castell["Mai carregat"] && 'inedit'}>{castell["Carregat"]}</td>
-												<td className={!castell["Mai descarregat"] && 'inedit'}>{castell["Descarregat"]}</td>							
+												<td className={!castell["Mai carregat"] ? 'inedit': ''}>{Object.keys(puntuacions)[i]}</td>
+												<td className={!castell["Mai carregat"] ? 'inedit': ''}>{castell["Carregat"]}</td>
+												<td className={!castell["Mai descarregat"] ? 'inedit': ''}>{castell["Descarregat"]}</td>							
 											</>
 										}
 									</tr>
