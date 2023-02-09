@@ -52,10 +52,6 @@
 }
 
 @media (max-width: 1200px) {
-	#navigation img {
-		display: none;
-	}
-
 	#navigation .hamburger {
 	  display: block !important;
 	}
@@ -107,7 +103,7 @@
 	transition: background-color 0.2s ease-in-out;
 	position: absolute;
 	top: 50%;
-	right: 25px;
+	right: 15px;
 	transform: translateY(-50%);
 	display: none;
 }

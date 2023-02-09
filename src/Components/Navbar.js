@@ -7,7 +7,7 @@ function Navbar() {
 
 	return (
 		<nav id="navigation">
-			<span className="title">
+			<span className="title" onClick={() => { setIsNavExpanded(!isNavExpanded); }}>
 				<Link to="/">
 					<img alt="" src="/favicon.ico"/>
 					Baròmetre Universitari
