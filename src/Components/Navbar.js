@@ -7,7 +7,7 @@ function Navbar() {
 
 	return (
 		<nav id="navigation">
-			<span className="title" onClick={() => { setIsNavExpanded(!isNavExpanded); }}>
+			<span className="title" onClick={() => { setIsNavExpanded(false); }}>
 				<Link to="/">
 					<img alt="" src="/favicon.ico"/>
 					Baròmetre Universitari
@@ -27,7 +27,7 @@ function Navbar() {
           			/>
         		</svg>
 			</button>
-			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"} onClick={() => { setIsNavExpanded(!isNavExpanded); }}>
+			<div id="navMenu" className={isNavExpanded ? "navigation-menu expanded" : "navigation-menu"} onClick={() => { setIsNavExpanded(false); }}>
         		<ul>
 					<li><Link to="/">Baròmetre</Link></li>
 					<li><Link to="/score">Taula de puntuacions</Link></li>
