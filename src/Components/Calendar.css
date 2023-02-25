@@ -148,6 +148,8 @@
 }
 #calendar .today {
     background-color: var(--theme);
+}
+#calendar .today .day {
     color: #ffffff;
 }
 
