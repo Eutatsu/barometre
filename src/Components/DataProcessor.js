@@ -51,7 +51,7 @@ function DataProcessor(props) {
             calendar_dict[hash]["lloc"] = diada["LLOC"];
             calendar_dict[hash]["amfitriona"] = diada["COLLA AMFITRIONA"]
             calendar_dict[hash]["colles"] = [];
-            if (diada["ALTRES COLLES"].includes(',')) {
+            if (diada["ALTRES COLLES"].length > 0) {
                 const colles = diada["ALTRES COLLES"].split(',');
                 colles.forEach(colla => {
                     calendar_dict[hash]["colles"].push(colla.trim());
