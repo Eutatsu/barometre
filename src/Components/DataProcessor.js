@@ -32,7 +32,43 @@ function DataProcessor(props) {
                 diades_dict[diada_hash]["colles"][colla]["ordre"] = parseInt(only_colla[0]["ORDRE"]);
             });
         });
-
+/*
+        diades_dict["TEST"] = {};
+        diades_dict["TEST"]["info"] = {
+            "DATA": "17/03/2023",
+            "DIADA": "TEST",
+            "LLOC": "Born"
+        };
+        diades_dict["TEST"]["colles"] = {
+            "Engrescats": [
+                {
+                    "RONDA": "Entrada",
+                    "CASTELL": "Pd4",
+                    "RESULTAT": "Descarregat"
+                },
+                {
+                    "RONDA": "Entrada",
+                    "CASTELL": "Pd4",
+                    "RESULTAT": "Descarregat"
+                },
+                {
+                    "RONDA": "1",
+                    "CASTELL": "4d6a",
+                    "RESULTAT": "Descarregat"
+                },
+                {
+                    "RONDA": "2",
+                    "CASTELL": "3d7 (no actius)",
+                    "RESULTAT": "Descarregat"
+                },
+                {
+                    "RONDA": "3",
+                    "CASTELL": "5d6",
+                    "RESULTAT": "Descarregat"
+                }
+            ]
+        };
+*/
         return diades_dict;
     };
 

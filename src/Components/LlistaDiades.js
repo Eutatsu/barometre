@@ -136,14 +136,14 @@ function LlistaDiades(props) {
 													<>
 														<tr>
 															<td className={colla[0].toLowerCase()}>{colla[0]}</td>
-															{ areEntrada && <td className={entrada.includes("(actx)") ? "acotxaneta" : ""}>{entrada}</td> }
-															{ are1 && <td className={round1.includes("(actx)") ? "acotxaneta" : ""}>{round1}</td> }
-															{ are2 && <td className={round2.includes("(actx)") ? "acotxaneta" : ""}>{round2}</td> }
-															{ are3 && <td className={round3.includes("(actx)") ? "acotxaneta" : ""}>{round3}</td> }
-															{ are4 && <td className={round4.includes("(actx)") ? "acotxaneta" : ""}>{round4}</td> }
-															{ are5 && <td className={round5.includes("(actx)") ? "acotxaneta" : ""}>{round5}</td> }
-															{ arePilar && <td className={pilar.includes("(actx)") ? "acotxaneta" : ""}>{pilar}</td> }
-															{ areSortida && <td className={sortida.includes("(actx)") ? "acotxaneta" : ""}>{sortida}</td> }
+															{ areEntrada && <td className={entrada.includes("(") ? "invalid" : ""}>{entrada}</td> }
+															{ are1 && <td className={round1.includes("(") ? "invalid" : ""}>{round1}</td> }
+															{ are2 && <td className={round2.includes("(") ? "invalid" : ""}>{round2}</td> }
+															{ are3 && <td className={round3.includes("(") ? "invalid" : ""}>{round3}</td> }
+															{ are4 && <td className={round4.includes("(") ? "invalid" : ""}>{round4}</td> }
+															{ are5 && <td className={round5.includes("(") ? "invalid" : ""}>{round5}</td> }
+															{ arePilar && <td className={pilar.includes("(") ? "invalid" : ""}>{pilar}</td> }
+															{ areSortida && <td className={sortida.includes("(") ? "invalid" : ""}>{sortida}</td> }
 														</tr>
 													</>
 												);

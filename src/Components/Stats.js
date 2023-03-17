@@ -13,11 +13,11 @@ function Stats(props) {
 		colles.forEach((colla, i) => {
 			const name = Object.keys(diada["colles"])[i];
 			const actuacio = [...Object.values(colla)];
-			actuacio.pop();
+			if (Number.isInteger(actuacio[actuacio.length - 1]))
+				actuacio.pop();
 			actuacio.forEach(castell => {
 				castell = [...Object.values(castell)];
-				if (castell[2] !== 'Descarregat' && castell[2] !== 'Carregat') return;
-				if (castell[1].includes("(actx)")) return;
+				if ((castell[2] !== 'Descarregat' && castell[2] !== 'Carregat') || castell[1].includes("(")) return;
 				
 				const descarregat = castell[2] === 'Descarregat';
 				if (!(castell[1] in castells))
@@ -74,7 +74,7 @@ function Stats(props) {
 						desCar_rows.push(<><th className={"grup"+grup}>D</th><th className={"grup"+grup}>C</th></>);
 						table_length += 2;
 
-						[...Object.values(castell[1])].forEach((colla, j) => {
+						[...Object.values(castell[1])].forEach((_, j) => {
 							const colla_name = Object.keys(castell[1])[j];
 							if (!colles_rows_names.includes(colla_name))
 								colles_rows_names.push(colla_name);
@@ -85,7 +85,8 @@ function Stats(props) {
 							try {
 								nextGroup = parseInt(puntuacions[castells_arrays[i+1][0]]["Grup"]);
 							} catch {}
-							if (nextGroup === grup) return <></>;
+							if (nextGroup === grup)
+								return <></>;
 							reset_rows = true;
 						}
 
