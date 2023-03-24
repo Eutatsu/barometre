@@ -18,6 +18,7 @@ function Stats(props) {
 			actuacio.forEach(castell => {
 				castell = [...Object.values(castell)];
 				if ((castell[2] !== 'Descarregat' && castell[2] !== 'Carregat') || castell[1].includes("(")) return;
+				if (!(castell[1] in puntuacions)) return;
 				
 				const descarregat = castell[2] === 'Descarregat';
 				if (!(castell[1] in castells))

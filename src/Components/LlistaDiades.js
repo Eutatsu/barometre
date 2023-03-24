@@ -3,7 +3,7 @@ import "./LlistaDiades.css"
 function LlistaDiades(props) {
 	window.scrollTo(0, 0);
 
-	const { diades } = props;
+	const { diades, puntuacions } = props;
 
 	const fromEuropean = (dateString) => {
 		const [day, month, year] = dateString.split("/");
@@ -62,7 +62,7 @@ function LlistaDiades(props) {
 	}
 
 	const formatCastell = (amount, castell) => {
-		return (amount === 1 ? "" :amount) + castell;
+		return (amount === 1 ? "" : amount) + castell;
 	}
 
 	const specialRounds = (castellsDict) => {
@@ -77,6 +77,15 @@ function LlistaDiades(props) {
 		return false;
 	}
 
+	const validClass = (castells) => {
+		if (castells.length === 0) return "";
+		if (castells.length === 1 && castells[0].CASTELL.includes("("))
+			return "invalid";
+		for (let castell of castells)
+			if (castell.CASTELL in puntuacions) return "";
+		return "invalid";
+	}
+
     const llista_diades = [...Object.values(diades)];
 	llista_diades.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
 
@@ -85,7 +94,7 @@ function LlistaDiades(props) {
 			<div id="diades">
 				<h1>Llista de diades universitàries</h1>
 				{
-					llista_diades.map((diada, i) => {
+					llista_diades.map((diada, _) => {
 						const areEntrada = areThereCastellsInRonda(diada["colles"], "Entrada");
 						const are1 = areThereCastellsInRonda(diada["colles"], "1");
 						const are2 = areThereCastellsInRonda(diada["colles"], "2");
@@ -136,14 +145,14 @@ function LlistaDiades(props) {
 													<>
 														<tr>
 															<td className={colla[0].toLowerCase()}>{colla[0]}</td>
-															{ areEntrada && <td className={entrada.includes("(") ? "invalid" : ""}>{entrada}</td> }
-															{ are1 && <td className={round1.includes("(") ? "invalid" : ""}>{round1}</td> }
-															{ are2 && <td className={round2.includes("(") ? "invalid" : ""}>{round2}</td> }
-															{ are3 && <td className={round3.includes("(") ? "invalid" : ""}>{round3}</td> }
-															{ are4 && <td className={round4.includes("(") ? "invalid" : ""}>{round4}</td> }
-															{ are5 && <td className={round5.includes("(") ? "invalid" : ""}>{round5}</td> }
-															{ arePilar && <td className={pilar.includes("(") ? "invalid" : ""}>{pilar}</td> }
-															{ areSortida && <td className={sortida.includes("(") ? "invalid" : ""}>{sortida}</td> }
+															{ areEntrada && <td className={validClass(getCastellsRonda(castells, "Entrada"))}>{entrada}</td> }
+															{ are1 && <td className={validClass(getCastellsRonda(castells, "1"))}>{round1}</td> }
+															{ are2 && <td className={validClass(getCastellsRonda(castells, "2"))}>{round2}</td> }
+															{ are3 && <td className={validClass(getCastellsRonda(castells, "3"))}>{round3}</td> }
+															{ are4 && <td className={validClass(getCastellsRonda(castells, "4"))}>{round4}</td> }
+															{ are5 && <td className={validClass(getCastellsRonda(castells, "5"))}>{round5}</td> }
+															{ arePilar && <td className={validClass(getCastellsRonda(castells, "Pilar"))}>{pilar}</td> }
+															{ areSortida && <td className={validClass(getCastellsRonda(castells, "Sortida"))}>{sortida}</td> }
 														</tr>
 													</>
 												);
