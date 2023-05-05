@@ -3,7 +3,7 @@ import "./LlistaDiades.css"
 function LlistaDiades(props) {
 	window.scrollTo(0, 0);
 
-	const { diades, puntuacions } = props;
+	const { diades } = props;
 
 	const fromEuropean = (dateString) => {
 		const [day, month, year] = dateString.split("/");
@@ -87,10 +87,8 @@ function LlistaDiades(props) {
 
 	const validClass = (castells) => {
 		if (castells.length === 0) return "";
-		if (castells.length === 1 && castells[0].CASTELL.includes("("))
-			return "invalid";
 		for (let castell of castells)
-			if (castell.CASTELL in puntuacions) return "";
+			if (!castell.CASTELL.includes("(") && !castell.CASTELL.includes("n")) return "";
 		return "invalid";
 	}
 
