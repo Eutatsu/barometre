@@ -35,7 +35,7 @@ class Navbar extends Component {
 						<li><Link to="/stats">Estadístiques</Link></li>
 						<li><Link to="/calendar">Calendari</Link></li>
 						<li><Link to="/diades">Llista de diades</Link></li>
-						{/*<li><Link to="/calculadora">Calculadora</Link></li>*/}
+						<li><Link to="/calculadora">Calculadora</Link></li>
 						<li><Link to="/collaborate">Col·labora-hi</Link></li>
 					</ul>
 				</div>
