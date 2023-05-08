@@ -1,61 +1,57 @@
 import { useEffect, useState } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import DataProcessor from "./Components/DataProcessor";
-import Barometre from './Components/Barometre'
-import ScoreTable from './Components/ScoreTable'
-import Stats from './Components/Stats'
-import Calendar from './Components/Calendar'
-import LlistaDiades from './Components/LlistaDiades'
-import Collaborate from './Components/Collaborate'
-import Footer from './Components/Footer'
-import './style.css'
+import Navbar from "./components/Navbar";
+import DataProcessor from "./components/DataProcessor";
+import Barometre from "./pages/Barometre";
+import ScoreTable from "./pages/ScoreTable";
+import Stats from "./pages/Stats";
+import Calendar from "./pages/Calendar";
+import LlistaDiades from "./pages/LlistaDiades";
+import Calculadora from "./pages/Calculadora";
+import Collaborate from "./pages/Collaborate";
+import Footer from "./components/Footer";
+import './css/normalize.css';
+import './css/main.css';
 
 function App() {
-  const [diades, setDiades] = useState({});
-  const [calendari, setCalendari] = useState({});
-  const [puntuacions, setPuntuacions] = useState({});
+	const [diades, setDiades] = useState({});
+	const [puntuacions, setPuntuacions] = useState({});
 
-  const exports = {
-    'diades': diades,
-    'setDiades': setDiades,
-    'calendari': calendari,
-    'setCalendari': setCalendari,
-    'puntuacions': puntuacions,
-    'setPuntuacions': setPuntuacions,
-  };
+	const exports = {
+		'diades': diades,
+		'setDiades': setDiades,
+		'puntuacions': puntuacions,
+		'setPuntuacions': setPuntuacions,
+	};
 
-  useEffect(() => {
-    //console.log(puntuacions)
-  }, [puntuacions]);
+	useEffect(() => {
+		//console.log(puntuacions)
+	}, [puntuacions]);
 
-  useEffect(() => {
-    //console.log(calendari)
-  }, [calendari]);
+	useEffect(() => {
+		//console.log(diades)
+	}, [diades]);
 
-  useEffect(() => {
-    //console.log(diades)
-  }, [diades]);
+	return (<>
+		<DataProcessor {...exports} />
 
-  return (
-    <>
-      <DataProcessor {...exports} />
+		<Router>
+			<Navbar />
+			<main className="page">
+				<Routes>
+					<Route path="/" element={<Barometre {...exports}/>}/>
+					<Route path="/score" element={<ScoreTable {...exports}/>}/>
+					<Route path="/stats" element={<Stats {...exports}/>}/>
+					<Route path="/calendar" element={<Calendar {...exports}/>}/>
+					<Route path="/diades" element={<LlistaDiades {...exports}/>}/>
+					<Route path="/calculadora" element={<Calculadora {...exports}/>}/>
+					<Route path="/collaborate" element={<Collaborate {...exports}/>}/>
+				</Routes>
+			</main>
+		</Router>
 
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<div id="root"><Barometre {...exports}/></div>}/>
-          <Route path="/score" element={<div id="root"><ScoreTable {...exports}/></div>}/>
-          <Route path="/stats" element={<div id="root"><Stats {...exports}/></div>}/>
-          <Route path="/calendar" element={<div id="root"><Calendar {...exports}/></div>}/>
-          <Route path="/diades" element={<div id="root"><LlistaDiades {...exports}/></div>}/>
-          <Route path="/collaborate" element={<div id="root"><Collaborate {...exports}/></div>}/>
-        </Routes>
-      </Router>
-
-      <Footer />
-    </>
-  );
+		<Footer />
+	</>);
 }
 
 export default App;

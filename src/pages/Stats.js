@@ -1,57 +1,55 @@
-import "./Stats.css"
+import { Component } from "react";
 
-function Stats(props) {
-	window.scrollTo(0, 0);
+class Stats extends Component {
+	render() {
+		const { diades, puntuacions } = this.props;
 
-	const { diades, puntuacions } = props;
+		const castells = {};
 
-	const castells = {};
-
-	const diades_array = [...Object.values(diades)];
-	diades_array.forEach(diada => {
-		const colles = [...Object.values(diada["colles"])];
-		colles.forEach((colla, i) => {
-			const name = Object.keys(diada["colles"])[i];
-			const actuacio = [...Object.values(colla)];
-			if (Number.isInteger(actuacio[actuacio.length - 1]))
-				actuacio.pop();
-			actuacio.forEach(castell => {
-				castell = [...Object.values(castell)];
-				if ((castell[2] !== 'Descarregat' && castell[2] !== 'Carregat') || castell[1].includes("(")) return;
-				if (!(castell[1] in puntuacions)) return;
-				
-				const descarregat = castell[2] === 'Descarregat';
-				if (!(castell[1] in castells))
-					castells[castell[1]] = {};
-				if (!(name in castells[castell[1]]))
-					castells[castell[1]][name] = [0, 0];
-				
-				if (descarregat)
-					castells[castell[1]][name][0] += 1;
-				else
-					castells[castell[1]][name][1] += 1;
+		const diades_array = [...Object.values(diades)];
+		diades_array.forEach(diada => {
+			const colles = [...Object.values(diada["colles"])];
+			colles.forEach((colla, i) => {
+				const name = Object.keys(diada["colles"])[i];
+				const actuacio = [...Object.values(colla)];
+				if (Number.isInteger(actuacio[actuacio.length - 1]))
+					actuacio.pop();
+				actuacio.forEach(castell => {
+					castell = [...Object.values(castell)];
+					if ((castell[2] !== 'Descarregat' && castell[2] !== 'Carregat') || castell[1].includes("(")) return;
+					if (!(castell[1] in puntuacions)) return;
+					
+					const descarregat = castell[2] === 'Descarregat';
+					if (!(castell[1] in castells))
+						castells[castell[1]] = {};
+					if (!(name in castells[castell[1]]))
+						castells[castell[1]][name] = [0, 0];
+					
+					if (descarregat)
+						castells[castell[1]][name][0] += 1;
+					else
+						castells[castell[1]][name][1] += 1;
+				});
 			});
 		});
-	});
-	const castells_arrays = Object.keys(castells).map(key => {
-		return [key, castells[key]];
-	});
-	castells_arrays.sort((a, b) => {
-		try {
-			const gA = 100000*parseInt(puntuacions[a[0]]['Grup'])+10000*parseInt(puntuacions[a[0]]['Subgrup'])+parseInt(puntuacions[a[0]]['Descarregat']);
-			const gB = 100000*parseInt(puntuacions[b[0]]['Grup'])+10000*parseInt(puntuacions[b[0]]['Subgrup'])+parseInt(puntuacions[b[0]]['Descarregat']);
-			return gB - gA;
-		} catch {
-			return 0;
-		}
-	});
+		const castells_arrays = Object.keys(castells).map(key => {
+			return [key, castells[key]];
+		});
+		castells_arrays.sort((a, b) => {
+			try {
+				const gA = 100000*parseInt(puntuacions[a[0]]['Grup'])+10000*parseInt(puntuacions[a[0]]['Subgrup'])+parseInt(puntuacions[a[0]]['Descarregat']);
+				const gB = 100000*parseInt(puntuacions[b[0]]['Grup'])+10000*parseInt(puntuacions[b[0]]['Subgrup'])+parseInt(puntuacions[b[0]]['Descarregat']);
+				return gB - gA;
+			} catch {
+				return 0;
+			}
+		});
 
-	let castells_rows, castells_rows_names, desCar_rows, colles_rows, colles_rows_names, colles_rows_names_two, table_length;
-	let reset_rows = true;
-	return (
-		<>
-			<div id="stats">
-				<h1>Estadístiques de la temporada actual</h1>
+		let castells_rows, castells_rows_names, desCar_rows, colles_rows, colles_rows_names, colles_rows_names_two, table_length;
+		let reset_rows = true;
+		return (<>
+			<section>
+				<h2>Estadístiques de la temporada actual</h2>
 				{
 					castells_arrays.map((castell, i) => {
 						const name = castell[0];
@@ -114,7 +112,7 @@ function Stats(props) {
 						});
 						return (
 							<>
-								<div className="table-wrap"><table>
+								<div className="table-wrap"><table className="stats-tb">
 									<thead>
 										<tr><th className={"grup"+grup} colSpan={table_length}>Castells del grup {grup}</th></tr>
 										<tr><th className={"grup"+grup} rowSpan="2">Colles</th>{castells_rows}</tr>
@@ -128,9 +126,9 @@ function Stats(props) {
 						);
 					})
 				}
-			</div>
-		</>
-	);
+			</section>
+		</>);
+	}
 }
 
 export default Stats;

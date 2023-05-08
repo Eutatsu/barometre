@@ -1,104 +1,102 @@
-import "./LlistaDiades.css"
+import { Component } from "react";
 
-function LlistaDiades(props) {
-	window.scrollTo(0, 0);
+class LlistaDiades extends Component {
+	render() {
+		const { diades } = this.props;
 
-	const { diades } = props;
+		const fromEuropean = (dateString) => {
+			const [day, month, year] = dateString.split("/");
+			return new Date(`${month}/${day}/${year}`);
+		};
 
-	const fromEuropean = (dateString) => {
-		const [day, month, year] = dateString.split("/");
-		return new Date(`${month}/${day}/${year}`);
-	};
+		const areThereCastellsInRonda = (diada_colles, ronda) => {
+			const castells = [...Object.values(diada_colles)];
+			let areInRonda;
+			for (const c of castells) {
+				const castellsInRonda = getCastellsRonda(c, ronda);
+				areInRonda = castellsInRonda.map(arr => arr !== []).reduce((prev, curr) => prev || curr, false);
+				if (areInRonda) return true;
+			}
+			return areInRonda;
+		};
 
-	const areThereCastellsInRonda = (diada_colles, ronda) => {
-		const castells = [...Object.values(diada_colles)];
-		let areInRonda;
-		for (const c of castells) {
-			const castellsInRonda = getCastellsRonda(c, ronda);
-			areInRonda = castellsInRonda.map(arr => arr !== []).reduce((prev, curr) => prev || curr, false);
-			if (areInRonda) return true;
+		const getCastellsRonda = function (castells, ronda) {
+			let castells_of_round = [];
+			for (const castell of castells)
+				if (castell["RONDA"] === ronda) castells_of_round.push(castell)
+			return castells_of_round;
 		}
-		return areInRonda;
-	};
 
-	const getCastellsRonda = function (castells, ronda) {
-		let castells_of_round = [];
-		for (const castell of castells)
-			if (castell["RONDA"] === ronda) castells_of_round.push(castell)
-		return castells_of_round;
-	}
-
-	const count = (obj) => {
-		return Object.keys(obj).length;
-	}
-
-	const parseCastells = (castells) => {
-		let res = {};
-		for (const castell of castells) {
-			let name = castell["CASTELL"];
-			if (castell["RESULTAT"] === "Carregat")
-				name += "C"
-			else if (castell["RESULTAT"] === "Intent desmuntat")
-				name = "id" + name;
-			else if (castell["RESULTAT"] === "Intent")
-				name = "i" + name;
-
-			if (name in res)
-				res[name] += 1;
-			else
-				res[name] = 1;
+		const count = (obj) => {
+			return Object.keys(obj).length;
 		}
-		return formatRonda(res);
-	}
 
-	const formatRonda = (castellsDict) => {
-		const special = specialRounds(castellsDict);
-		if (special !== false)
-			return special;
-		let res = "";
-		for (const [castell, amount] of Object.entries(castellsDict))
-			res += formatCastell(amount, castell) + "+";
-		return res.slice(0,-1);
-	}
+		const parseCastells = (castells) => {
+			let res = {};
+			for (const castell of castells) {
+				let name = castell["CASTELL"];
+				if (castell["RESULTAT"] === "Carregat")
+					name += "C"
+				else if (castell["RESULTAT"] === "Intent desmuntat")
+					name = "id" + name;
+				else if (castell["RESULTAT"] === "Intent")
+					name = "i" + name;
 
-	const formatCastell = (amount, castell) => {
-		return (amount === 1 ? "" : amount) + castell;
-	}
+				if (name in res)
+					res[name] += 1;
+				else
+					res[name] = 1;
+			}
+			return formatRonda(res);
+		}
 
-	const specialRounds = (castellsDict) => {
-		if (count(castellsDict) === 2 &&
-			"Pd4" in castellsDict && castellsDict["Pd4"] === 2 &&
-			"Pd5" in castellsDict && castellsDict["Pd5"] === 1)
-			return "Vd5";
-		if (count(castellsDict) === 2 &&
-			"Pd3" in castellsDict && castellsDict["Pd3"] === 2 &&
-			"Pd4" in castellsDict && castellsDict["Pd4"] === 1)
-			return "Vd4";
-		if (count(castellsDict) === 2 &&
-			"3d6a" in castellsDict &&
-			"4d6a" in castellsDict)
-			return "3i4d6asim";
-		if (count(castellsDict) === 2 &&
-			"3d6" in castellsDict &&
-			"4d6" in castellsDict)
-			return "3i4d6sim";
-		return false;
-	}
+		const formatRonda = (castellsDict) => {
+			const special = specialRounds(castellsDict);
+			if (special !== false)
+				return special;
+			let res = "";
+			for (const [castell, amount] of Object.entries(castellsDict))
+				res += formatCastell(amount, castell) + "+";
+			return res.slice(0,-1);
+		}
 
-	const validClass = (castells) => {
-		if (castells.length === 0) return "";
-		for (let castell of castells)
-			if (!castell.CASTELL.includes("(") && !castell.CASTELL.includes("n")) return "";
-		return "invalid";
-	}
+		const formatCastell = (amount, castell) => {
+			return (amount === 1 ? "" : amount) + castell;
+		}
 
-    const llista_diades = [...Object.values(diades)];
-	llista_diades.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
+		const specialRounds = (castellsDict) => {
+			if (count(castellsDict) === 2 &&
+				"Pd4" in castellsDict && castellsDict["Pd4"] === 2 &&
+				"Pd5" in castellsDict && castellsDict["Pd5"] === 1)
+				return "Vd5";
+			if (count(castellsDict) === 2 &&
+				"Pd3" in castellsDict && castellsDict["Pd3"] === 2 &&
+				"Pd4" in castellsDict && castellsDict["Pd4"] === 1)
+				return "Vd4";
+			if (count(castellsDict) === 2 &&
+				"3d6a" in castellsDict &&
+				"4d6a" in castellsDict)
+				return "3i4d6asim";
+			if (count(castellsDict) === 2 &&
+				"3d6" in castellsDict &&
+				"4d6" in castellsDict)
+				return "3i4d6sim";
+			return false;
+		}
 
-	return (
-        <>
-			<div id="diades">
-				<h1>Llista de diades universitàries</h1>
+		const validClass = (castells) => {
+			if (castells.length === 0) return "";
+			for (let castell of castells)
+				if (!castell.CASTELL.includes("(") && !castell.CASTELL.includes("n")) return "";
+			return "invalid";
+		}
+
+		const llista_diades = [...Object.values(diades)];
+		llista_diades.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
+
+		return (<>
+			<section>
+				<h2 style={{marginBottom: '1rem'}}>Llista de diades universitàries</h2>
 				{
 					llista_diades.map((diada, _) => {
 						const areEntrada = areThereCastellsInRonda(diada["colles"], "Entrada");
@@ -119,9 +117,9 @@ function LlistaDiades(props) {
 						});
 						return (
 							<>
-								<h2>{diada["info"]["DIADA"]}</h2>
-								<h3>{diada["info"]["DATA"] + " - " + diada["info"]["LLOC"]}</h3>
-								<div className="table-wrap"><table>
+								<h5>{diada["info"]["DIADA"]}</h5>
+								<h6>{diada["info"]["DATA"] + " - " + diada["info"]["LLOC"]}</h6>
+								<div className="table-wrap"><table className="list-tb">
 									<thead>
 										<tr>
 											<th>Colla</th>
@@ -170,9 +168,9 @@ function LlistaDiades(props) {
 						);
 					})
 				}
-			</div>
-        </>
-    );
+			</section>
+		</>);
+	}
 }
 
 export default LlistaDiades;
