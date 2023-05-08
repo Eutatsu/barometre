@@ -60,11 +60,14 @@ class Calculadora extends Component {
 		let score = 0;
 		try {
 			score = parseInt(this.props.puntuacions[castell]['Descarregat']);
-		} catch {
-			score = -parseInt(this.props.puntuacions[colles[colla].castells[index].castell]['Descarregat']);
-		}
+		} catch {}
+		let oldScore = 0;
+		try {
+			oldScore = parseInt(this.props.puntuacions[colles[colla].castells[index].castell]['Descarregat']);
+		} catch {}
 		colles[colla].castells[index].castell = castell;
 		colles[colla].castells[index].descarregat = true;
+		colles[colla].punts -= oldScore;
 		colles[colla].punts += score;
 		this.setState({ colles: colles });
 	}
@@ -73,11 +76,14 @@ class Calculadora extends Component {
 		let score = 0;
 		try {
 			score = parseInt(this.props.puntuacions[pilar]['Descarregat']);
-		} catch {
-			score = -parseInt(this.props.puntuacions[colles[colla].pilar.castell]['Descarregat']);
-		}
+		} catch {}
+		let oldScore = 0;
+		try {
+			oldScore = parseInt(this.props.puntuacions[colles[colla].pilar.castell]['Descarregat']);
+		} catch {}
 		colles[colla].pilar.castell = pilar;
 		colles[colla].pilar.descarregat = true;
+		colles[colla].punts -= oldScore;
 		colles[colla].punts += score;
 		this.setState({ colles: colles });
 	}
