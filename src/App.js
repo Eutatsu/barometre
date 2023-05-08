@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 import DataProcessor from "./components/DataProcessor";
 import Barometre from "./pages/Barometre";
 import ScoreTable from "./pages/ScoreTable";
@@ -25,11 +26,11 @@ function App() {
 	};
 
 	useEffect(() => {
-		//console.log(puntuacions)
+		// console.log(puntuacions)
 	}, [puntuacions]);
 
 	useEffect(() => {
-		//console.log(diades)
+		// console.log(diades)
 	}, [diades]);
 
 	return (<>
@@ -37,12 +38,13 @@ function App() {
 
 		<Router>
 			<Navbar />
+			<ScrollToTop />
 			<main className="page">
 				<Routes>
 					<Route path="/" element={<Barometre {...exports}/>}/>
 					<Route path="/score" element={<ScoreTable {...exports}/>}/>
 					<Route path="/stats" element={<Stats {...exports}/>}/>
-					<Route path="/calendar" element={<Calendar {...exports}/>}/>
+					<Route path="/calendar" element={<Calendar />}/>
 					<Route path="/diades" element={<LlistaDiades {...exports}/>}/>
 					<Route path="/calculadora" element={<Calculadora {...exports}/>}/>
 					<Route path="/collaborate" element={<Collaborate {...exports}/>}/>
