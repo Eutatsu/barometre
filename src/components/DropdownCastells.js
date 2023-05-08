@@ -16,13 +16,16 @@ class DropdownCastells extends Component {
 		});
 
 		return (<>
-			<select className="castells-selector" onChange={this.update.bind(this)}>
-				{
-					structures.map(c => {
-						return <option key={c}>{c}</option>;
-					})
-				}
-			</select>
+			<div className="select-arrow">
+				<select className="castells-selector" onChange={this.update.bind(this)}>
+					{
+						structures.map(c => {
+							return <option key={c}>{c}</option>;
+						})
+					}
+				</select>
+				<div className="dblarrow"><b></b><i></i></div>
+			</div>
 		</>);
 	}
 }
