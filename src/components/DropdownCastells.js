@@ -17,7 +17,7 @@ class DropdownCastells extends Component {
 
 		return (<>
 			<div className="select-arrow">
-				<select className="castells-selector" onChange={this.update.bind(this)}>
+				<select className="castells-selector" onChange={this.update.bind(this)} value={this.props.real}>
 					{
 						structures.map(c => {
 							return <option key={c}>{c}</option>;

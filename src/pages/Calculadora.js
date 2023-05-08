@@ -119,6 +119,7 @@ class Calculadora extends Component {
 											onChange={this.updateCastell.bind(this)}
 											colla={i}
 											castell={0}
+											real={c.castells[0].castell}
 											/>
 									}</td>
 									<td>{
@@ -129,6 +130,7 @@ class Calculadora extends Component {
 											onChange={this.updateCastell.bind(this)}
 											colla={i}
 											castell={1}
+											real={c.castells[1].castell}
 											/>
 									}</td>
 									<td>{
@@ -139,6 +141,7 @@ class Calculadora extends Component {
 											onChange={this.updateCastell.bind(this)}
 											colla={i}
 											castell={2}
+											real={c.castells[2].castell}
 											/>
 									}</td>
 									<td>{
@@ -148,6 +151,7 @@ class Calculadora extends Component {
 											pilars={true}
 											onChange={this.updatePilar.bind(this)}
 											colla={i}
+											real={c.pilar.castell}
 											/>
 									}</td>
 									<td>{c.punts}</td>
@@ -181,6 +185,7 @@ class Calculadora extends Component {
 											onChange={this.updateCastell.bind(this)}
 											colla={i}
 											castell={0}
+											real={c.castells[0].castell}
 											/>
 									}</td>
 									<td>{
@@ -191,6 +196,7 @@ class Calculadora extends Component {
 											onChange={this.updateCastell.bind(this)}
 											colla={i}
 											castell={1}
+											real={c.castells[1].castell}
 											/>
 									}</td>
 									<td>{
@@ -201,6 +207,7 @@ class Calculadora extends Component {
 											onChange={this.updateCastell.bind(this)}
 											colla={i}
 											castell={2}
+											real={c.castells[2].castell}
 											/>
 									}</td>
 									<td>{
@@ -210,6 +217,7 @@ class Calculadora extends Component {
 											pilars={true}
 											onChange={this.updatePilar.bind(this)}
 											colla={i}
+											real={c.pilar.castell}
 											/>
 									}</td>
 								</tr>

@@ -1007,8 +1007,8 @@ Calculator
 ===============
 */
 
-.calculator-tb {
-	max-width: 800px;
+.calculator-tb.computer {
+	width: 750px;
 }
 
 .calculator-tb th,
@@ -1041,7 +1041,7 @@ Calculator
 	outline: none;
 	border-radius: 0;
 	background-color: var(--white);
-	padding: 3px;
+	padding: 5px 3px;
 	width: 100%;
 }
 
@@ -1093,13 +1093,14 @@ Calculator
 	padding: 0;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
 	.computer {
 		display: none;
 	}
 
 	.mobile {
-		display: block;
+		display: table;
+		width: 100%;
 	}
 
 	.calculator-tb input {
