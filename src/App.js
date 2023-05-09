@@ -11,6 +11,7 @@ import LlistaDiades from "./pages/LlistaDiades";
 import Calculadora from "./pages/Calculadora";
 import Collaborate from "./pages/Collaborate";
 import Footer from "./components/Footer";
+import NotFound from "./pages/NotFound";
 import './css/normalize.css';
 import './css/main.css';
 
@@ -48,6 +49,7 @@ function App() {
 					<Route path="/diades" element={<LlistaDiades {...exports}/>}/>
 					<Route path="/calculadora" element={<Calculadora {...exports}/>}/>
 					<Route path="/collaborate" element={<Collaborate {...exports}/>}/>
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</main>
 		</Router>
