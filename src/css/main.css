@@ -1018,6 +1018,10 @@ Calculator
 	padding: 0.25rem 0.5rem;
 }
 
+.colla-name {
+	width: 100%;
+}
+
 .calculator-tb td:has(.carregat-checkbox:checked) {
 	background-color: var(--cc);
 }
@@ -1045,8 +1049,9 @@ Calculator
 	outline: none;
 	border-radius: 0;
 }
+
 .carregat-checkbox {
-	margin: 0 5px;
+	margin: 0 1px 0 5px;
 }
 
 .castells-selector {
@@ -1056,6 +1061,7 @@ Calculator
 	background-color: transparent;
 	padding: 5px 3px;
 	width: 100%;
+	color: var(--black);
 }
 .calculator-tb td:has(.carregat-checkbox:checked) .castells-selector::after {
 	/* TODO: <castell>C */
