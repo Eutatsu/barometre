@@ -1008,7 +1008,7 @@ Calculator
 */
 
 .calculator-tb.computer {
-	width: 750px;
+	width: 800px;
 }
 
 .calculator-tb th,
@@ -1016,6 +1016,10 @@ Calculator
 	border: 1px solid black;
 	text-align: left;
 	padding: 0.25rem 0.5rem;
+}
+
+.calculator-tb td:has(.carregat-checkbox:checked) {
+	background-color: var(--cc);
 }
 
 .calculator-tb tr td:nth-child(1),
@@ -1029,20 +1033,32 @@ Calculator
 	text-align: center;
 }
 
+.input-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .calculator-tb input {
 	border: none;
 	outline: none;
 	border-radius: 0;
-	width: 100%;
+}
+.carregat-checkbox {
+	margin: 0 5px;
 }
 
 .castells-selector {
 	border: none;
 	outline: none;
 	border-radius: 0;
-	background-color: var(--white);
+	background-color: transparent;
 	padding: 5px 3px;
 	width: 100%;
+}
+.calculator-tb td:has(.carregat-checkbox:checked) .castells-selector::after {
+	/* TODO: <castell>C */
 }
 
 .select-arrow {
@@ -1093,7 +1109,7 @@ Calculator
 	padding: 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 	.computer {
 		display: none;
 	}

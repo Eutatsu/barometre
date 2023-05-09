@@ -7,6 +7,12 @@ class DropdownCastells extends Component {
 		else
 			this.props.onChange(e.target.value, this.props.colla);
 	}
+	carregat(e) {
+		if (this.props.castell !== undefined)
+			this.props.onCheck(e.target.checked, this.props.colla, this.props.castell);
+		else
+			this.props.onCheck(e.target.checked, this.props.colla);
+	}
 	render() {
 		const structures = ['—'];
 
@@ -16,15 +22,18 @@ class DropdownCastells extends Component {
 		});
 
 		return (<>
-			<div className="select-arrow">
-				<select className="castells-selector" onChange={this.update.bind(this)} value={this.props.real}>
-					{
-						structures.map(c => {
-							return <option key={c}>{c}</option>;
-						})
-					}
-				</select>
-				<div className="dblarrow"><b></b><i></i></div>
+			<div className="input-wrap">
+				<input type="checkbox" className="carregat-checkbox" onChange={this.carregat.bind(this)} checked={!this.props.result} disabled={this.props.real === null} />
+				<div className="select-arrow">
+					<select className="castells-selector" onChange={this.update.bind(this)} value={this.props.real}>
+						{
+							structures.map(c => {
+								return <option key={c}>{c}</option>;
+							})
+						}
+					</select>
+					<div className="dblarrow"><b></b><i></i></div>
+				</div>
 			</div>
 		</>);
 	}
