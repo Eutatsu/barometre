@@ -7,6 +7,7 @@ class Calculadora extends Component {
 		this.state = {
 			colles: [
 				{
+					nom: 'Colla #1',
 					castells: [
 						{
 							castell: null,
@@ -33,6 +34,7 @@ class Calculadora extends Component {
 	createTeam() {
 		const colles = this.state.colles;
 		colles.push({
+			nom: `Colla #${colles.length+1}`,
 			castells: [
 				{
 					castell: null,
@@ -53,6 +55,13 @@ class Calculadora extends Component {
 			},
 			punts: 0
 		});
+		this.setState({ colles: colles });
+	}
+	updateName(e) {
+		const colla = parseInt(e.target.dataset.colla);
+		const name = e.target.value;
+		const colles = this.state.colles;
+		colles[colla].nom = name;
 		this.setState({ colles: colles });
 	}
 	updateCastell(castell, colla, index) {
@@ -103,6 +112,34 @@ class Calculadora extends Component {
 		colles[colla].punts += (carregat ? -1 : +1) * diff;
 		this.setState({ colles: colles });
 	}
+	export() {
+		const file = new Blob([JSON.stringify(this.state.colles, null, 4)], {type: 'json'});
+		if (window.navigator.msSaveOrOpenBlob)
+		window.navigator.msSaveOrOpenBlob(file, 'barometre.json');
+		else {
+			const a = document.createElement('a');
+			const url = URL.createObjectURL(file);
+			a.href = url;
+			a.download = 'barometre.json';
+			document.body.appendChild(a);
+			a.click();
+			setTimeout(() => {
+				document.body.removeChild(a);
+				window.URL.revokeObjectURL(url);
+			}, 0);
+		}
+	}
+	import(e) {
+		const files = e.target.files;
+		if (files.length <= 0)
+			return;
+		const fr = new FileReader();
+		fr.onload = (e) => {
+			const result = JSON.parse(e.target.result);
+			this.setState({ colles: result });
+		};
+		fr.readAsText(files[0]);
+	}
 	render() {
 		return (<>
 			<section>
@@ -115,6 +152,12 @@ class Calculadora extends Component {
 				<p>
 					Es poden afegir tantes colles com es vulgui i es pot editar el nom de cada una d'elles fent-hi click al damunt.
 				</p>
+
+				<div className="button-wrap">
+					<button className="btn" onClick={this.export.bind(this)}>Exportar</button>
+					<label htmlFor="import" className="btn">Importar</label>
+					<input id="import" type="file" onChange={this.import.bind(this)} accept=".json" style={{display: 'none'}} />
+				</div>
 
 				<table className="calculator-tb computer">
 					<thead>
@@ -132,7 +175,7 @@ class Calculadora extends Component {
 							this.state.colles.map((c, i) => {
 								return <tr key={i}>
 									<td>
-										<input type="text" className="colla-name" defaultValue={`Colla #${i+1}`} />
+										<input type="text" data-colla={i} onChange={this.updateName.bind(this)} className="colla-name" value={c.nom} />
 									</td>
 									<td>{
 										<DropdownCastells
@@ -203,7 +246,7 @@ class Calculadora extends Component {
 							return <tbody key={i}>
 								<tr>
 									<th colSpan="3">
-										<input type="text" className="colla-name" defaultValue={`Colla #${i+1}`} />
+										<input type="text" data-colla={i} onChange={this.updateName.bind(this)} className="colla-name" value={c.nom} />
 									</th>
 									<th>{c.punts}</th>
 								</tr>

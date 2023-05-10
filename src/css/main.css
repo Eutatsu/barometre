@@ -1007,6 +1007,18 @@ Calculator
 ===============
 */
 
+.button-wrap {
+	display: flex;
+	width: 800px;
+	justify-content: space-between;
+	margin-bottom: 2.5rem;
+}
+
+.button-wrap * {
+	width: calc(50% - 0.5rem);
+	text-align: center;
+}
+
 .calculator-tb.computer {
 	width: 800px;
 }
@@ -1113,6 +1125,18 @@ Calculator
 }
 
 @media (max-width: 850px) {
+	.button-wrap {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.button-wrap * {
+		width: 100%;
+	}
+	.button-wrap :nth-child(1) {
+		margin-bottom: 3px;
+	}
+
 	.computer {
 		display: none;
 	}
