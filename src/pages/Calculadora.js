@@ -106,7 +106,15 @@ class Calculadora extends Component {
 	render() {
 		return (<>
 			<section>
-				<h2>Calculadora</h2>
+				<h2 style={{marginBottom: '1rem'}}>Calculadora</h2>
+
+				<p>
+					La casella de selecció de cada castell permet intercanviar entre el castell carregat (seleccionada) o descarregat (desseleccionada). No s'hi ha inclòs els resultats "intent" ni "intent desmuntat" perquè no atorguen cap punt.
+				</p>
+
+				<p>
+					Es poden afegir tantes colles com es vulgui i es pot editar el nom de cada una d'elles fent-hi click al damunt.
+				</p>
 
 				<table className="calculator-tb computer">
 					<thead>
@@ -123,7 +131,6 @@ class Calculadora extends Component {
 						{
 							this.state.colles.map((c, i) => {
 								return <tr key={i}>
-									{/*<td>Colla #{i+1}</td>*/}
 									<td>
 										<input type="text" className="colla-name" defaultValue={`Colla #${i+1}`} />
 									</td>

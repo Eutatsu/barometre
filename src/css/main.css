@@ -1063,9 +1063,6 @@ Calculator
 	width: 100%;
 	color: var(--black);
 }
-.calculator-tb td:has(.carregat-checkbox:checked) .castells-selector::after {
-	/* TODO: <castell>C */
-}
 
 .select-arrow {
 	width: 100%;

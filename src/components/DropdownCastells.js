@@ -8,7 +8,6 @@ class DropdownCastells extends Component {
 			this.props.onChange(e.target.value, this.props.colla);
 	}
 	carregat(e) {
-		const selector = e.target.parentElement.getElementsByClassName('castells-selector')[0];
 		if (this.props.castell !== undefined)
 			this.props.onCheck(e.target.checked, this.props.colla, this.props.castell);
 		else
@@ -29,7 +28,7 @@ class DropdownCastells extends Component {
 					<select className="castells-selector" onChange={this.update.bind(this)} value={this.props.real ? this.props.real : '—'}>
 						{
 							structures.map(c => {
-								return <option value={c} key={c}>{c}</option>;
+								return <option value={c} key={c}>{this.props.real === c && !this.props.result ? c + 'C' : c}</option>;
 							})
 						}
 					</select>
