@@ -8,6 +8,13 @@ class DropdownCastells extends Component {
 			this.props.onChange(e.target.value, this.props.colla);
 	}
 	carregat(e) {
+		const sel = e.target.parentElement.getElementsByClassName('castells-selector')[0];
+		const idx = sel.selectedIndex;
+		if (e.target.checked)
+			sel.options[idx].innerHTML += 'C';
+		else
+			sel.options[idx].innerHTML = sel.options[idx].innerHTML.replace('C', '');
+		sel.selectedIndex = idx;
 		if (this.props.castell !== undefined)
 			this.props.onCheck(e.target.checked, this.props.colla, this.props.castell);
 		else
