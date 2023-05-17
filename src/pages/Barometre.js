@@ -209,7 +209,7 @@ class Barometre extends Component {
 							<th>#</th>
 							<th>Colla</th>
 							<th colSpan="8">www.barometreuniversitari.cat</th>
-							<th>{maxCastell}</th>
+							<th>📊 {maxCastell}</th>
 						</tr>
 					</thead>
 					<tbody>
