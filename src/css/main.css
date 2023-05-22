@@ -901,6 +901,9 @@ Calendar
 	line-height: 1.3;
 }
 
+#calendar .close {
+	cursor: pointer;
+}
 #calendar .close::after {
 	width: 20px;
 	height: 20px;
@@ -917,7 +920,6 @@ Calendar
 	align-items: center;
 	justify-content: center;
 	transition: var(--transition);
-	cursor: pointer;
 }
 #calendar .close:hover::after {
 	color: var(--white);
