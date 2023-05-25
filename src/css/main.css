@@ -570,7 +570,7 @@ th {
 }
 
 .barometre-tb tr th:nth-child(4) {
-	font-family: 'Arial Narrow';
+	font-family: 'PT Sans Narrow';
 	font-weight: 400;
 	letter-spacing: 1px;
 	font-size: 0.85rem;
@@ -706,9 +706,24 @@ p a {
 	text-decoration: underline;
 }
 
+.score-tb {
+	border-collapse: initial;
+	border-spacing: 0;
+}
+
 .score-tb th,
 .score-tb td {
-	padding: 0.15rem;
+	padding: 0.15rem 0.25rem;
+}
+
+.score-tb th {
+	border-top: 3px solid var(--backgroundColor);
+	position: sticky;
+	top: var(--navbar-height);
+	z-index: 1;
+}
+
+.score-tb td {
 	border: 1px solid var(--black);
 }
 
@@ -723,7 +738,7 @@ p a {
 
 	.score-tb th,
 	.score-tb td {
-		padding: 2px;
+		padding: 0.1rem 0.2rem;
 	}
 }
 
@@ -780,6 +795,7 @@ Calendar
 
 .calendar {
 	width: 800px;
+	margin-top: 1rem;
 }
 
 #calendar .header {

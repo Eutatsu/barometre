@@ -157,7 +157,7 @@ class Calendar extends Component {
 
 				<div id="calendar">
 					<div className="table-wrap" style={{position: 'relative'}}>
-						<div className="calendar" id="loading">
+						<div className="calendar" id="loading" style={{marginTop: '2rem'}}>
 							<div className="loading"></div>
 						</div>
 						<div className="calendar" id="agenda" style={{display: 'none'}}>
