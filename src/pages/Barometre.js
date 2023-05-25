@@ -198,6 +198,19 @@ class Barometre extends Component {
 			lastWeek_pos[collaName] = colla["pos"];
 		});
 
+		const score = [];
+		Object.entries(puntuacions).forEach(([k, v]) => {
+			const entry = {};
+			entry['grup'] = parseInt(v.Grup);
+			entry['subgrup'] = parseInt(v.Subgrup);
+			entry['castell'] = k;
+			entry['carregat'] = parseInt(v.Carregat);
+			entry['descarregat'] = parseInt(v.Descarregat);
+			entry['gent'] = 0;
+			score.push(entry);
+		});
+		console.log(JSON.stringify(score, null, 4));
+
 		return (<>
 			<section>
 				<h2>Temporada 2022-23</h2>
