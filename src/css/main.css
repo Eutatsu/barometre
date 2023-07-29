@@ -696,18 +696,14 @@ Score Table
 	margin: 1rem 0;
 }
 
-.subtitle p {
-	margin-bottom: 0.5rem;
-	color: var(--theme);
-}
-
 p a {
 	color: var(--theme);
+}
+p a:hover {
 	text-decoration: underline;
 }
 
 .score-tb {
-	border-collapse: initial;
 	border-spacing: 0;
 }
 
@@ -716,13 +712,7 @@ p a {
 	padding: 0.15rem 0.25rem;
 }
 
-.score-tb th {
-	border-top: 3px solid var(--backgroundColor);
-	position: sticky;
-	top: var(--navbar-height);
-	z-index: 1;
-}
-
+.score-tb th,
 .score-tb td {
 	border: 1px solid var(--black);
 }
@@ -983,7 +973,7 @@ Llista
 
 .list-tb th,
 .list-tb td {
-	padding: 0.25rem;
+	padding: 0.25rem 0.5rem;
 	border: 3px solid #ffffff;
 }
 
@@ -998,7 +988,7 @@ Llista
 .list-tb th:nth-child(1),
 .list-tb td:nth-child(1) {
 	padding-right: 0.5rem;
-	padding-left: 0.75rem;
+	padding-left: 1rem;
 	border-left: none;
 	text-align: right;
 }
@@ -1015,7 +1005,7 @@ Llista
 
 	.list-tb th,
 	.list-tb td {
-		padding: 2px;
+		padding: 2px 5px;
 	}
 }
 

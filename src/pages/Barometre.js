@@ -209,7 +209,6 @@ class Barometre extends Component {
 			entry['gent'] = 0;
 			score.push(entry);
 		});
-		console.log(JSON.stringify(score, null, 4));
 
 		return (<>
 			<section>
