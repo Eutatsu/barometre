@@ -5,6 +5,7 @@ class Barometre extends Component {
 	render() {
 		const { diades, puntuacions } = this.props;
 		const isWindows = window.navigator["platform"].includes("Win");
+		if (Object.keys(puntuacions).length === 0) return <></>;
 
 		let castells_puntuats = {};
 		let pilars_puntuats = {};
@@ -96,7 +97,7 @@ class Barometre extends Component {
 		const top3 = Object.keys(castells_puntuats).map(colla => {
 			return {
 				"colla": colla,
-				"puntuacio_total": Object
+				"puntuacio_castells": Object
 					.entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,3) // return only the first 3 elements of the intermediate result
@@ -134,7 +135,7 @@ class Barometre extends Component {
 					.map(([n])=> data_pilars[colla][n]) : "-", // and map that to an array with only the name
 			};
 		});
-		top3.forEach(colla => colla.puntuacio_total += colla.topPilarPuntuacio[0]);
+		top3.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + colla.topPilarPuntuacio[0]);
 
 		const lastWeek = new Date();
 		lastWeek.setDate(lastWeek.getDate() - 8);
@@ -172,7 +173,7 @@ class Barometre extends Component {
 		const top3_lastWeek = Object.keys(castells_puntuats_lastWeek).map(colla => {
 			return {
 				"colla": colla,
-				"puntuacio_total": Object
+				"puntuacio_castells": Object
 					.entries(castells_puntuats_lastWeek[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,3) // return only the first 3 elements of the intermediate result
@@ -185,13 +186,14 @@ class Barometre extends Component {
 					.map(([, n])=> parseInt(n)) : "0" // and map that to an array with only the name
 			};
 		});
-		top3_lastWeek.forEach(colla => colla.puntuacio_total += colla.topPilarPuntuacio[0]);
+		top3_lastWeek.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + colla.topPilarPuntuacio[0]);
 
 		let lastPoints = 0;
-		top3_lastWeek.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1).forEach((colla, i) => {
-			top3_lastWeek[i]["pos"] = lastPoints === colla.puntuacio_total ? i : i+1;
-			lastPoints = colla.puntuacio_total;
-		});
+		top3_lastWeek.sort((a,b) => a.puntuacio_castells === b.puntuacio_castells ? (a.puntuacio_total < b.puntuacio_total ? 1 : -1) : (a.puntuacio_castells < b.puntuacio_castells ? 1 : -1))
+			.forEach((colla, i) => {
+				top3_lastWeek[i]["pos"] = lastPoints === colla.puntuacio_total ? i : i+1;
+				lastPoints = colla.puntuacio_total;
+			});
 		const lastWeek_pos = {};
 		top3_lastWeek.forEach((colla) => {
 			const collaName = colla["colla"];
@@ -227,7 +229,7 @@ class Barometre extends Component {
 					<tbody>
 						{
 							top3
-							.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
+							.sort((a,b) => a.puntuacio_castells === b.puntuacio_castells ? (a.puntuacio_total < b.puntuacio_total ? 1 : -1) : (a.puntuacio_castells < b.puntuacio_castells ? 1 : -1))
 							.map((colla, i) => {
 								let pos = lastPoints === colla.puntuacio_total ? i : i+1;
 								const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : "down";
@@ -240,8 +242,8 @@ class Barometre extends Component {
 										{colla.top3.map((castell, i) => {
 											return (
 												<>
-													<td key={i} className={donePastWeek(colla.data3[i]) + (isWindows ? " windowsOS" : "")}></td>
-													<td key={castell} className={"grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
+													<td key={`${colla}-${i}`} className={donePastWeek(colla.data3[i]) + (isWindows ? " windowsOS" : "")}></td>
+													<td key={`${colla}-${castell}`} className={"grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
 												</>
 											);
 										})}
