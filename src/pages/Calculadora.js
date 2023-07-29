@@ -65,6 +65,8 @@ class Calculadora extends Component {
 		this.setState({ colles: colles });
 	}
 	updateCastell(castell, colla, index) {
+		if (castell === '—')
+			castell = null;
 		const colles = this.state.colles;
 		let score = 0;
 		try {
@@ -146,7 +148,7 @@ class Calculadora extends Component {
 				<h2 style={{marginBottom: '1rem'}}>Calculadora</h2>
 
 				<p>
-					La casella de selecció de cada castell permet intercanviar entre el castell carregat (seleccionada) o descarregat (desseleccionada). No s'hi ha inclòs els resultats "intent" ni "intent desmuntat" perquè no atorguen cap punt.
+					La casella de selecció de cada castell permet intercanviar entre el castell carregat (seleccionada) o descarregat (deseleccionada). No s'hi ha inclosos els resultats "intent" ni "intent desmuntat" perquè no atorguen cap punt.
 				</p>
 
 				<p>

@@ -30,7 +30,7 @@ class DropdownCastells extends Component {
 
 		return (<>
 			<div className="input-wrap">
-				<input type="checkbox" className="carregat-checkbox" onChange={this.carregat.bind(this)} checked={!this.props.result} disabled={this.props.real === null} />
+				<input type="checkbox" className="carregat-checkbox" onChange={this.carregat.bind(this)} checked={!this.props.result} disabled={!this.props.real} />
 				<div className="select-arrow">
 					<select className="castells-selector" onChange={this.update.bind(this)} value={this.props.real ? this.props.real : '—'}>
 						{
