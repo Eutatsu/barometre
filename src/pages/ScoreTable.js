@@ -46,7 +46,7 @@ class ScoreTable extends Component {
 					Aquesta taula serà actualitzada contínuament per tal de garantir el major consens possible.
 				</p>
 				<p>
-					Per col·laborar-hi afegeix un comentari en aquest <a href="https://docs.google.com/spreadsheets/d/105YLYfRNPUvhx6G8QUkZykGPHPTpzCk6WO5zBGV2LcA#gid=1401475200" rel="noreferrer" target="_blank">Excel</a>.
+					Per col·laborar-hi afegeix un comentari en aquest <a href="https://docs.google.com/spreadsheets/d/105YLYfRNPUvhx6G8QUkZykGPHPTpzCk6WO5zBGV2LcA#gid=439551992" rel="noreferrer" target="_blank">Excel</a>.
 				</p>
 
 				<table className="score-tb">
