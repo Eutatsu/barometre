@@ -394,7 +394,7 @@ Navbar
 	cursor: pointer;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
 	.navbar .hamburger {
 	  display: block !important;
 	}
