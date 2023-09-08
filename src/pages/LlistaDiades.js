@@ -14,7 +14,7 @@ class LlistaDiades extends Component {
 			let areInRonda;
 			for (const c of castells) {
 				const castellsInRonda = getCastellsRonda(c, ronda);
-				areInRonda = castellsInRonda.map(arr => arr !== []).reduce((prev, curr) => prev || curr, false);
+				areInRonda = castellsInRonda.map(arr => arr.length > 0).reduce((prev, curr) => prev || curr, false);
 				if (areInRonda) return true;
 			}
 			return areInRonda;
@@ -25,11 +25,11 @@ class LlistaDiades extends Component {
 			for (const castell of castells)
 				if (castell["RONDA"] === ronda) castells_of_round.push(castell)
 			return castells_of_round;
-		}
+		};
 
 		const count = (obj) => {
 			return Object.keys(obj).length;
-		}
+		};
 
 		const parseCastells = (castells) => {
 			let res = {};
@@ -48,7 +48,7 @@ class LlistaDiades extends Component {
 					res[name] = 1;
 			}
 			return formatRonda(res);
-		}
+		};
 
 		const formatRonda = (castellsDict) => {
 			const special = specialRounds(castellsDict);
@@ -58,11 +58,11 @@ class LlistaDiades extends Component {
 			for (const [castell, amount] of Object.entries(castellsDict))
 				res += formatCastell(amount, castell) + "+";
 			return res.slice(0,-1);
-		}
+		};
 
 		const formatCastell = (amount, castell) => {
 			return (amount === 1 ? "" : amount) + castell;
-		}
+		};
 
 		const specialRounds = (castellsDict) => {
 			if (count(castellsDict) === 2 &&
@@ -82,21 +82,44 @@ class LlistaDiades extends Component {
 				"4d6" in castellsDict)
 				return "3i4d6sim";
 			return false;
-		}
+		};
 
 		const validClass = (castells) => {
 			if (castells.length === 0) return "";
 			for (let castell of castells)
 				if (!castell.CASTELL.includes("(") && !castell.CASTELL.includes("n")) return "";
 			return "invalid";
-		}
+		};
 
-		const llista_diades = [...Object.values(diades)];
+		const isFromTemporada = (date, temporada) => {
+			const start_temporada = new Date(`09/01/${temporada.split('-')[0]}`);
+			const end_temporada = new Date(`08/31/${temporada.split('-')[1]}`);
+			return start_temporada <= date && date <= end_temporada;
+		};
+
+		const getTemporada = (data) => {
+			let year;
+			try {
+				year = data.getFullYear();
+			} catch {
+				data = fromEuropean(data);
+				year = data.getFullYear();
+			}
+			
+			if (isFromTemporada(data, year+'-'+(year+1)))
+				return year+'-'+(year+1);
+			return (year-1)+'-'+year;
+		};
+
+		const llista_diades = [...Object.values(diades)].filter(d => isFromTemporada(fromEuropean(d["info"]["DATA"]), getTemporada(new Date())));
 		llista_diades.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
 
 		return (<>
 			<section>
 				<h2 style={{marginBottom: '1rem'}}>Llista de diades universitàries</h2>
+				{
+					llista_diades.length === 0 ? <h5>(Encara no s'han fet castells aquesta temporada)</h5> : <></>
+				}
 				{
 					llista_diades.map((diada, _) => {
 						const areEntrada = areThereCastellsInRonda(diada["colles"], "Entrada");

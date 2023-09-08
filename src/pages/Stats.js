@@ -6,7 +6,33 @@ class Stats extends Component {
 
 		const castells = {};
 
-		const diades_array = [...Object.values(diades)];
+		const fromEuropean = (dateString) => {
+			const [day, month, year] = dateString.split("/");
+			return new Date(`${month}/${day}/${year}`);
+		};
+
+		const isFromTemporada = (date, temporada) => {
+			const start_temporada = new Date(`09/01/${temporada.split('-')[0]}`);
+			const end_temporada = new Date(`08/31/${temporada.split('-')[1]}`);
+			return start_temporada <= date && date <= end_temporada;
+		};
+
+		const getTemporada = (data) => {
+			let year;
+			try {
+				year = data.getFullYear();
+			} catch {
+				data = fromEuropean(data);
+				year = data.getFullYear();
+			}
+			
+			if (isFromTemporada(data, year+'-'+(year+1)))
+				return year+'-'+(year+1);
+			return (year-1)+'-'+year;
+		};
+
+		const diades_array = [...Object.values(diades)].filter(d => isFromTemporada(fromEuropean(d["info"]["DATA"]), getTemporada(new Date())));
+
 		diades_array.forEach(diada => {
 			const colles = [...Object.values(diada["colles"])];
 			colles.forEach((colla, i) => {
@@ -32,9 +58,11 @@ class Stats extends Component {
 				});
 			});
 		});
+
 		const castells_arrays = Object.keys(castells).map(key => {
 			return [key, castells[key]];
 		});
+
 		castells_arrays.sort((a, b) => {
 			try {
 				const gA = 100000*parseInt(puntuacions[a[0]]['Grup'])+10000*parseInt(puntuacions[a[0]]['Subgrup'])+parseInt(puntuacions[a[0]]['Descarregat']);
@@ -47,9 +75,13 @@ class Stats extends Component {
 
 		let castells_rows, castells_rows_names, desCar_rows, colles_rows, colles_rows_names, colles_rows_names_two, table_length;
 		let reset_rows = true;
+
 		return (<>
 			<section>
 				<h2>Estadístiques de la temporada actual</h2>
+				{
+					castells_arrays.length === 0 ? <h5>(Encara no s'han fet castells aquesta temporada)</h5> : <></>
+				}
 				{
 					castells_arrays.map((castell, i) => {
 						const name = castell[0];

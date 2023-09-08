@@ -5,6 +5,7 @@ class Barometre extends Component {
 	render() {
 		const { diades, puntuacions } = this.props;
 		const isWindows = window.navigator["platform"].includes("Win");
+		const colles_inicials = ['Xoriguers', 'Trempats', 'Penjats', 'Pataquers', 'Passerells', 'Marracos', 'Llunàtics', 'Grillats', 'Ganàpies', 'Engrescats', 'Emboirats', 'Bergants', 'Arreplegats']
 		if (Object.keys(puntuacions).length === 0) return <></>;
 
 		let castells_puntuats = {};
@@ -18,12 +19,12 @@ class Barometre extends Component {
 		const isCarregat = castell => {
 			if (castell.slice(-1) === "C") return " carregat";
 			return "";
-		}
+		};
 
 		const donePastWeek = date => {
 			if (Math.floor((new Date() - fromEuropean(date)) / (1000*60*60*24)) < 8) return "new";
 			return "";
-		}
+		};
 
 		const fromEuropean = (dateString) => {
 			const [day, month, year] = dateString.split("/");
@@ -41,13 +42,34 @@ class Barometre extends Component {
 			const months = ["de gener","de febrer","de març","d'abril","de maig","de juny","de juliol","d'agost","de setembre","d'octubre","de novembre","de desembre"];
 			const [day, month, year] = date.split("/");
 			return parseInt(day) + " " + months[parseInt(month)-1] + " " + year;
-		}
+		};
+
+		const isFromTemporada = (date, temporada) => {
+			const start_temporada = new Date(`09/01/${temporada.split('-')[0]}`);
+			const end_temporada = new Date(`08/31/${temporada.split('-')[1]}`);
+			return start_temporada <= date && date <= end_temporada;
+		};
+
+		const getTemporada = (data) => {
+			let year;
+			try {
+				year = data.getFullYear();
+			} catch {
+				data = fromEuropean(data);
+				year = data.getFullYear();
+			}
+			
+			if (isFromTemporada(data, year+'-'+(year+1)))
+				return year+'-'+(year+1);
+			return (year-1)+'-'+year;
+		};
 
 		let maxPuntuacio = -1;
-		let maxCastell = "";
+		let maxCastell = '';
 
 		const llista_diades = [...Object.values(diades)];
 		const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()));
+		// const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date('2023-01-01')));
 		aquesta_temporada.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
 		aquesta_temporada.forEach(diada => {
 			const colles = Object.keys(diada["colles"]);
@@ -89,40 +111,41 @@ class Barometre extends Component {
 				})
 			})
 		});
-		let date = "";
+
+		let date = '';
 		try {
 			date = formatDate(aquesta_temporada[0]["info"]["DATA"]);
 		} catch (e) {}
 
-		const top3 = Object.keys(castells_puntuats).map(colla => {
+		const top3 = colles_inicials.map(colla => {
 			return {
 				"colla": colla,
-				"puntuacio_castells": Object
+				"puntuacio_castells": colla in castells_puntuats ? Object
 					.entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,3) // return only the first 3 elements of the intermediate result
 					.map(([a,b]) => parseInt(b))
-					.reduce((acc, curr) => acc + curr, 0),
-				"puntuacions": Object
+					.reduce((acc, curr) => acc + curr, 0) : 0,
+				"puntuacions": colla in castells_puntuats ? Object
 					.entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,3) // return only the first 3 elements of the intermediate result
-					.map(([a,b]) => parseInt(b)),
+					.map(([a,b]) => parseInt(b)) : [0, 0, 0],
 				"top3": colla in castells_puntuats ? Object
 					.entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,3) // return only the first 3 elements of the intermediate result
-					.map(([n])=> n) : ["-", "-", "-"], // and map that to an array with only the name
+					.map(([n])=> n) : ['', '', ''], // and map that to an array with only the name
 				"data3": colla in data_castells ? Object
 					.entries(castells_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,3) // return only the first 3 elements of the intermediate result
-					.map(([n])=> data_castells[colla][n]) : ["-", "-", "-"], // and map that to an array with only the name
+					.map(([n])=> data_castells[colla][n]) : ['', '', ''], // and map that to an array with only the name
 				"topPilar": colla in pilars_puntuats ? Object
 					.entries(pilars_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,1) // return only the first 3 elements of the intermediate result
-					.map(([n])=> n) : "-", // and map that to an array with only the name
+					.map(([n])=> n) : [''], // and map that to an array with only the name
 				"topPilarPuntuacio": colla in pilars_puntuats ? Object
 					.entries(pilars_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
@@ -132,7 +155,7 @@ class Barometre extends Component {
 					.entries(pilars_puntuats[colla]) // create Array of Arrays with [key, value]
 					.sort(([, a],[, b]) => b-a) // sort by value, descending (b-a)
 					.slice(0,1) // return only the first 3 elements of the intermediate result
-					.map(([n])=> data_pilars[colla][n]) : "-", // and map that to an array with only the name
+					.map(([n])=> data_pilars[colla][n]) : [''], // and map that to an array with only the name
 			};
 		});
 		top3.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + colla.topPilarPuntuacio[0]);
@@ -212,10 +235,18 @@ class Barometre extends Component {
 			score.push(entry);
 		});
 
+		for (let colla of top3) {
+			while (colla.top3.length < 3) {
+				colla.top3.push('');
+				colla.puntuacions.push(0);
+				colla.data3.push('');
+			}
+		}
+
 		return (<>
 			<section>
-				<h2>Temporada 2022-23</h2>
-				<h5>(Actualitzat a {date})</h5>
+				<h2>Temporada {getTemporada(new Date())}</h2>
+				<h5>({date ? `Actualitzat a ${date}` : `Encara no s'han fet castells aquesta temporada`})</h5>
 				<table className="barometre-tb">
 					<thead>
 						<tr>
@@ -234,21 +265,23 @@ class Barometre extends Component {
 								let pos = lastPoints === colla.puntuacio_total ? i : i+1;
 								const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : "down";
 								lastPoints = colla.puntuacio_total;
+								const pilar_score = puntuacions[colla.topPilar[0].replace("C","")];
 								return (
 									<tr className="colla" key={colla.colla}>
-										<td className={difference}></td>
-										<td>{pos}</td>
+										<td className={parseInt(colla.puntuacio_total) === 0 ? 'same' : difference}></td>
+										<td>{parseInt(colla.puntuacio_total) === 0 ? '' : pos}</td>
 										<td className={colla.colla.toLowerCase()}>{colla.colla}</td>
 										{colla.top3.map((castell, i) => {
+											const castell_score = puntuacions[castell.replace("C","")];
 											return (
 												<>
 													<td key={`${colla}-${i}`} className={donePastWeek(colla.data3[i]) + (isWindows ? " windowsOS" : "")}></td>
-													<td key={`${colla}-${castell}`} className={"grup" + puntuacions[castell.replace("C","")]["Grup"] + isCarregat(castell)}>{castell}</td>
+													<td key={`${colla}-${castell}`} className={"grup" + (castell_score ? castell_score["Grup"] : '0') + isCarregat(castell)}>{castell}</td>
 												</>
 											);
 										})}
 										<td className={donePastWeek(colla.dataPilar[0]) + (isWindows ? " windowsOS" : "")}></td>
-										<td className={"grup" + puntuacions[colla.topPilar[0].replace("C","")]["Grup"] + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
+										<td className={"grup" + (pilar_score ? pilar_score["Grup"] : '0') + isCarregat(colla.topPilar[0])}>{colla.topPilar[0]}</td>
 										<td><Bars castells={colla.puntuacions} pilars={colla.topPilarPuntuacio} topall={maxPuntuacio} /></td>
 									</tr>
 								);

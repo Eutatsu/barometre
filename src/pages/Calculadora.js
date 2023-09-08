@@ -117,7 +117,7 @@ class Calculadora extends Component {
 	export() {
 		const file = new Blob([JSON.stringify(this.state.colles, null, 4)], {type: 'json'});
 		if (window.navigator.msSaveOrOpenBlob)
-		window.navigator.msSaveOrOpenBlob(file, 'barometre.json');
+			window.navigator.msSaveOrOpenBlob(file, 'barometre.json');
 		else {
 			const a = document.createElement('a');
 			const url = URL.createObjectURL(file);
