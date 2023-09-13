@@ -823,6 +823,7 @@ Calendar
 #calendar th {
 	padding-bottom: 0.3rem;
 	background-color: transparent;
+	color: var(--theme) !important;
 }
 
 #calendar td {
