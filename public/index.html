@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Dades històriques i baròmetre universitari"
+      content="Baròmetre Universitari i dades històriques"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -19,6 +19,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400&display=swap">
     <title>Baròmetre Universitari</title>
+
+    <!--
+      this script checks to see if a redirect is present in the query string,
+      converts it back into the correct url and adds it to the browser's history
+      using window.history.replaceState(...)
+    -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4PWGR4RZE"></script>

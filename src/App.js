@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import DataProcessor from "./components/DataProcessor";
