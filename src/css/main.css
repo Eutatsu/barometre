@@ -657,6 +657,51 @@ th {
 .bars-container .bar.castell {	background-color: var(--white); }
 .bars-container .bar.pilar {	background-color: black; }
 
+.barometre-footer {
+	margin-top: 1rem;
+	font-size: 0.8rem;
+	color: var(--grey-400);
+	max-width: 800px;
+}
+
+.barometre-footer p {
+	margin-bottom: 1rem;
+}
+
+.barometre-footer h5 {
+	color: var(--grey-500);
+	font-size: 1rem;
+	margin-bottom: 0.3rem;
+}
+
+.other-seasons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+}
+
+.other-seasons a {
+	font-family: 'Share Tech Mono';
+	font-size: 0.7rem;
+	white-space: nowrap;
+	padding: 2px 5px;
+	border-radius: 2px;
+	background-color: var(--theme);
+	color: var(--white);
+}
+.other-seasons a.disabled {
+	pointer-events: none;
+	background-color: var(--grey-300);
+	color: var(--grey-400);
+	opacity: 1 !important;
+}
+.other-seasons a.unsel {
+	opacity: 0.3;
+}
+.other-seasons a.unsel:hover {
+	opacity: 1;
+}
+
 @media (max-width: 500px) {
 	.barometre-tb {
 		font-size: 0.75rem;

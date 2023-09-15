@@ -1,9 +1,33 @@
 import { Component } from "react";
+import { useParams } from "react-router-dom";
 import Bars from "./../components/Bars";
+import { NavLink } from "react-router-dom";
+
+function withParams(Component) {
+	return props => <Component {...props} params={useParams()} />;
+}
+
+const FIRST_YEAR = 1994;
+const AVAILABLE_YEARS = [
+	2022,
+	2023
+];
 
 class Barometre extends Component {
 	render() {
 		const { diades, puntuacions } = this.props;
+		const { yy } = this.props.params;
+		if (yy) {
+			const yy_int = parseInt(yy);
+			if (!yy_int || (yy_int < FIRST_YEAR || yy_int > new Date().getFullYear()))
+				return (<>
+					<section>
+						<h2>Temporada no vàlida</h2>
+						<p style={{marginTop: '1rem'}}>Fes click <NavLink to="/">aquí</NavLink> per tornar a la temporada actual.</p>
+					</section>
+				</>);
+		}
+
 		const isWindows = window.navigator["platform"].includes("Win");
 		const colles_inicials = ['Xoriguers', 'Trempats', 'Penjats', 'Pataquers', 'Passerells', 'Marracos', 'Llunàtics', 'Grillats', 'Ganàpies', 'Engrescats', 'Emboirats', 'Bergants', 'Arreplegats']
 		if (Object.keys(puntuacions).length === 0) return <></>;
@@ -31,11 +55,11 @@ class Barometre extends Component {
 			return new Date(`${month}/${day}/${year}`);
 		};
 
-		const getLastSeptember = (today) => {
-			if (today.getMonth() >= 9-1)
-				return new Date(`09/01/${today.getFullYear()}`);
+		const getLastSeptember = (date) => {
+			if (date.getMonth() >= 9-1)
+				return new Date(`09/01/${date.getFullYear()}`);
 			else
-				return new Date(`09/01/${today.getFullYear()-1}`);
+				return new Date(`09/01/${date.getFullYear()-1}`);
 		};
 
 		const formatDate = (date) => {
@@ -68,8 +92,10 @@ class Barometre extends Component {
 		let maxCastell = '';
 
 		const llista_diades = [...Object.values(diades)];
-		const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date()));
-		// const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) > getLastSeptember(new Date('2023-01-01')));
+		let yy_date = new Date();
+		if (yy)
+			yy_date = new Date(`${parseInt(yy)+1}-08-31`);
+		const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) >= getLastSeptember(yy_date) && fromEuropean(diada["info"]["DATA"]) <= yy_date);
 		aquesta_temporada.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
 		aquesta_temporada.forEach(diada => {
 			const colles = Object.keys(diada["colles"]);
@@ -243,10 +269,15 @@ class Barometre extends Component {
 			}
 		}
 
+		const different_temporada = getTemporada(yy_date) !== getTemporada(new Date());
+
 		return (<>
 			<section>
-				<h2>Temporada {getTemporada(new Date())}</h2>
+				<h2>Temporada {getTemporada(yy_date)}</h2>
 				<h5>({date ? `Actualitzat a ${date}` : `Encara no s'han fet castells aquesta temporada`})</h5>
+				{
+					different_temporada && <p style={{marginTop: '1rem'}}>Les puntuacions utilitzades són les actuals, no les de la temporada observada.</p>
+				}
 				<table className="barometre-tb">
 					<thead>
 						<tr>
@@ -289,9 +320,27 @@ class Barometre extends Component {
 						}
 					</tbody>
 				</table>
+
+				<div className="barometre-footer">
+					{
+						different_temporada && <p>Fes click <NavLink to="/">aquí</NavLink> per tornar a la temporada actual.</p>
+					}
+					<h5>Consulta altres temporades:</h5>
+					<div className="other-seasons">
+						{
+							[...Array(parseInt(getLastSeptember(new Date()).getFullYear() - FIRST_YEAR + 1)).keys()].map((y, i) => {
+								const oy_y = FIRST_YEAR + y;
+								const is_this = (yy && parseInt(yy) === oy_y) || (!yy && getLastSeptember(new Date()).getFullYear() === oy_y);
+								return <NavLink className={`${!AVAILABLE_YEARS.includes(oy_y) && 'disabled'} ${!is_this && 'unsel'}`} to={`/barometre/${oy_y}`} key={`other-years-${i}`}>
+									{oy_y}-{oy_y+1}
+								</NavLink>;
+							})
+						}
+					</div>
+				</div>
 			</section>
 		</>);
 	}
 }
 
-export default Barometre;
+export default withParams(Barometre);

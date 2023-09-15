@@ -43,6 +43,7 @@ function App() {
 			<main className="page">
 				<Routes>
 					<Route path="/" element={<Barometre {...exports}/>}/>
+					<Route path="/barometre/:yy" element={<Barometre {...exports}/>}/>
 					<Route path="/score" element={<ScoreTable {...exports}/>}/>
 					<Route path="/stats" element={<Stats {...exports}/>}/>
 					<Route path="/calendar" element={<Calendar />}/>
