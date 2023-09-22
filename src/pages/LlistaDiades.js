@@ -11,13 +11,10 @@ class LlistaDiades extends Component {
 
 		const areThereCastellsInRonda = (diada_colles, ronda) => {
 			const castells = [...Object.values(diada_colles)];
-			let areInRonda;
-			for (const c of castells) {
-				const castellsInRonda = getCastellsRonda(c, ronda);
-				areInRonda = castellsInRonda.map(arr => arr.length > 0).reduce((prev, curr) => prev || curr, false);
-				if (areInRonda) return true;
-			}
-			return areInRonda;
+			for (const c of castells)
+				for (const cc of c)
+					if (cc['RONDA'] === ronda) return true;
+			return false;
 		};
 
 		const getCastellsRonda = function (castells, ronda) {
