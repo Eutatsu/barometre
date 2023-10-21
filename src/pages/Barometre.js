@@ -184,7 +184,7 @@ class Barometre extends Component {
 					.map(([n])=> data_pilars[colla][n]) : [''], // and map that to an array with only the name
 			};
 		});
-		top3.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + colla.topPilarPuntuacio[0]);
+		top3.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + parseInt(colla.topPilarPuntuacio[0]));
 
 		const lastWeek = new Date();
 		lastWeek.setDate(lastWeek.getDate() - 8);
@@ -235,10 +235,10 @@ class Barometre extends Component {
 					.map(([, n])=> parseInt(n)) : "0" // and map that to an array with only the name
 			};
 		});
-		top3_lastWeek.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + colla.topPilarPuntuacio[0]);
+		top3_lastWeek.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + parseInt(colla.topPilarPuntuacio[0]));
 
 		let lastPoints = 0;
-		top3_lastWeek.sort((a,b) => a.puntuacio_castells === b.puntuacio_castells ? (a.puntuacio_total < b.puntuacio_total ? 1 : -1) : (a.puntuacio_castells < b.puntuacio_castells ? 1 : -1))
+		top3_lastWeek.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
 			.forEach((colla, i) => {
 				top3_lastWeek[i]["pos"] = lastPoints === colla.puntuacio_total ? i : i+1;
 				lastPoints = colla.puntuacio_total;
@@ -291,7 +291,7 @@ class Barometre extends Component {
 					<tbody>
 						{
 							top3
-							.sort((a,b) => a.puntuacio_castells === b.puntuacio_castells ? (a.puntuacio_total < b.puntuacio_total ? 1 : -1) : (a.puntuacio_castells < b.puntuacio_castells ? 1 : -1))
+							.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
 							.map((colla, i) => {
 								let pos = lastPoints === colla.puntuacio_total ? i : i+1;
 								const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : "down";
