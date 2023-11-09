@@ -9,6 +9,33 @@ function withParams(Component) {
 
 const FIRST_YEAR = 1994;
 const AVAILABLE_YEARS = [
+	1994,
+	1995,
+	1996,
+	1997,
+	1998,
+	1999,
+	2000,
+	2001,
+	2002,
+	2003,
+	2004,
+	2005,
+	2006,
+	2007,
+	2008,
+	2009,
+	2010,
+	2011,
+	2012,
+	2013,
+	2014,
+	2015,
+	2016,
+	2017,
+	2018,
+	2019,
+	2021,
 	2022,
 	2023
 ];
@@ -310,7 +337,7 @@ class Barometre extends Component {
 								return (
 									<tr className="colla" key={colla.colla}>
 										<td className={parseInt(colla.puntuacio_total) === 0 ? 'same' : difference}></td>
-										<td>{parseInt(colla.puntuacio_total) === 0 ? '' : pos}</td>
+										<td>{parseInt(colla.puntuacio_total) === 0 ? '' : pos ? pos : pos + 1}</td>
 										<td className={colla.colla.toLowerCase()}>{colla.colla}</td>
 										{colla.top3.map((castell, i) => {
 											const castell_score = puntuacions[castell.replace("C","")];
