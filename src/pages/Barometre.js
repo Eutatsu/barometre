@@ -188,7 +188,7 @@ class Barometre extends Component {
 
 		const lastWeek = new Date();
 		lastWeek.setDate(lastWeek.getDate() - 8);
-		const ultima_setmana = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) < lastWeek);
+		const ultima_setmana = aquesta_temporada.filter(diada => fromEuropean(diada["info"]["DATA"]) < lastWeek);
 		ultima_setmana.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
 		ultima_setmana.forEach(diada => {
 			const colles = Object.keys(diada["colles"]);
@@ -196,10 +196,7 @@ class Barometre extends Component {
 				diada["colles"][colla].forEach(castell => {
 					if (castell["CASTELL"] in puntuacions && (castell["RESULTAT"] === "Descarregat" || castell["RESULTAT"] === "Carregat")) {
 						const punts = puntuacions[castell["CASTELL"]][castell["RESULTAT"]];
-
-						let res = "";
-						if (castell["RESULTAT"] === "Carregat")
-							res = "C";
+						const res = castell["RESULTAT"] === "Carregat" ? 'C' : '';
 						
 						if (castell["CASTELL"].toLowerCase().startsWith("p") || castell["CASTELL"].toLowerCase().startsWith("v")) {
 							if (!(colla in pilars_puntuats_lastWeek))
@@ -234,6 +231,19 @@ class Barometre extends Component {
 					.slice(0,1) // return only the first 3 elements of the intermediate result
 					.map(([, n])=> parseInt(n)) : "0" // and map that to an array with only the name
 			};
+		});
+		Object.keys(pilars_puntuats_lastWeek).forEach(colla => {
+			if (!(colla in castells_puntuats_lastWeek)) {
+				top3_lastWeek.push({
+					"colla": colla,
+					"puntuacio_castells": 0,
+					"topPilarPuntuacio": Object
+						.entries(pilars_puntuats_lastWeek[colla])
+						.sort(([, a],[, b]) => b-a)
+						.slice(0,1)
+						.map(([, n])=> parseInt(n))
+				});
+			}
 		});
 		top3_lastWeek.forEach(colla => colla.puntuacio_total = colla.puntuacio_castells + parseInt(colla.topPilarPuntuacio[0]));
 
@@ -294,7 +304,7 @@ class Barometre extends Component {
 							.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
 							.map((colla, i) => {
 								let pos = lastPoints === colla.puntuacio_total ? i : i+1;
-								const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : "down";
+								const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : lastWeek_pos[colla.colla] ? "down" : "up";
 								lastPoints = colla.puntuacio_total;
 								const pilar_score = puntuacions[colla.topPilar[0].replace("C","")];
 								return (
