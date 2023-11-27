@@ -50,7 +50,7 @@ class Barometre extends Component {
 		const selected_temporada = GetTemporada(yy_date);
 		const colles_inicials = COLLES_INICIALS[selected_temporada];
 
-		if (colles_inicials == undefined) {
+		if (colles_inicials === undefined) {
 			return (<>
 				<section>
 					<h2>Temporada {yy === '2020' ? '2020-2021' : 'no vàlida'}</h2>
