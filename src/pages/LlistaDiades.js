@@ -1,8 +1,13 @@
 import { Component } from "react";
+import COLLES_INICIALS from "./../data/colles.json";
+import GetTemporada from "./../functions/GetTemporada";
+import GetHighContrast from "./../functions/GetHighContrast";
 
 class LlistaDiades extends Component {
 	render() {
 		const { diades } = this.props;
+
+		const colors_colla = COLLES_INICIALS[GetTemporada(new Date())];
 
 		const fromEuropean = (dateString) => {
 			const [day, month, year] = dateString.split("/");
@@ -168,7 +173,7 @@ class LlistaDiades extends Component {
 												return (
 													<>
 														<tr>
-															<td className={colla[0].toLowerCase()}>{colla[0]}</td>
+															<td  style={{backgroundColor: colors_colla[colla[0]], color: GetHighContrast(colors_colla[colla[0]])}}>{colla[0]}</td>
 															{ areEntrada && <td className={validClass(getCastellsRonda(castells, "Entrada"))}>{entrada}</td> }
 															{ are1 && <td className={validClass(getCastellsRonda(castells, "1"))}>{round1}</td> }
 															{ are2 && <td className={validClass(getCastellsRonda(castells, "2"))}>{round2}</td> }

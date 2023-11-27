@@ -68,21 +68,6 @@ html {
 	--orange: #fdbd47;
 	--green: #229f22;
 
-	/* colles */
-	--arreplegats: #15a884;
-	--pataquers: #f26e00;
-	--passerells: #c99fd0;
-	--ganapies: #257ba2;
-	--marracos: #979db5;
-	--trempats: #a48970;
-	--xoriguers: #12c3f4;
-	--emboirats: #c80036;
-	--bergants: #9dd237;
-	--engrescats: #ffdd00;
-	--penjats: #f80000;
-	--grillats: #cd157a;
-	--llunatics: #21277c;
-
 	/* groups */
 	--s0: #ffffff;
 	--s1: #f5d7d7;
@@ -511,21 +496,6 @@ th {
 	background-color: var(--theme);
 	color: var(--white);
 }
-
-.arreplegats {	background-color: var(--arreplegats)	!important; }
-.pataquers {	background-color: var(--pataquers)		!important; }
-.passerells {	background-color: var(--passerells)		!important; }
-.ganàpies {		background-color: var(--ganapies)		!important; }
-.marracos {		background-color: var(--marracos)		!important; }
-.trempats {		background-color: var(--trempats)		!important; }
-.xoriguers {	background-color: var(--xoriguers)		!important; }
-.emboirats {	background-color: var(--emboirats)		!important; }
-.bergants {		background-color: var(--bergants)		!important; }
-.engrescats {	background-color: var(--engrescats)		!important; }
-.penjats {		background-color: var(--penjats)		!important; }
-.grillats {		background-color: var(--grillats)		!important; }
-.llunàtics {	background-color: var(--llunatics)		!important;
-				color: var(--white)						!important; }
 
 .grup0 {
 	background-color: var(--s0);

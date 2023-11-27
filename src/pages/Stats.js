@@ -1,10 +1,14 @@
 import { Component } from "react";
+import COLLES_INICIALS from "./../data/colles.json";
+import GetTemporada from "./../functions/GetTemporada";
+import GetHighContrast from "./../functions/GetHighContrast";
 
 class Stats extends Component {
 	render() {
 		const { diades, puntuacions } = this.props;
 
 		const castells = {};
+		const colors_colla = COLLES_INICIALS[GetTemporada(new Date())];
 
 		const fromEuropean = (dateString) => {
 			const [day, month, year] = dateString.split("/");
@@ -138,7 +142,7 @@ class Stats extends Component {
 								}
 							})
 							if (!colles_rows_names_two.includes(colla)) {
-								colles_rows.push(<tr><td className={colla.toLowerCase()}>{colla}</td>{colla_res}</tr>);
+								colles_rows.push(<tr><td style={{backgroundColor: colors_colla[colla], color: GetHighContrast(colors_colla[colla])}}>{colla}</td>{colla_res}</tr>);
 								colles_rows_names_two.push(colla);
 							}
 						});

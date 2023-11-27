@@ -1,71 +1,19 @@
 import { Component } from "react";
 import { useParams } from "react-router-dom";
-import Bars from "./../components/Bars";
 import { NavLink } from "react-router-dom";
+import Bars from "./../components/Bars";
+import COLLES_INICIALS from "./../data/colles.json";
+import GetTemporada from "./../functions/GetTemporada";
+import GetHighContrast from "./../functions/GetHighContrast";
 
 function withParams(Component) {
 	return props => <Component {...props} params={useParams()} />;
 }
 
-const FIRST_YEAR = 1994;
-const AVAILABLE_YEARS = [
-	1994,
-	1995,
-	1996,
-	1997,
-	1998,
-	1999,
-	2000,
-	2001,
-	2002,
-	2003,
-	2004,
-	2005,
-	2006,
-	2007,
-	2008,
-	2009,
-	2010,
-	2011,
-	2012,
-	2013,
-	2014,
-	2015,
-	2016,
-	2017,
-	2018,
-	2019,
-	2021,
-	2022,
-	2023
-];
-
 class Barometre extends Component {
 	render() {
 		const { diades, puntuacions } = this.props;
 		const { yy } = this.props.params;
-		if (yy) {
-			const yy_int = parseInt(yy);
-			if (!yy_int || (yy_int < FIRST_YEAR || yy_int > new Date().getFullYear()))
-				return (<>
-					<section>
-						<h2>Temporada no vàlida</h2>
-						<p style={{marginTop: '1rem'}}>Fes click <NavLink to="/">aquí</NavLink> per tornar a la temporada actual.</p>
-					</section>
-				</>);
-		}
-
-		const isWindows = window.navigator["platform"].includes("Win");
-		const colles_inicials = ['Xoriguers', 'Trempats', 'Penjats', 'Pataquers', 'Passerells', 'Marracos', 'Llunàtics', 'Grillats', 'Ganàpies', 'Engrescats', 'Emboirats', 'Bergants', 'Arreplegats']
-		if (Object.keys(puntuacions).length === 0) return <></>;
-
-		let castells_puntuats = {};
-		let pilars_puntuats = {};
-		let data_pilars = {};
-		let data_castells = {};
-
-		let castells_puntuats_lastWeek = {};
-		let pilars_puntuats_lastWeek = {};
 
 		const isCarregat = castell => {
 			if (castell.slice(-1) === "C") return " carregat";
@@ -95,33 +43,40 @@ class Barometre extends Component {
 			return parseInt(day) + " " + months[parseInt(month)-1] + " " + year;
 		};
 
-		const isFromTemporada = (date, temporada) => {
-			const start_temporada = new Date(`09/01/${temporada.split('-')[0]}`);
-			const end_temporada = new Date(`08/31/${temporada.split('-')[1]}`);
-			return start_temporada <= date && date <= end_temporada;
-		};
+		let yy_date = new Date();
+		if (yy)
+			yy_date = new Date(`${parseInt(yy)+1}-08-31`);
+		const now_temporada = GetTemporada(new Date());
+		const selected_temporada = GetTemporada(yy_date);
+		const colles_inicials = COLLES_INICIALS[selected_temporada];
 
-		const getTemporada = (data) => {
-			let year;
-			try {
-				year = data.getFullYear();
-			} catch {
-				data = fromEuropean(data);
-				year = data.getFullYear();
-			}
-			
-			if (isFromTemporada(data, year+'-'+(year+1)))
-				return year+'-'+(year+1);
-			return (year-1)+'-'+year;
-		};
+		if (colles_inicials == undefined) {
+			return (<>
+				<section>
+					<h2>Temporada {yy === '2020' ? '2020-2021' : 'no vàlida'}</h2>
+					{
+						yy === '2020' && <p style={{marginTop: '1rem'}}>Durant la temporada 2020-2021 no hi va haver castells universitaris a causa de l'aturada de l'activitat provocada per la COVID-19.</p>
+					}
+					<p style={{marginTop: '1rem'}}>Fes click <NavLink to="/">aquí</NavLink> per tornar a la temporada actual.</p>
+				</section>
+			</>);
+		}
+
+		const isWindows = window.navigator["platform"].includes("Win");
+		if (Object.keys(puntuacions).length === 0) return <></>;
+
+		let castells_puntuats = {};
+		let pilars_puntuats = {};
+		let data_pilars = {};
+		let data_castells = {};
+
+		let castells_puntuats_lastWeek = {};
+		let pilars_puntuats_lastWeek = {};
 
 		let maxPuntuacio = -1;
 		let maxCastell = '';
 
 		const llista_diades = [...Object.values(diades)];
-		let yy_date = new Date();
-		if (yy)
-			yy_date = new Date(`${parseInt(yy)+1}-08-31`);
 		const aquesta_temporada = llista_diades.filter(diada => fromEuropean(diada["info"]["DATA"]) >= getLastSeptember(yy_date) && fromEuropean(diada["info"]["DATA"]) <= yy_date);
 		aquesta_temporada.sort((a,b) => fromEuropean(b["info"]["DATA"]) - fromEuropean(a["info"]["DATA"]));
 		aquesta_temporada.forEach(diada => {
@@ -170,7 +125,7 @@ class Barometre extends Component {
 			date = formatDate(aquesta_temporada[0]["info"]["DATA"]);
 		} catch (e) {}
 
-		const top3 = colles_inicials.map(colla => {
+		const top3 = Object.keys(colles_inicials).map(colla => {
 			return {
 				"colla": colla,
 				"puntuacio_castells": colla in castells_puntuats ? Object
@@ -306,11 +261,11 @@ class Barometre extends Component {
 			}
 		}
 
-		const different_temporada = getTemporada(yy_date) !== getTemporada(new Date());
+		const different_temporada = GetTemporada(yy_date) !== GetTemporada(new Date());
 
 		return (<>
 			<section>
-				<h2>Temporada {getTemporada(yy_date)}</h2>
+				<h2>Temporada {selected_temporada}</h2>
 				<h5>({date ? `Actualitzat a ${date}` : `Encara no s'han fet castells aquesta temporada`})</h5>
 				{
 					different_temporada && <p style={{marginTop: '1rem'}}>Les puntuacions utilitzades són les actuals, no les de la temporada observada.</p>
@@ -331,14 +286,15 @@ class Barometre extends Component {
 							.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
 							.map((colla, i) => {
 								let pos = lastPoints === colla.puntuacio_total ? i : i+1;
-								const difference = lastWeek_pos[colla.colla]-pos === 0 ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : lastWeek_pos[colla.colla] ? "down" : "up";
+								const difference = lastWeek_pos[colla.colla]-pos === 0 || now_temporada !== selected_temporada ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : lastWeek_pos[colla.colla] ? "down" : "up";
 								lastPoints = colla.puntuacio_total;
 								const pilar_score = puntuacions[colla.topPilar[0].replace("C","")];
+								const colla_color = COLLES_INICIALS[selected_temporada][colla.colla];
 								return (
 									<tr className="colla" key={colla.colla}>
 										<td className={parseInt(colla.puntuacio_total) === 0 ? 'same' : difference}></td>
 										<td>{parseInt(colla.puntuacio_total) === 0 ? '' : pos ? pos : pos + 1}</td>
-										<td className={colla.colla.toLowerCase()}>{colla.colla}</td>
+										<td style={{backgroundColor: colla_color, color: GetHighContrast(colla_color)}}>{colla.colla}</td>
 										{colla.top3.map((castell, i) => {
 											const castell_score = puntuacions[castell.replace("C","")];
 											return (
@@ -365,11 +321,9 @@ class Barometre extends Component {
 					<h5>Consulta altres temporades:</h5>
 					<div className="other-seasons">
 						{
-							[...Array(parseInt(getLastSeptember(new Date()).getFullYear() - FIRST_YEAR + 1)).keys()].map((y, i) => {
-								const oy_y = FIRST_YEAR + y;
-								const is_this = (yy && parseInt(yy) === oy_y) || (!yy && getLastSeptember(new Date()).getFullYear() === oy_y);
-								return <NavLink className={`${!AVAILABLE_YEARS.includes(oy_y) && 'disabled'} ${!is_this && 'unsel'}`} to={`/barometre/${oy_y}`} key={`other-years-${i}`}>
-									{oy_y}-{oy_y+1}
+							Object.keys(COLLES_INICIALS).map((y, i) => {
+								return <NavLink className={`${!(y === selected_temporada) && 'unsel'}`} to={`/barometre/${y.split('-')[0]}`} key={`other-years-${i}`}>
+									{y}
 								</NavLink>;
 							})
 						}

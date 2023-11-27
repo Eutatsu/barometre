@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import * as Papa from 'papaparse';
+import COLLES_INICIALS from "./../data/colles.json";
+import GetTemporada from "./../functions/GetTemporada";
+import GetHighContrast from "./../functions/GetHighContrast";
 
 const months = ["gener","febrer","març","abril","maig","juny","juliol","agost","setembre","octubre","novembre","desembre"];
 const CALENDAR_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=577649250&single=true&output=csv";
@@ -17,6 +20,10 @@ class Calendar extends Component {
 			currentMonth: new Date().getMonth(),
 			currentYear: new Date().getFullYear()
 		};
+	}
+	fromEuropean(dateString) {
+		const [day, month, year] = dateString.split("/");
+		return new Date(`${month}/${day}/${year}`);
 	}
 	showCalendar(month, year) {
 		const tbl = document.getElementById("calendar-body");
@@ -90,7 +97,8 @@ class Calendar extends Component {
 				event_div.innerHTML = event["NOM CURT"];
 				event_div.id = `event-${event['DATA']}@${event['HORA']}|${event['NOM CURT']}`;
 				event_div.addEventListener('click', this.showEventInfo);
-				event_div.className = event['COLLA AMFITRIONA'].toLowerCase();
+				event_div.style.backgroundColor = COLLES_INICIALS[GetTemporada(this.fromEuropean(event['DATA']))][event['COLLA AMFITRIONA']];
+				event_div.style.color = GetHighContrast(COLLES_INICIALS[GetTemporada(this.fromEuropean(event['DATA']))][event['COLLA AMFITRIONA']]);
 				wrap.appendChild(event_div);
 			}
 		});
