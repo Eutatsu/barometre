@@ -10,7 +10,7 @@ class Navbar extends Component {
 			<nav className="navbar">
 				<span className="title">
 					<Link to="/">
-						<img alt="" src="/favicon.ico"/>
+						<img alt="" src="favicon.ico"/>
 						Baròmetre Universitari
 					</Link>
 				</span>
