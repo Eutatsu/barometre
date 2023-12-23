@@ -29,18 +29,21 @@
 		"Arreplegats": "#15a884",
 		"Emboirats": "#ff0000",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Xoriguers": "#12c3f4"
 	},
 	"2001-2002": {
 		"Arreplegats": "#15a884",
 		"Emboirats": "#ff0000",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Xoriguers": "#12c3f4"
 	},
 	"2002-2003": {
 		"Arreplegats": "#15a884",
 		"Emboirats": "#ff0000",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Xoriguers": "#12c3f4"
 	},
 	"2003-2004": {
@@ -48,6 +51,7 @@
 		"Emboirats": "#ff0000",
 		"Gambirots": "#c6d6f1",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Xoriguers": "#12c3f4"
 	},
 	"2004-2005": {
@@ -55,6 +59,7 @@
 		"Emboirats": "#ff0000",
 		"Gambirots": "#c6d6f1",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Xoriguers": "#12c3f4"
 	},
 	"2005-2006": {
@@ -62,6 +67,7 @@
 		"Emboirats": "#ff0000",
 		"Gambirots": "#c6d6f1",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Xoriguers": "#12c3f4"
 	},
 	"2006-2007": {
@@ -69,11 +75,13 @@
 		"Emboirats": "#ff0000",
 		"Gambirots": "#c6d6f1",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Xoriguers": "#12c3f4"
 	},
 	"2007-2008": {
 		"Arreplegats": "#15a884",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Pataquers": "#f26e00",
 		"Xoriguers": "#12c3f4"
 	},
@@ -81,6 +89,7 @@
 		"Arreplegats": "#15a884",
 		"Ganàpies": "#257ba2",
 		"Mangoners": "#d6b1ff",
+		"Marracos": "#979db5",
 		"Pataquers": "#f26e00",
 		"Xoriguers": "#12c3f4"
 	},
@@ -88,6 +97,7 @@
 		"Arreplegats": "#15a884",
 		"Ganàpies": "#257ba2",
 		"Mangoners": "#d6b1ff",
+		"Marracos": "#979db5",
 		"Pataquers": "#f26e00",
 		"Xoriguers": "#12c3f4"
 	},
@@ -95,6 +105,7 @@
 		"Arreplegats": "#15a884",
 		"Ganàpies": "#257ba2",
 		"Mangoners": "#d6b1ff",
+		"Marracos": "#979db5",
 		"Pataquers": "#f26e00",
 		"Xoriguers": "#12c3f4"
 	},
@@ -102,6 +113,7 @@
 		"Arreplegats": "#15a884",
 		"Emboirats": "#c80036",
 		"Ganàpies": "#257ba2",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Xoriguers": "#12c3f4"
@@ -111,6 +123,7 @@
 		"Emboirats": "#c80036",
 		"Ganàpies": "#257ba2",
 		"Mangoners": "#efa467",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Xoriguers": "#12c3f4"
@@ -123,6 +136,7 @@
 		"Ganàpies": "#257ba2",
 		"Llunàtics": "#21277c",
 		"Mangoners": "#efa467",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -136,6 +150,7 @@
 		"Ganàpies": "#257ba2",
 		"Llunàtics": "#21277c",
 		"Mangoners": "#efa467",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -150,6 +165,7 @@
 		"Ganàpies": "#257ba2",
 		"Grillats": "#cd157a",
 		"Llunàtics": "#21277c",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -164,6 +180,7 @@
 		"Ganàpies": "#257ba2",
 		"Grillats": "#cd157a",
 		"Llunàtics": "#21277c",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -178,6 +195,7 @@
 		"Ganàpies": "#257ba2",
 		"Grillats": "#cd157a",
 		"Llunàtics": "#21277c",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -192,6 +210,7 @@
 		"Ganàpies": "#257ba2",
 		"Grillats": "#cd157a",
 		"Llunàtics": "#21277c",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -206,6 +225,7 @@
 		"Ganàpies": "#257ba2",
 		"Grillats": "#cd157a",
 		"Llunàtics": "#21277c",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -220,6 +240,7 @@
 		"Ganàpies": "#257ba2",
 		"Grillats": "#cd157a",
 		"Llunàtics": "#21277c",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
@@ -234,6 +255,7 @@
 		"Ganàpies": "#257ba2",
 		"Grillats": "#cd157a",
 		"Llunàtics": "#21277c",
+		"Marracos": "#979db5",
 		"Passerells": "#c99fd0",
 		"Pataquers": "#f26e00",
 		"Penjats": "#f80000",
