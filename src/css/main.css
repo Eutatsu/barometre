@@ -78,8 +78,11 @@ html {
 	--s6: #660000;
 	--s7: #440000;
 	--s8: #000000;
-	--cc: #ffe599;
+
+	/* results */
 	--cd: #c7d9c6;
+	--cc: #ffe599;
+	--ci: #f8a7a7;
 
 	/* fonts  */
 	--headingFont: 'Roboto', sans-serif;
@@ -772,13 +775,21 @@ Stats
 	border: 1px solid var(--black);
 }
 
+.stats-tb .descarregats,
+.stats-tb .carregats,
+.stats-tb .intents,
+.stats-tb .intents_desmuntats {
+	text-align: center;
+}
+
 .stats-tb .descarregats {
 	background-color: var(--cd);
-	text-align: center;
 }
 .stats-tb .carregats {
 	background-color: var(--cc);
-	text-align: center;
+}
+.stats-tb .intents {
+	background-color: var(--ci);
 }
 
 @media (max-width: 500px) {

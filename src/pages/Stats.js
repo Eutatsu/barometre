@@ -40,25 +40,37 @@ class Stats extends Component {
 		diades_array.forEach(diada => {
 			const colles = [...Object.values(diada["colles"])];
 			colles.forEach((colla, i) => {
-				const name = Object.keys(diada["colles"])[i];
+				const collaName = Object.keys(diada["colles"])[i];
 				const actuacio = [...Object.values(colla)];
 				if (Number.isInteger(actuacio[actuacio.length - 1]))
 					actuacio.pop();
 				actuacio.forEach(castell => {
 					castell = [...Object.values(castell)];
-					if ((castell[2] !== 'Descarregat' && castell[2] !== 'Carregat') || castell[1].includes("(")) return;
+					// if ((castell[2] !== 'Descarregat' && castell[2] !== 'Carregat') || castell[1].includes("(")) return;
 					if (!(castell[1] in puntuacions)) return;
 					
-					const descarregat = castell[2] === 'Descarregat';
 					if (!(castell[1] in castells))
 						castells[castell[1]] = {};
-					if (!(name in castells[castell[1]]))
-						castells[castell[1]][name] = [0, 0];
+					if (!(collaName in castells[castell[1]]))
+						castells[castell[1]][collaName] = [0, 0, 0, 0];
 					
-					if (descarregat)
-						castells[castell[1]][name][0] += 1;
-					else
-						castells[castell[1]][name][1] += 1;
+					switch (castell[2]) {
+						case 'Descarregat':
+							castells[castell[1]][collaName][0] += 1;
+							break;
+						case 'Carregat':
+							castells[castell[1]][collaName][1] += 1;
+							break;
+						case 'Intent':
+							castells[castell[1]][collaName][2] += 1;
+							break;
+						case 'Intent desmuntat':
+							castells[castell[1]][collaName][3] += 1;
+							break;
+						default:
+							console.log(`ERROR: ${castell[2]} no és un estat vàlid.`);
+							break;
+					}
 				});
 			});
 		});
@@ -104,10 +116,10 @@ class Stats extends Component {
 							table_length = 1;
 							reset_rows = false;
 						}
-						castells_rows.push(<th className={"grup"+grup} colSpan="2">{name}</th>);
+						castells_rows.push(<th className={"grup"+grup} colSpan="4">{name}</th>);
 						castells_rows_names.push(name);
-						desCar_rows.push(<><th className={"grup"+grup}>D</th><th className={"grup"+grup}>C</th></>);
-						table_length += 2;
+						desCar_rows.push(<><th className={"grup"+grup}>D</th><th className={"grup"+grup}>C</th><th className={"grup"+grup}>IF</th><th className={"grup"+grup}>ID</th></>);
+						table_length += 4;
 
 						[...Object.values(castell[1])].forEach((_, j) => {
 							const colla_name = Object.keys(castell[1])[j];
@@ -129,16 +141,27 @@ class Stats extends Component {
 							const colla_res = [];
 							castells_rows_names.forEach(castell => {
 								try {
-									const descarregats = castells[castell][colla][0];
-									const carregats = castells[castell][colla][1];
-									if (descarregats === 0)
-										colla_res.push(<><td></td><td className="carregats">{carregats > 0 ? carregats : ""}</td></>);
-									else if (carregats === 0)
-										colla_res.push(<><td className="descarregats">{descarregats > 0 ? descarregats : ""}</td><td></td></>);
+									if (castells[castell][colla][0] !== 0)
+										colla_res.push(<td className="descarregats">{castells[castell][colla][0]}</td>);
 									else
-										colla_res.push(<><td className="descarregats">{descarregats > 0 ? descarregats : ""}</td><td className="carregats">{carregats > 0 ? carregats : ""}</td></>);
+										colla_res.push(<td></td>);
+
+									if (castells[castell][colla][1] !== 0)
+										colla_res.push(<td className="carregats">{castells[castell][colla][1]}</td>);
+									else
+										colla_res.push(<td></td>);
+
+									if (castells[castell][colla][2] !== 0)
+										colla_res.push(<td className="intents">{castells[castell][colla][2]}</td>);
+									else
+										colla_res.push(<td></td>);
+
+									if (castells[castell][colla][3] !== 0)
+										colla_res.push(<td className="intents_desmuntats">{castells[castell][colla][3]}</td>);
+									else
+										colla_res.push(<td></td>);
 								} catch {
-									colla_res.push(<><td></td><td></td></>);
+									colla_res.push(<><td></td><td></td><td></td><td></td></>);
 								}
 							})
 							if (!colles_rows_names_two.includes(colla)) {
