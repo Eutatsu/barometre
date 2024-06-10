@@ -10,6 +10,7 @@ import Calendar from "./pages/Calendar";
 import LlistaDiades from "./pages/LlistaDiades";
 import Calculadora from "./pages/Calculadora";
 import Collaborate from "./pages/Collaborate";
+import ReorganizeScores from "./pages/ReorganizeScores";
 import Footer from "./components/Footer";
 import NotFound from "./pages/NotFound";
 import './css/normalize.css';
@@ -50,6 +51,9 @@ function App() {
 					<Route path="/diades" element={<LlistaDiades {...exports}/>}/>
 					<Route path="/calculadora" element={<Calculadora {...exports}/>}/>
 					<Route path="/collaborate" element={<Collaborate {...exports}/>}/>
+
+					<Route path="/kkk" element={<ReorganizeScores {...exports}/>}/>
+
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</main>
