@@ -118,7 +118,7 @@ class ReorganizeScores extends Component {
 
 				<button className="btn" onClick={this.addCastell.bind(this)}>Afegeix un nou castell</button>
 
-				<table className="score-tb" style={{marginBottom: '1rem'}}>
+				<table className="score-tb reorganize" style={{marginBottom: '1rem'}}>
 					<thead>
 						<tr>
 							<th></th>

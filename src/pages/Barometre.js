@@ -283,7 +283,11 @@ class Barometre extends Component {
 					<tbody>
 						{
 							top3
-							.sort((a,b) => a.puntuacio_total < b.puntuacio_total ? 1 : -1)
+							.sort((a,b) => {
+								if (a.puntuacio_total === b.puntuacio_total)
+									return a.colla < b.colla ? -1 : 1;
+								return a.puntuacio_total < b.puntuacio_total ? 1 : -1
+							})
 							.map((colla, i) => {
 								let pos = lastPoints === colla.puntuacio_total ? i : i+1;
 								const difference = lastWeek_pos[colla.colla]-pos === 0 || now_temporada !== selected_temporada ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : lastWeek_pos[colla.colla] ? "down" : "up";

@@ -1240,16 +1240,16 @@ Reorganize Scores
 ===============
 */
 
-.score-tb tbody tr {
+.reorganize tbody tr {
 	background-color: var(--backgroundColor);
 }
 
-.score-tb span {
+.reorganize span {
 	user-select: none;
 	cursor: grab;
 }
 
-.score-tb input {
+.reorganize input {
 	border: none;
 	padding: 0;
 	width: 75px;
