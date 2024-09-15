@@ -61,8 +61,8 @@ html {
 	--grey-900: #0f172a;
 
 	/* colors */
-	--black: #000000;
-	--white: #ffffff;
+	--black: #080808;
+	--white: #f9f9f9;
 	--darkerGray: #484848;
 	--darkGray: #898989;
 	--gray: #b7b7b7;
@@ -71,7 +71,7 @@ html {
 	--green: #229f22;
 
 	/* groups */
-	--s0: #ffffff;
+	--s0: #f9f9f9;
 	--s1: #f5d7d7;
 	--s2: #e4a7a7;
 	--s3: #e06666;
@@ -380,7 +380,7 @@ Navbar
 .navbar .navigation-menu li a {
 	display: block;
 	width: 100%;
-	color: #ffffff;
+	color: var(--white);
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -404,7 +404,7 @@ Navbar
 		flex-direction: column;
 		width: 100%;
 		height: 100vh;
-		background-color: white;
+		background-color: var(--white);
 	}
 	.navbar .navigation-menu li {
 		text-align: center;
@@ -505,39 +505,39 @@ th {
 
 .grup0 {
 	background-color: var(--s0);
-	color: #000000;
+	color: var(--black);
 }
 .grup1 {
 	background-color: var(--s1);
-	color: #000000;
+	color: var(--black);
 }
 .grup2 {
 	background-color: var(--s2);
-	color: #000000;
+	color: var(--black);
 }
 .grup3 {
 	background-color: var(--s3);
-	color: #000000;
+	color: var(--black);
 }
 .grup4 {
 	background-color: var(--s4);
-	color: #ffffff;
+	color: var(--white);
 }
 .grup5 {
 	background-color: var(--s5);
-	color: #ffffff;
+	color: var(--white);
 }
 .grup6 {
 	background-color: var(--s6);
-	color: #ffffff;
+	color: var(--white);
 }
 .grup7 {
 	background-color: var(--s7);
-	color: #ffffff;
+	color: var(--white);
 }
 .grup8 {
 	background-color: var(--s8);
-	color: #ffffff;
+	color: var(--white);
 }
 
 .barometre-tb th,
@@ -1242,6 +1242,96 @@ Reorganize Scores
 
 .reorganize tbody tr {
 	background-color: var(--backgroundColor);
+
+	&:has(input.castell-grup[value="0"]) {
+		background-color: var(--s0);
+		color: var(--black);
+
+		& input {
+			background-color: var(--s0);
+			color: var(--black);
+		}
+	}
+
+	&:has(input.castell-grup[value="1"]) {
+		background-color: var(--s1);
+		color: var(--black);
+
+		& input {
+			background-color: var(--s1);
+			color: var(--black);
+		}
+	}
+
+	&:has(input.castell-grup[value="2"]) {
+		background-color: var(--s2);
+		color: var(--black);
+
+		& input {
+			background-color: var(--s2);
+			color: var(--black);
+		}
+	}
+
+	&:has(input.castell-grup[value="3"]) {
+		background-color: var(--s3);
+		color: var(--black);
+
+		& input {
+			background-color: var(--s3);
+			color: var(--black);
+		}
+	}
+
+	&:has(input.castell-grup[value="4"]) {
+		background-color: var(--s4);
+		color: var(--white);
+
+		& input {
+			background-color: var(--s4);
+			color: var(--white);
+		}
+	}
+
+	&:has(input.castell-grup[value="5"]) {
+		background-color: var(--s5);
+		color: var(--white);
+
+		& input {
+			background-color: var(--s5);
+			color: var(--white);
+		}
+	}
+
+	&:has(input.castell-grup[value="6"]) {
+		background-color: var(--s6);
+		color: var(--white);
+
+		& input {
+			background-color: var(--s6);
+			color: var(--white);
+		}
+	}
+
+	&:has(input.castell-grup[value="7"]) {
+		background-color: var(--s7);
+		color: var(--white);
+
+		& input {
+			background-color: var(--s7);
+			color: var(--white);
+		}
+	}
+
+	&:has(input.castell-grup[value="8"]) {
+		background-color: var(--s8);
+		color: var(--white);
+
+		& input {
+			background-color: var(--s8);
+			color: var(--white);
+		}
+	}
 }
 
 .reorganize span {

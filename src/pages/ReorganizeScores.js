@@ -135,7 +135,7 @@ class ReorganizeScores extends Component {
 							<tr key={`castell-${i}`} draggable>
 								<td><span>&#x2630;</span></td>
 								<td>
-									<input type="number" min="0" step="1" value={castell["Grup"]} onChange={this.changeGrup.bind(this)} />
+									<input type="number" min="0" step="1" value={castell["Grup"]} className='castell-grup' onChange={this.changeGrup.bind(this)} />
 								</td>
 								<td>
 									<input type="number" min="0" step="1" value={castell["Subgrup"]} onChange={this.changeSubgrup.bind(this)} />
