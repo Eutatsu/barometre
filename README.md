@@ -8,15 +8,23 @@ Applicació creada per:
 
 La base de dades és un [Google Spreadsheet](https://docs.google.com/spreadsheets/d/105YLYfRNPUvhx6G8QUkZykGPHPTpzCk6WO5zBGV2LcA/). Si hi voleu col·laborar o coneixeu d'algú que hi vulgui ajudar, intenteu contactar amb nosaltres.
 
-### Col·laboradors actuals per colla
+## Taules de puntuacions
+
+Descarrega el CSV amb les puntuacions de cada any aquí:
+
+![https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=1401475200&single=true&output=csv](https://img.shields.io/badge/2022/2023-339933?style=for-the-badge)
+![https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=439551992&single=true&output=csv](https://img.shields.io/badge/2023/2024-339933?style=for-the-badge)
+![https://docs.google.com/spreadsheets/d/e/2PACX-1vQeAif6pgFuLUAXHif4IsrSXzG8itYhirTHGdmNzA5RmrEPcJe7lcfwfNVLBEcgnn3mZbThqaZdouiP/pub?gid=1643781031&single=true&output=csv](https://img.shields.io/badge/2024/2025-339933?style=for-the-badge)
+
+## Col·laboradors actuals per colla
 
 Un dels objectius del Baròmetre Universitari és recollir totes les actuacions universitàries de la història. Estem contactant amb gent de totes les colles per tal de recollir tots els castells, colla per colla.
 
 Tenim ja col·laboradors en algunes colles, però no en totes:
 
 * __Arreplegats__: Oriol Segura, Andreu Huguet.
-* __Trempats__: Gabriel Puig.
 * __Penjats__: Jordi Orive.
+* __Trempats__: Gabriel Puig.
 
 Voldries ajudar-nos? Contacta'ns per [Twitter](https://twitter.com/BarometreUni) o [correu electrònic](mailto:barometreuniversitari@gmail.com).
 
