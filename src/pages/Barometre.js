@@ -263,6 +263,7 @@ class Barometre extends Component {
 
 		const different_temporada = GetTemporada(yy_date) !== GetTemporada(new Date());
 
+		let lastPos = 0;
 		return (<>
 			<section>
 				<h2>Temporada {selected_temporada}</h2>
@@ -289,9 +290,10 @@ class Barometre extends Component {
 								return a.puntuacio_total < b.puntuacio_total ? 1 : -1
 							})
 							.map((colla, i) => {
-								let pos = lastPoints === colla.puntuacio_total ? i : i+1;
+								let pos = lastPoints === colla.puntuacio_total ? lastPos : i+1;
 								const difference = lastWeek_pos[colla.colla]-pos === 0 || now_temporada !== selected_temporada ? "same" : lastWeek_pos[colla.colla]-pos > 0 ? "up" : lastWeek_pos[colla.colla] ? "down" : "up";
 								lastPoints = colla.puntuacio_total;
+								lastPos = pos;
 								const pilar_score = puntuacions[colla.topPilar[0].replace("C","")];
 								const colla_color = COLLES_INICIALS[selected_temporada][colla.colla];
 								return (
